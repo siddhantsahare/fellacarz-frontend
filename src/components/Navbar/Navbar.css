@@ -78,7 +78,7 @@
 }
 
 /* For Mobile */
-@media (max-width: 700px) {
+@media (max-width: 820px) {
   .main-nav ul {
     display: none;
   }

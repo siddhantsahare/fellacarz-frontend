@@ -1,12 +1,12 @@
-/* For Desktop & Tablets */
-@media (min-width: 700px) {
+/* For Desktop */
+@media (min-width: 820px) {
   .app-footer {
     display: none;
   }
 }
 
-/* For Mobile  */
-@media (max-width: 700px) {
+/* For Mobile & TaBLETS */
+@media (max-width: 820px) {
   .app-footer {
     flex-shrink: 0;
     background: #f4f4f4;
