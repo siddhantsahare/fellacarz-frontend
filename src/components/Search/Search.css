@@ -79,6 +79,7 @@ i.fab {
 }
 .modal {
   font-size: 18px;
+  padding: 0px;
 }
 
 .modal > .header {
@@ -87,6 +88,7 @@ i.fab {
   font-size: 20px;
   text-align: center;
   padding: 5px;
+  background-color: #f3f3f3;
 }
 .modal > .content {
   width: 100%;
@@ -107,6 +109,7 @@ i.fab {
   margin-bottom: 10px;
   height: 40px;
   font-size: 18px;
+  background-color: #f3f3f3;
 }
 
 .modal > .actions > button:hover {

@@ -101,7 +101,7 @@ export class Search extends Component {
             )}
           </Popup>
 
-          {/* Drop off  */}
+          {/* Drop off 
           <Popup
             trigger={
               <button className="city dropoff">
@@ -192,7 +192,7 @@ export class Search extends Component {
                 </div>
               </div>
             )}
-          </Popup>
+          </Popup> */}
         </div>
       </div>
     );
