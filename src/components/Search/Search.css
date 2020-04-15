@@ -1,0 +1,158 @@
+.search-container {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 50vh;
+  background-color: rgba(219, 238, 222);
+}
+
+.search-container .lead {
+  font-size: 40px;
+  text-transform: uppercase;
+}
+
+/* For Mobile & Tablet */
+@media (max-width: 820px) {
+  .search-container .lead {
+    font-size: 30px;
+    text-transform: uppercase;
+  }
+}
+
+.search-container .search {
+  display: flex;
+  min-width: 500px;
+  height: 100px;
+  align-content: center;
+  justify-content: center;
+}
+
+.search-container .search .city-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin: 0px 10px;
+}
+
+.search-container .search > .city {
+  background-color: #f3f3f3;
+  padding: 5px;
+  margin-top: 20px;
+}
+
+.search-container .search > .pickup > i.fas,
+i.fab {
+  font-size: 20px;
+  margin: 0px 10px;
+  color: green;
+}
+
+.search-container .search > .dropoff > i.fas,
+i.fab {
+  font-size: 20px;
+  margin: 0px 10px;
+  color: red;
+}
+
+.search-container .search > .city .city-wrapper .city-lead {
+  font-size: 14px;
+  margin-bottom: 2px;
+}
+
+.search-container .search > .city .city-wrapper .search-result {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.search-container .search > button {
+  display: flex;
+}
+
+.search-container .search > button:active {
+  outline: none;
+}
+.search-container .search > button:focus {
+  outline: 0;
+}
+.modal {
+  font-size: 18px;
+}
+
+.modal > .header {
+  width: 100%;
+  border-bottom: 1px solid gray;
+  font-size: 20px;
+  text-align: center;
+  padding: 5px;
+}
+.modal > .content {
+  width: 100%;
+  padding: 10px 5px;
+}
+.modal > .actions {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  padding: 10px 5px;
+  margin: auto;
+  text-align: center;
+}
+
+.modal > .actions > button {
+  margin-bottom: 10px;
+  height: 40px;
+  font-size: 18px;
+}
+
+.modal > .actions > button:hover {
+  background-color: rgba(219, 238, 222);
+}
+
+.modal > .actions > .city-name {
+  margin-bottom: 10px;
+  height: 40px;
+  font-size: 18px;
+}
+
+.modal .city-area-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  padding: 10px 5px;
+  margin: auto;
+  text-align: center;
+}
+
+.modal .city-area-container > button {
+  margin-bottom: 10px;
+  height: 40px;
+  font-size: 18px;
+}
+
+.modal .city-area-container > button:hover {
+  background-color: rgba(219, 238, 222);
+}
+/* .modal > .actions > .city-name.modal > .actions > .dropoff-city {
+  display: flex;
+  flex-direction: column;
+} */
+
+.modal .close {
+  cursor: pointer;
+  position: absolute;
+  display: block;
+  padding: 2px 5px;
+  line-height: 20px;
+  right: -10px;
+  top: -10px;
+  font-size: 24px;
+  background: #ffffff;
+  border-radius: 18px;
+  border: 1px solid #cfcece;
+}

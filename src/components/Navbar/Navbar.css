@@ -6,7 +6,7 @@
   width: 100%;
   padding: 20px 20px;
   font-size: 18px;
-  background-color: #f3f3f3;
+  background-color: #fff;
 }
 
 .main-nav .logo {
@@ -34,7 +34,7 @@
 }
 
 .dropbtn {
-  background-color: #f3f3f3;
+  background-color: #fff;
   color: black;
   padding: 16px;
   font-size: 18px;
@@ -66,7 +66,7 @@
 }
 
 .dropdown-content a:hover {
-  background-color: #f1f1f1;
+  background-color: #fff;
 }
 
 .dropdown:hover .dropdown-content {
@@ -74,7 +74,7 @@
 }
 
 .dropdown:hover .dropbtn {
-  background-color: #f3f3f3;
+  background-color: #fff;
 }
 
 /* For Mobile */
