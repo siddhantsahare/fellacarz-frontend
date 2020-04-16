@@ -13,6 +13,11 @@ body {
   height: 100%;
 }
 
+.container {
+  width: 90vw;
+  margin: 0 auto;
+}
+
 a {
   color: #262626;
   text-decoration: none;

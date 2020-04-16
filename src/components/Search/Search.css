@@ -1,19 +1,27 @@
 /* Search container section */
 .search-container {
-  position: fixed;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100vw;
-  height: 50vh;
-  background-color: rgba(219, 238, 222);
-  padding: 20px;
+  width: 500px;
+  border-radius: 20px;
+  margin-top: 30px;
+  height: 80vh;
+  background-color: #f3f3f3;
+  padding: 0 20px;
+  left: 0px;
 }
 
 .search-container .lead {
-  font-size: 40px;
-  text-transform: uppercase;
+  font-size: 30px;
+  font-weight: 900;
+  color: darkgreen;
+}
+
+.search-container .lead-2 {
+  font-size: 20px;
+  font-weight: 700;
 }
 
 /* For Mobile & Tablet */
@@ -44,18 +52,20 @@
 
 .search-container .search {
   display: flex;
+  flex-direction: column;
   align-content: center;
   justify-content: center;
+  width: 90%;
 }
 
 .search-container .search > .city {
-  background-color: #f3f3f3;
+  background-color: rgb(211, 211, 211);
   padding: 10px;
   margin-top: 20px;
   margin-right: 10px;
   width: 100%;
-  height: 80px;
-  border: 2px solid green;
+  height: 50px;
+  border-radius: 10px;
 }
 
 .search-container .search .city-wrapper {
@@ -65,11 +75,11 @@
   margin: 0px 10px;
 }
 
-.search-container .search > .pickup > i.fas,
+/* .search-container .search > .pickup > i.fas,
 i.fab {
   font-size: 20px;
   margin: auto 10px;
-  color: green;
+  color: white;
 }
 
 .search-container .search > .dropoff > i.fas,
@@ -78,13 +88,14 @@ i.fab {
   font-size: 20px;
   margin: 0px 10px;
   color: red;
-}
+} */
 
 .search-container .search > .city .city-wrapper .city-lead {
   font-size: 12px;
 }
 
 .search-container .search > .city .city-wrapper .search-result {
+  color: #000;
   font-size: 18px;
   font-weight: 500;
 }
@@ -192,36 +203,40 @@ i.fab {
 /* Date & Time picker */
 
 .search .date-picker {
+  position: relative;
   display: flex;
   align-items: center;
-  justify-content: center;
-  height: 80px;
-  width: 120%;
-  background-color: #f3f3f3;
+  justify-content: flex-start;
+  height: 50px;
+  width: 100%;
+  background-color: rgb(211, 211, 211);
   margin-top: 20px;
-  border: 2px solid green;
+  border-radius: 10px;
 }
 
 .search .date-picker i {
-  margin-left: 10px;
   padding: 0px;
 }
 
 .search .date-picker i.fas,
 i.fab {
   font-size: 20px;
-  color: red;
+  color: green;
+  background-color: white;
+  border-radius: 10px;
+  padding: 10px;
+  margin-left: 5px;
+  margin-right: 10px;
 }
 
 .search .picker {
+  height: 40px;
   width: 100%;
-  height: 70px;
+  margin: 0;
   font-size: 18px;
   font-weight: 500;
-  background-color: #f3f3f3;
-  margin: 0 auto;
+  background-color: rgb(211, 211, 211);
   border: none;
-  padding: 0px 10px;
 }
 
 .search .picker:active {
@@ -230,4 +245,18 @@ i.fab {
 
 .search .picker:focus {
   outline: 0;
+}
+
+/* Find Button */
+
+.find {
+  display: block;
+  width: 40%;
+  margin: 50px auto;
+  height: 40px;
+  color: white;
+  background-color: green;
+  font-size: 18px;
+  border-radius: 10px;
+  font-weight: 700;
 }
