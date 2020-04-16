@@ -1,21 +1,26 @@
 import React, { Component } from 'react';
 import Popup from 'reactjs-popup';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 import './Search.css';
 
 export class Search extends Component {
+  constructor() {
+    super();
+    this.state = { date: new Date() };
+  }
   render() {
     return (
       <div className="search-container">
         <p class="lead">Rent a self drive car</p>
         <div class="search">
-          {/* Pick up */}
           <Popup
             trigger={
               <button className="city pickup">
                 <i className="fas fa-map-marker-alt"></i>
                 <div className="city-wrapper">
                   <p className="city-lead">Pickup Point</p>
-                  <div className="search-result">Bangalore, Airport</div>
+                  <div className="search-result">Bangalore, Sri ram nagar</div>
                 </div>
               </button>
             }
@@ -100,6 +105,16 @@ export class Search extends Component {
               </div>
             )}
           </Popup>
+          {/* Date and time picker */}
+          <div className="date-picker">
+            <i className="fas fa-calendar-week"></i>
+            <DatePicker
+              selected={this.state.date}
+              onChange={(date) => this.setState(date)}
+              dateFormat="MMMM d, yyyy h:mm aa"
+              className="picker"
+            />
+          </div>
 
           {/* Drop off 
           <Popup
