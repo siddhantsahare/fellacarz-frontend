@@ -42,10 +42,12 @@ export class Navbar extends Component {
                       placeholder="Enter a password"
                     />
                     <button class="auth-button">Login</button>
+                    <br />
                     <p class="forgot-password">
                       Forgot Password -{' '}
                       <span className="auth-span">Reset now </span>
                     </p>
+                    <br />
                     <p class="create-account">
                       Looking to -{' '}
                       <span className="auth-span">create an account </span>
@@ -66,33 +68,30 @@ export class Navbar extends Component {
                   <div className="actions">
                     <input
                       type="text"
-                      class="email"
-                      placeholder="Enter your email"
+                      class="name"
+                      placeholder="Your Full Name"
                     />
 
                     <input
                       type="text"
                       class="email"
-                      placeholder="Repeat your email"
+                      placeholder="Enter Email"
                     />
 
                     <input
                       type="text"
                       class="password"
-                      placeholder="Enter a password"
+                      placeholder="Enter Password"
                     />
 
                     <input
                       type="text"
-                      class="password repeat-password"
-                      placeholder="Repeat the password"
+                      class="phone-number"
+                      placeholder="Enter your mobile number"
                     />
+                    <button class="auth-otp">Send OTP</button>
+                    <button class="auth-button">Register</button>
 
-                    <button class="auth-button">Signup</button>
-                    <p class="forgot-password">
-                      Forgot Password -{' '}
-                      <span className="auth-span">Reset now </span>
-                    </p>
                     <p class="create-account">
                       Already have an account? -{' '}
                       <span className="auth-span">Login </span>
