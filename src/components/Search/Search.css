@@ -237,8 +237,20 @@ i.fab {
   border-radius: 10px;
 }
 
-.find button {
-  border-radius: 10px;
+.find:active {
+  outline: none;
+}
+
+.find:focus {
+  outline: 0;
+}
+
+.find button :active {
+  outline: none;
+}
+
+.find button :focus {
+  outline: 0;
 }
 
 /* For Mobile & Tablet */

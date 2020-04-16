@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import Popup from 'reactjs-popup';
 import './Navbar.css';
+import './NavbarPopup.css';
 
 export class Navbar extends Component {
   render() {
@@ -12,23 +14,94 @@ export class Navbar extends Component {
         />
         <ul className="main-menu">
           <li>
-            <a href="#">Home</a>
+            <a href="#">Book Now</a>
           </li>
           <li>
-            <a href="#">Fare Estimate</a>
+            <a href="#">Why Fellacarz</a>
           </li>
           <li>
-            <a href="#">Features</a>
+            <a href="#">Contact</a>
           </li>
           <li>
-            <a href="#">News</a>
+            <Popup
+              trigger={<button className="auth">Login</button>}
+              modal
+              closeOnDocumentClick
+            >
+              {(close) => (
+                <div className="modal">
+                  <div className="actions">
+                    <input
+                      type="text"
+                      class="email"
+                      placeholder="Enter your email"
+                    />
+                    <input
+                      type="password"
+                      class="password"
+                      placeholder="Enter a password"
+                    />
+                    <button class="auth-button">Login</button>
+                    <p class="forgot-password">
+                      Forgot Password -{' '}
+                      <span className="auth-span">Reset now </span>
+                    </p>
+                    <p class="create-account">
+                      Looking to -{' '}
+                      <span className="auth-span">create an account </span>
+                    </p>
+                  </div>
+                </div>
+              )}
+            </Popup>
           </li>
-          <div className="dropdown">
-            <button className="dropbtn"> Login </button>
-            <div className="dropdown-content">
-              <a href="#">Signup</a>
-            </div>
-          </div>
+          <li>
+            <Popup
+              trigger={<button className="auth">Signup</button>}
+              modal
+              closeOnDocumentClick
+            >
+              {(close) => (
+                <div className="modal">
+                  <div className="actions">
+                    <input
+                      type="text"
+                      class="email"
+                      placeholder="Enter your email"
+                    />
+
+                    <input
+                      type="text"
+                      class="email"
+                      placeholder="Repeat your email"
+                    />
+
+                    <input
+                      type="text"
+                      class="password"
+                      placeholder="Enter a password"
+                    />
+
+                    <input
+                      type="text"
+                      class="password repeat-password"
+                      placeholder="Repeat the password"
+                    />
+
+                    <button class="auth-button">Signup</button>
+                    <p class="forgot-password">
+                      Forgot Password -{' '}
+                      <span className="auth-span">Reset now </span>
+                    </p>
+                    <p class="create-account">
+                      Already have an account? -{' '}
+                      <span className="auth-span">Login </span>
+                    </p>
+                  </div>
+                </div>
+              )}
+            </Popup>
+          </li>
         </ul>
       </nav>
     );
