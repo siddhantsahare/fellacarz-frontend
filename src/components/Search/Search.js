@@ -16,9 +16,8 @@ export class Search extends Component {
       <div class="section section-search">
         <div className="search-container">
           <p class="lead">Self Drive Car Rental</p>
-          <br />
+
           <p class="lead-2">Book your Car now!</p>
-          <br />
 
           <div class="search">
             <Popup
@@ -114,8 +113,7 @@ export class Search extends Component {
               )}
             </Popup>
             {/* Date and time pick up */}
-            <br />
-            <br />
+
             <div className="date-picker">
               <i className="fas fa-calendar-week"></i>
               <DatePicker
