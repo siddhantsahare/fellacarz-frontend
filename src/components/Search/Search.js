@@ -11,6 +11,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import { withStyles } from '@material-ui/core/styles';
 import { withTheme } from '@material-ui/core/styles';
+
 import './Search.css';
 
 const useStyles = (theme) => ({
@@ -31,7 +32,7 @@ const useStyles = (theme) => ({
     backgroundColor: theme.palette.background.paper,
     border: '2px solid #000',
     boxShadow: theme.shadows[5],
-    padding: theme.spacing(0, 0, 5),
+
     color: 'white',
     cursor: 'pointer',
   },
@@ -179,7 +180,7 @@ class Search extends Component {
                 onChange={(date) => this.setState(date)}
                 dateFormat="MMMM d, yyyy h:mm aa"
                 className="picker"
-                placeholderText="From - Date and Time"
+                placeholderText="To - Date and Time"
               />
             </div>
             {/* Date and time dropoff */}

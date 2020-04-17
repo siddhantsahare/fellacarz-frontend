@@ -1,10 +1,63 @@
 import React, { Component } from 'react';
 import Popup from 'reactjs-popup';
+import Input from '@material-ui/core/Input';
+import Modal from '@material-ui/core/Modal';
+import Fade from '@material-ui/core/Fade';
+import Backdrop from '@material-ui/core/Backdrop';
+import TextField from '@material-ui/core/TextField';
+import Grid from '@material-ui/core/Grid';
 import './Navbar.css';
 import './NavbarPopup.css';
+import { withStyles } from '@material-ui/core/styles';
+import { withTheme } from '@material-ui/core/styles';
+import AccountCircle from '@material-ui/icons/AccountCircle';
+
+const useStyles = (theme) => ({
+  margin: {
+    marginTop: '10px',
+    margin: theme.spacing(0),
+  },
+  modal: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    outline: 'none',
+  },
+
+  paper: {
+    width: '100%',
+    height: '100%',
+    position: 'relative',
+    overflow: 'auto',
+    maxWidth: 400,
+    maxHeight: 400,
+    backgroundColor: theme.palette.background.paper,
+    border: '2px solid #000',
+    boxShadow: theme.shadows[5],
+
+    color: 'white',
+    cursor: 'pointer',
+  },
+});
 
 export class Navbar extends Component {
+  constructor() {
+    super();
+    this.state = {
+      open: false,
+    };
+  }
+
+  handleOpen = () => {
+    this.setState({ open: true });
+  };
+
+  handleClose = () => {
+    this.setState({ open: false });
+  };
   render() {
+    const { classes } = this.props;
+    const { open } = this.state;
     return (
       <nav className="main-nav">
         <img
@@ -23,83 +76,71 @@ export class Navbar extends Component {
             <a href="#">Contact</a>
           </li>
           <li>
-            <Popup
-              trigger={<button className="auth">Login</button>}
-              modal
-              closeOnDocumentClick
-            >
-              {(close) => (
-                <div className="modal">
-                  <div className="actions">
-                    <input
-                      type="text"
-                      class="email"
-                      placeholder="Enter your email"
-                    />
-                    <input
-                      type="password"
-                      class="password"
-                      placeholder="Enter a password"
-                    />
-                    <button class="auth-button">Login</button>
-                    <br />
-                    <p class="forgot-password">
-                      Forgot Password -{' '}
-                      <span className="auth-span">Reset now </span>
-                    </p>
-                    <br />
-                    <p class="create-account">
-                      Looking to -{' '}
-                      <span className="auth-span">create an account </span>
-                    </p>
+            <a onClick={this.handleOpen}>
+              Login
+              <Modal
+                aria-labelledby="transition-modal-title"
+                aria-describedby="transition-modal-description"
+                className={classes.modal}
+                open={open}
+                onClose={this.handleClose}
+                closeAfterTransition
+                BackdropComponent={Backdrop}
+                BackdropProps={{
+                  timeout: 500,
+                }}
+              >
+                <Fade in={open}>
+                  <div className={classes.paper}>
+                    <div className={classes.margin}>
+                      <Grid container spacing={1} alignItems="flex-end">
+                        <Grid item>
+                          <AccountCircle />
+                        </Grid>
+                        <Grid item>
+                          <TextField
+                            id="input-with-icon-grid"
+                            label="With a grid"
+                          />
+                        </Grid>
+                      </Grid>
+                    </div>
                   </div>
-                </div>
-              )}
-            </Popup>
+                </Fade>
+              </Modal>
+            </a>
           </li>
           <li>
-            <Popup
-              trigger={<button className="auth">Signup</button>}
-              modal
-              closeOnDocumentClick
+            <Modal
+              aria-labelledby="transition-modal-title"
+              aria-describedby="transition-modal-description"
+              className={classes.modal}
+              open={open}
+              onClose={this.handleClose}
+              closeAfterTransition
+              BackdropComponent={Backdrop}
+              BackdropProps={{
+                timeout: 500,
+              }}
             >
-              {(close) => (
-                <div className="modal">
-                  <div className="actions">
-                    <input
-                      type="text"
-                      class="name"
-                      placeholder="Your Full Name"
-                    />
-
-                    <input
-                      type="text"
-                      class="email"
-                      placeholder="Enter Email"
-                    />
-
-                    <input
-                      type="text"
-                      class="password"
-                      placeholder="Enter Password"
-                    />
-
-                    <input
-                      type="text"
-                      class="phone-number"
-                      placeholder="Enter your mobile number"
-                    />
-                    <button class="auth-otp">Send OTP</button>
-                    <button class="auth-button">Register</button>
-
-                    <p class="create-account">
-                      Already have an account? -{' '}
-                      <span className="auth-span">Login </span>
-                    </p>
+              <Fade in={open}>
+                <div className={classes.paper}>
+                  <div className={classes.margin}>
+                    <Grid container spacing={1} alignItems="flex-end">
+                      <Grid item>
+                        <AccountCircle />
+                      </Grid>
+                      <Grid item>
+                        <TextField
+                          id="input-with-icon-grid"
+                          label="With a grid"
+                        />
+                      </Grid>
+                    </Grid>
                   </div>
                 </div>
-              )}
-            </Popup>
+              </Fade>
+            </Modal>
           </li>
         </ul>
       </nav>
@@ -107,4 +148,4 @@ export class Navbar extends Component {
   }
 }
 
-export default Navbar;
+export default withTheme(withStyles(useStyles)(Navbar));
