@@ -146,27 +146,24 @@ class Search extends Component {
                       className={classes.header}
                     >{`Select Your City`}</ListSubheader>
 
-                    <ListItem button>
-                      <ListItemText
-                        primary="Bangalore"
-                        onClick={this.continue}
-                      />
+                    <ListItem button onClick={this.continue}>
+                      <ListItemText primary="Bangalore" />
                     </ListItem>
 
-                    <ListItem button>
-                      <ListItemText primary="Pune" onClick={this.continue} />
+                    <ListItem button onClick={this.continue}>
+                      <ListItemText primary="Pune" />
                     </ListItem>
 
-                    <ListItem button>
-                      <ListItemText primary="Mumbai" onClick={this.continue} />
+                    <ListItem button onClick={this.continue}>
+                      <ListItemText primary="Mumbai" />
                     </ListItem>
 
-                    <ListItem button>
-                      <ListItemText primary="Goa" onClick={this.continue} />
+                    <ListItem button onClick={this.continue}>
+                      <ListItemText primary="Goa" />
                     </ListItem>
 
-                    <ListItem button>
-                      <ListItemText primary="Chennai" onClick={this.continue} />
+                    <ListItem button onClick={this.continue}>
+                      <ListItemText primary="Chennai" />
                     </ListItem>
                   </List>
                 </div>
