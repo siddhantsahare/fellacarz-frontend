@@ -43,38 +43,16 @@
   border-radius: 10px;
 }
 
-.search-container .search .city-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 0px 10px;
+.city-selector {
+  margin: 10px auto;
+  height: 50px;
+  width: 100%;
+  font-size: 16px;
+  padding-left: 20px;
+  background-color: rgb(211, 211, 211);
 }
 
-/* .search-container .search > .pickup > i.fas,
-i.fab {
-  font-size: 20px;
-  margin: auto 10px;
-  color: white;
-}
-
-.search-container .search > .dropoff > i.fas,
-i.fab {
-  margin: auto 10px;
-  font-size: 20px;
-  margin: 0px 10px;
-  color: red;
-} */
-
-.search-container .search > .city .city-wrapper .city-lead {
-  font-size: 12px;
-}
-
-.search-container .search > .city .city-wrapper .search-result {
-  color: #000;
-  font-size: 18px;
-  font-weight: 500;
-}
-
+/* city selector buttons */
 .search-container .search > button {
   display: flex;
   border-radius: 10px;
@@ -86,94 +64,9 @@ i.fab {
 .search-container .search > button:focus {
   outline: 0;
 }
-.modal {
-  font-size: 18px;
-  padding: 0px;
-}
 
-.modal > .header {
-  width: 100%;
-  border-bottom: 1px solid gray;
-  font-size: 20px;
-  text-align: center;
-  padding: 5px;
-  background-color: #f3f3f3;
-}
-.modal > .content {
-  width: 100%;
-  padding: 10px 5px;
-}
-.modal > .actions {
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-  justify-content: center;
-  padding: 10px 5px;
-  margin: auto;
-  text-align: center;
-}
-
-.modal > .actions > button {
-  margin-bottom: 10px;
-  height: 40px;
-  font-size: 18px;
-  background-color: #f3f3f3;
-  cursor: pointer;
-}
-
-.modal > .actions > button:hover {
-  background-color: rgba(219, 238, 222);
-}
-
-.modal > .actions > .city-name {
-  margin-bottom: 10px;
-  height: 40px;
-  font-size: 18px;
-}
-
-.modal > .actions .city-area {
-  background-color: #f3f3f3;
-  cursor: pointer;
-}
-
-.modal .city-area-container {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-  justify-content: center;
-  padding: 10px 5px;
-  margin: auto;
-  text-align: center;
-}
-
-.modal .city-area-container > button {
-  margin-bottom: 10px;
-  height: 40px;
-  font-size: 18px;
-}
-
-.modal .city-area-container > button:hover {
-  background-color: rgba(219, 238, 222);
-}
-/* .modal > .actions > .city-name.modal > .actions > .dropoff-city {
-  display: flex;
-  flex-direction: column;
-} */
-
-.modal .close {
-  cursor: pointer;
-  position: absolute;
-  display: block;
-  padding: 2px 5px;
-  line-height: 20px;
-  right: -10px;
-  top: -10px;
-  font-size: 24px;
-  background: #ffffff;
-  border-radius: 18px;
-  border: 1px solid #cfcece;
+.model-city {
+  color: black !important;
 }
 
 /* Date & Time picker */
@@ -261,8 +154,8 @@ i.fab {
     height: 50vh !important;
   }
 
-  .search-container .search > .city .city-wrapper .search-result {
-    font-size: 15px !important;
+  .city-selector {
+    background-color: white;
   }
 
   .search-container .lead {

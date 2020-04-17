@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import LocationModal from './LocationModal';
 import Modal from '@material-ui/core/Modal';
 import Fade from '@material-ui/core/Fade';
 import DatePicker from 'react-datepicker';
-import Backdrop from '@material-ui/core/Backdrop';
 import 'react-datepicker/dist/react-datepicker.css';
 import { withStyles } from '@material-ui/core/styles';
 import { withTheme } from '@material-ui/core/styles';
+import Backdrop from '@material-ui/core/Backdrop';
+
 import './Search.css';
 
 const useStyles = (theme) => ({
@@ -34,6 +34,11 @@ const useStyles = (theme) => ({
       color: 'yellow',
       marginTop: '10px',
     },
+    '& p:last-child': {
+      fontSize: '20px',
+      color: 'white',
+      marginTop: '20px',
+    },
     '& p:hover': {
       fontSize: '18px',
       color: 'white',
@@ -42,61 +47,13 @@ const useStyles = (theme) => ({
   },
 });
 
-class Search extends Component {
-  constructor() {
-    super();
-    this.state = {
-      date: '',
-      step: 0,
-      open: false,
-    };
-  }
-
-  handleOpen = () => {
-    this.setState({ open: true });
-  };
-
-  handleClose = () => {
-    this.setState({ open: false });
-  };
-
-  // Proceed to next step of city modal
-  nextStep = () => {
-    const { step } = this.state;
-    this.setState({
-      step: step + 1,
-    });
-  };
-
-  // Go back to prev step of city modal
-  prevStep = () => {
-    const { step } = this.state;
-    this.setState({
-      step: step - 1,
-    });
-  };
-
-  continue = (e) => {
+export class LocationModal extends Component {
+  back = (e) => {
     e.preventDefault();
-    this.nextStep();
+    this.props.prevStep();
   };
-
   render() {
     const { classes } = this.props;
-    const { open, date, step } = this.state;
-    switch (step) {
-      case 1:
-        return (
-          <LocationModal
-            prevStep={this.prevStep}
-            open={open}
-            date={date}
-            handleOpen={this.handleOpen}
-            handleClose={this.handleClose}
-          />
-        );
-    }
-
     return (
       <div class="section section-search">
         <div className="search-container">
@@ -118,34 +75,29 @@ class Search extends Component {
               aria-labelledby="transition-modal-title"
               aria-describedby="transition-modal-description"
               className={classes.modal}
-              open={open}
-              onClose={this.handleClose}
+              open={this.props.open}
+              onClose={this.back}
               closeAfterTransition
               BackdropComponent={Backdrop}
               BackdropProps={{
                 timeout: 500,
               }}
             >
-              <Fade in={open}>
+              <Fade in={this.props.open}>
                 <div className={classes.paper}>
-                  <h2 id="transition-modal-title" className="model-title">
-                    Select your city
-                  </h2>
-
-                  <p
-                    id="transition-modal-description"
-                    className="modal-city"
-                    onClick={this.continue}
-                  >
-                    Bangalore
-                  </p>
-
-                  <p
-                    id="transition-modal-description"
-                    className="modal-city"
-                    onClick={this.continue}
-                  >
-                    Pune
+                  <h2 id="transition-modal-title">Pick Up Area</h2>
+                  <p id="transition-modal-description">
+                    <div>
+                      {/* IMP: Once we click on the button re-route to Search Component */}
+                      <p>Area 1</p>
+                      <p>Area 2</p>
+                      <p>Area 3</p>
+                      <p>Area 4</p>
+                      <p>Area 5</p>
+                      <p className="modal-back" onClick={this.back}>
+                        Back
+                      </p>
+                    </div>
                   </p>
                 </div>
               </Fade>
@@ -156,8 +108,7 @@ class Search extends Component {
             <div className="date-picker">
               <i className="fas fa-calendar-week"></i>
               <DatePicker
-                selected={this.state.date}
-                onChange={(date) => this.setState(date)}
+                selected={this.props.date}
                 dateFormat="MMMM d, yyyy h:mm aa"
                 className="picker"
                 placeholderText="From - Date and Time"
@@ -167,8 +118,7 @@ class Search extends Component {
             <div className="date-picker">
               <i className="fas fa-calendar-week"></i>
               <DatePicker
-                selected={this.state.date}
-                onChange={(date) => this.setState(date)}
+                selected={this.props.date}
                 dateFormat="MMMM d, yyyy h:mm aa"
                 className="picker"
                 placeholderText="To - Date and Time"
@@ -185,4 +135,4 @@ class Search extends Component {
   }
 }
 
-export default withTheme(withStyles(useStyles)(Search));
+export default withTheme(withStyles(useStyles)(LocationModal));
