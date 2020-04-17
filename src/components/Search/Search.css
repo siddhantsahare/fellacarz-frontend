@@ -76,11 +76,12 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  height: 50px;
+  height: 60px;
   width: 100%;
   background-color: rgb(211, 211, 211);
   margin-top: 20px;
   border-radius: 10px;
+  border: 2px solid black;
 }
 
 .search .date-picker i {

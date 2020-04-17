@@ -34,7 +34,6 @@ const useStyles = (theme) => ({
     backgroundColor: theme.palette.background.paper,
     border: '2px solid #000',
     boxShadow: theme.shadows[5],
-
     color: 'white',
     cursor: 'pointer',
   },
