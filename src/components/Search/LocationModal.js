@@ -3,8 +3,13 @@ import Modal from '@material-ui/core/Modal';
 import Fade from '@material-ui/core/Fade';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import ListSubheader from '@material-ui/core/ListSubheader';
 import { withStyles } from '@material-ui/core/styles';
 import { withTheme } from '@material-ui/core/styles';
+
 import Backdrop from '@material-ui/core/Backdrop';
 
 import './Search.css';
@@ -16,34 +21,33 @@ const useStyles = (theme) => ({
     justifyContent: 'center',
   },
   paper: {
-    position: 'absolute',
-    width: 400,
-    height: 400,
-    background: 'linear-gradient(45deg, #43a047 30%, #cddc39 90%)',
+    width: '100%',
+    height: '100%',
+    position: 'relative',
+    overflow: 'auto',
+    maxWidth: 400,
+    maxHeight: 400,
     backgroundColor: theme.palette.background.paper,
     border: '2px solid #000',
     boxShadow: theme.shadows[5],
-    padding: theme.spacing(2, 4, 10),
+    padding: theme.spacing(0, 0, 10),
     color: 'white',
-    '& h2': {
-      fontSize: '20px',
-      marginBottom: '10px',
-    },
-    '& p': {
-      fontSize: '18px',
-      color: 'yellow',
-      marginTop: '10px',
-    },
-    '& p:last-child': {
-      fontSize: '20px',
-      color: 'white',
-      marginTop: '20px',
-    },
-    '& p:hover': {
-      fontSize: '18px',
-      color: 'white',
-    },
     cursor: 'pointer',
+  },
+  header: {
+    fontSize: '22px',
+    marginBottom: '10px',
+    marginTop: '0',
+    fontWeight: '700',
+    background: 'white',
+    boxShadow: theme.shadows[3],
+    height: '50px',
+    color: 'green',
+    textAlign: 'center',
+  },
+  list: {
+    margin: '0',
+    color: 'black',
   },
 });
 
@@ -85,20 +89,39 @@ export class LocationModal extends Component {
             >
               <Fade in={this.props.open}>
                 <div className={classes.paper}>
-                  <h2 id="transition-modal-title">Pick Up Area</h2>
-                  <p id="transition-modal-description">
-                    <div>
-                      {/* IMP: Once we click on the button re-route to Search Component */}
-                      <p>Area 1</p>
-                      <p>Area 2</p>
-                      <p>Area 3</p>
-                      <p>Area 4</p>
-                      <p>Area 5</p>
-                      <p className="modal-back" onClick={this.back}>
-                        Back
-                      </p>
-                    </div>
-                  </p>
+                  <div>
+                    {/* IMP: Once we click on the button re-route to Search Component */}
+                    <List
+                      component="nav"
+                      aria-label="main mailbox folders"
+                      className={classes.list}
+                    >
+                      <ListSubheader
+                        className={classes.header}
+                      >{`Select Your Location`}</ListSubheader>
+                      <ListItem button>
+                        <ListItemText primary="Koramangala" />
+                      </ListItem>
+                      <ListItem button>
+                        <ListItemText primary="Indiranagar" />
+                      </ListItem>
+                      <ListItem button>
+                        <ListItemText primary="M.G. Road" />
+                      </ListItem>
+                      <ListItem button>
+                        <ListItemText primary="HSR Layout" />
+                      </ListItem>
+                      <ListItem button>
+                        <ListItemText primary="Richmond Town" />
+                      </ListItem>
+                      <ListItem button>
+                        <ListItemText primary="Jayanagar" />
+                      </ListItem>
+                      <ListItem button>
+                        <ListItemText primary="BTM Layout" />
+                      </ListItem>
+                    </List>
+                  </div>
                 </div>
               </Fade>
             </Modal>

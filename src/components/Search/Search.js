@@ -5,6 +5,10 @@ import Fade from '@material-ui/core/Fade';
 import DatePicker from 'react-datepicker';
 import Backdrop from '@material-ui/core/Backdrop';
 import 'react-datepicker/dist/react-datepicker.css';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import ListSubheader from '@material-ui/core/ListSubheader';
 import { withStyles } from '@material-ui/core/styles';
 import { withTheme } from '@material-ui/core/styles';
 import './Search.css';
@@ -14,31 +18,36 @@ const useStyles = (theme) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    outline: 'none',
   },
+
   paper: {
-    position: 'absolute',
-    width: 400,
-    height: 400,
-    background: 'linear-gradient(45deg, #43a047 30%, #cddc39 90%)',
+    width: '100%',
+    height: '100%',
+    position: 'relative',
+    overflow: 'auto',
+    maxWidth: 400,
+    maxHeight: 400,
     backgroundColor: theme.palette.background.paper,
     border: '2px solid #000',
     boxShadow: theme.shadows[5],
-    padding: theme.spacing(2, 4, 10),
+    padding: theme.spacing(0, 0, 5),
     color: 'white',
-    '& h2': {
-      fontSize: '20px',
-      marginBottom: '10px',
-    },
-    '& p': {
-      fontSize: '18px',
-      color: 'yellow',
-      marginTop: '10px',
-    },
-    '& p:hover': {
-      fontSize: '18px',
-      color: 'white',
-    },
     cursor: 'pointer',
+  },
+  header: {
+    fontSize: '22px',
+    marginTop: '0',
+    fontWeight: '700',
+    background: 'white',
+    boxShadow: theme.shadows[3],
+    color: 'green',
+    height: '50px',
+    textAlign: 'center',
+  },
+  list: {
+    margin: '0',
+    color: 'black',
   },
 });
 
@@ -128,25 +137,38 @@ class Search extends Component {
             >
               <Fade in={open}>
                 <div className={classes.paper}>
-                  <h2 id="transition-modal-title" className="model-title">
-                    Select your city
-                  </h2>
-
-                  <p
-                    id="transition-modal-description"
-                    className="modal-city"
-                    onClick={this.continue}
+                  <List
+                    component="nav"
+                    aria-label="main mailbox folders"
+                    className={classes.list}
                   >
-                    Bangalore
-                  </p>
+                    <ListSubheader
+                      className={classes.header}
+                    >{`Select Your City`}</ListSubheader>
 
-                  <p
-                    id="transition-modal-description"
-                    className="modal-city"
-                    onClick={this.continue}
-                  >
-                    Pune
-                  </p>
+                    <ListItem button>
+                      <ListItemText
+                        primary="Bangalore"
+                        onClick={this.continue}
+                      />
+                    </ListItem>
+
+                    <ListItem button>
+                      <ListItemText primary="Pune" onClick={this.continue} />
+                    </ListItem>
+
+                    <ListItem button>
+                      <ListItemText primary="Mumbai" onClick={this.continue} />
+                    </ListItem>
+
+                    <ListItem button>
+                      <ListItemText primary="Goa" onClick={this.continue} />
+                    </ListItem>
+
+                    <ListItem button>
+                      <ListItemText primary="Chennai" onClick={this.continue} />
+                    </ListItem>
+                  </List>
                 </div>
               </Fade>
             </Modal>
