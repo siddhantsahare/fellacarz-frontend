@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     backgroundColor: theme.palette.background.paper,
     maxWidth: '500px',
-    maxHeight: '500px',
+    maxHeight: '520px',
     border: '2px solid #000',
     padding: '30px',
     outline: 'none',
@@ -75,7 +75,7 @@ export default function SignIn() {
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Sign in
+          Login
         </Typography>
         <form className={classes.form} noValidate>
           <TextField
@@ -111,7 +111,7 @@ export default function SignIn() {
             color="primary"
             classes={{ root: classes.root }}
           >
-            Sign In
+            Login
           </Button>
           <Grid container>
             <Grid item xs className={classes.forgetPass}>

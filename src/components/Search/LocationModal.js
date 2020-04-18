@@ -24,11 +24,11 @@ const useStyles = (theme) => ({
   },
 
   textField: {
-    marginLeft: theme.spacing(2),
+    marginLeft: theme.spacing(5),
     marginRight: theme.spacing(1),
     marginTop: theme.spacing(2.5),
     marginBottom: theme.spacing(1),
-    width: 200,
+    width: 220,
   },
   paper: {
     width: '100%',
@@ -37,27 +37,31 @@ const useStyles = (theme) => ({
     overflow: 'auto',
     maxWidth: 400,
     maxHeight: 400,
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: 'white',
     border: '2px solid #000',
     boxShadow: theme.shadows[5],
     padding: theme.spacing(0, 0, 10),
     color: 'white',
+    outline: 'none',
     cursor: 'pointer',
   },
+
   header: {
     fontSize: '22px',
-    marginBottom: '10px',
-    marginTop: '0',
+    marginTop: '-7px',
     fontWeight: '700',
     background: 'white',
     boxShadow: theme.shadows[3],
-    height: '50px',
     color: 'green',
+    height: '50px',
     textAlign: 'center',
   },
+
   list: {
     margin: '0',
+    marginLeft: '0px',
     color: 'black',
+    marginTop: '0px',
   },
 });
 
@@ -77,65 +81,67 @@ export class LocationModal extends Component {
 
           <div class="search">
             {/* City selector */}
-            <button
-              type="button"
-              className="city-selector"
-              onClick={this.handleOpen}
-            >
-              Select City
-            </button>
+            <div className="search-responsive">
+              <button
+                type="button"
+                className="city-selector"
+                onClick={this.handleOpen}
+              >
+                Select City
+              </button>
 
-            <Modal
-              aria-labelledby="transition-modal-title"
-              aria-describedby="transition-modal-description"
-              className={classes.modal}
-              open={this.props.open}
-              onClose={this.back}
-              closeAfterTransition
-              BackdropComponent={Backdrop}
-              BackdropProps={{
-                timeout: 500,
-              }}
-            >
-              <Fade in={this.props.open}>
-                <div className={classes.paper}>
-                  <div>
-                    {/* IMP: Once we click on the button re-route to Search Component */}
-                    <List
-                      component="nav"
-                      aria-label="main mailbox folders"
-                      className={classes.list}
-                    >
-                      <ListSubheader
-                        className={classes.header}
-                      >{`Select Your Location`}</ListSubheader>
-                      <ListItem button>
-                        <ListItemText primary="Koramangala" />
-                      </ListItem>
-                      <ListItem button>
-                        <ListItemText primary="Indiranagar" />
-                      </ListItem>
-                      <ListItem button>
-                        <ListItemText primary="M.G. Road" />
-                      </ListItem>
-                      <ListItem button>
-                        <ListItemText primary="HSR Layout" />
-                      </ListItem>
-                      <ListItem button>
-                        <ListItemText primary="Richmond Town" />
-                      </ListItem>
-                      <ListItem button>
-                        <ListItemText primary="Jayanagar" />
-                      </ListItem>
-                      <ListItem button>
-                        <ListItemText primary="BTM Layout" />
-                      </ListItem>
-                    </List>
+              <Modal
+                aria-labelledby="transition-modal-title"
+                aria-describedby="transition-modal-description"
+                className={classes.modal}
+                open={this.props.open}
+                onClose={this.back}
+                closeAfterTransition
+                BackdropComponent={Backdrop}
+                BackdropProps={{
+                  timeout: 500,
+                }}
+              >
+                <Fade in={this.props.open}>
+                  <div className={classes.paper}>
+                    <div>
+                      {/* IMP: Once we click on the button re-route to Search Component */}
+
+                      <List
+                        component="nav"
+                        aria-label="main mailbox folders"
+                        className={classes.list}
+                      >
+                        <ListSubheader
+                          className={classes.header}
+                        >{`Select Your Location`}</ListSubheader>
+                        <ListItem button>
+                          <ListItemText primary="Koramangala" />
+                        </ListItem>
+                        <ListItem button>
+                          <ListItemText primary="Indiranagar" />
+                        </ListItem>
+                        <ListItem button>
+                          <ListItemText primary="M.G. Road" />
+                        </ListItem>
+                        <ListItem button>
+                          <ListItemText primary="HSR Layout" />
+                        </ListItem>
+                        <ListItem button>
+                          <ListItemText primary="Richmond Town" />
+                        </ListItem>
+                        <ListItem button>
+                          <ListItemText primary="Jayanagar" />
+                        </ListItem>
+                        <ListItem button>
+                          <ListItemText primary="BTM Layout" />
+                        </ListItem>
+                      </List>
+                    </div>
                   </div>
-                </div>
-              </Fade>
-            </Modal>
-
+                </Fade>
+              </Modal>
+            </div>
             {/* Date and time pick up */}
 
             <div className="date-picker">

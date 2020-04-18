@@ -1,4 +1,5 @@
 /* Search container section */
+
 .search-container {
   display: flex;
   flex-direction: column;
@@ -48,9 +49,13 @@
   height: 50px;
   width: 100%;
   font-size: 16px;
-  padding-left: 20px;
+  font-weight: 500;
+  padding-left: 0px;
   background-color: rgb(211, 211, 211);
   cursor: pointer;
+  outline: none;
+  border-radius: 10px;
+  border: 2px solid black;
 }
 
 /* city selector buttons */
@@ -157,6 +162,9 @@ i.fab {
     width: 90vw !important;
     height: 50vh !important;
   }
+  .search-responsive {
+    display: none;
+  }
 
   .city-selector {
     background-color: white;
@@ -188,5 +196,11 @@ i.fab {
     margin: 20px auto !important;
     height: 30px !important;
     font-size: 15px !important;
+  }
+}
+
+@media (min-width: 820px) {
+  .search-mob {
+    display: none;
   }
 }

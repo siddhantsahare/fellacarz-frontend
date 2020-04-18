@@ -10,6 +10,8 @@ import ListSubheader from '@material-ui/core/ListSubheader';
 import { withStyles } from '@material-ui/core/styles';
 import { withTheme } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
+import LoadMobileCitySelector from './LoadMobileCitySelector';
+import Popover from '@material-ui/core/Popover';
 
 import './Search.css';
 
@@ -27,7 +29,7 @@ const useStyles = (theme) => ({
   },
 
   textField: {
-    marginLeft: theme.spacing(2),
+    marginLeft: theme.spacing(5),
     marginRight: theme.spacing(1),
     marginTop: theme.spacing(2.5),
     marginBottom: theme.spacing(1),
@@ -49,7 +51,7 @@ const useStyles = (theme) => ({
   },
   header: {
     fontSize: '22px',
-    marginTop: '0',
+    marginTop: '-7px',
     fontWeight: '700',
     background: 'white',
     boxShadow: theme.shadows[3],
@@ -63,17 +65,20 @@ const useStyles = (theme) => ({
   },
   list: {
     margin: '0',
+    marginLeft: '10px',
     color: 'black',
   },
 });
 
 class Search extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       date: '',
       step: 0,
       open: false,
+      mobCitySelectorClicked: false,
+      anchorEl: null,
     };
   }
 
@@ -82,7 +87,7 @@ class Search extends Component {
   };
 
   handleClose = () => {
-    this.setState({ open: false });
+    this.setState({ open: false, anchorEl: null });
   };
 
   // Proceed to next step of city modal
@@ -106,9 +111,17 @@ class Search extends Component {
     this.nextStep();
   };
 
+  loadMobileCitySelector = (e) => {
+    this.setState({
+      mobCitySelectorClicked: true,
+      anchorEl: e.currentTarget,
+    });
+  };
   render() {
     const { classes } = this.props;
-    const { open, date, step } = this.state;
+    const { open, date, step, anchorEl, mobCitySelectorClicked } = this.state;
+    const popoverOpen = Boolean(anchorEl);
+    const id = popoverOpen ? 'simple-popover' : undefined;
     switch (step) {
       case 1:
         return (
@@ -130,67 +143,103 @@ class Search extends Component {
           <p class="lead-2">Book your Car now!</p>
 
           <div class="search">
-            {/* City selector */}
-            <button
-              type="button"
-              className="city-selector"
-              onClick={this.handleOpen}
-            >
-              Select City
-            </button>
+            {/* City selector for Mobile & Tablet*/}
+            <div className="search-mob">
+              <button
+                type="button"
+                className="city-selector"
+                onClick={this.loadMobileCitySelector}
+              >
+                Mob select city
+              </button>
+              <div className="popover">
+                <Popover
+                  id={id}
+                  open={popoverOpen}
+                  anchorReference="anchorPosition"
+                  anchorPosition={{ top: 600, left: 200 }}
+                  anchorEl={this.anchorEl}
+                  onClose={this.handleClose}
+                  anchorOrigin={{
+                    vertical: 'bottom',
+                    horizontal: 'center',
+                  }}
+                  transformOrigin={{
+                    vertical: 'bottom',
+                    horizontal: 'center',
+                  }}
+                >
+                  {mobCitySelectorClicked && (
+                    <LoadMobileCitySelector
+                      mobCitySelectorClicked={mobCitySelectorClicked}
+                    />
+                  )}
+                </Popover>
+              </div>
+            </div>
+            {/* City selector for Desktop*/}
+            <div className="search-responsive">
+              <button
+                type="button"
+                className="city-selector"
+                onClick={this.handleOpen}
+              >
+                Select City
+              </button>
 
-            <Modal
-              aria-labelledby="transition-modal-title"
-              aria-describedby="transition-modal-description"
-              className={classes.modal}
-              open={open}
-              onClose={this.handleClose}
-              closeAfterTransition
-              BackdropComponent={Backdrop}
-              BackdropProps={{
-                timeout: 500,
-              }}
-            >
-              <Fade in={open}>
-                <div className={classes.paper}>
-                  <List
-                    component="nav"
-                    aria-label="main header folders"
-                    className={classes.headerList}
-                  >
-                    <ListSubheader
-                      className={classes.header}
-                    >{`Select Your City`}</ListSubheader>
-                  </List>
+              <Modal
+                aria-labelledby="transition-modal-title"
+                aria-describedby="transition-modal-description"
+                className={classes.modal}
+                open={open}
+                onClose={this.handleClose}
+                closeAfterTransition
+                BackdropComponent={Backdrop}
+                BackdropProps={{
+                  timeout: 500,
+                }}
+              >
+                <Fade in={open}>
+                  <div className={classes.paper}>
+                    <List
+                      component="nav"
+                      aria-label="main header folders"
+                      className={classes.headerList}
+                    >
+                      <ListSubheader
+                        className={classes.header}
+                      >{`Select Your City`}</ListSubheader>
+                    </List>
 
-                  <List
-                    component="nav"
-                    aria-label="main list folders"
-                    className={classes.list}
-                  >
-                    <ListItem button onClick={this.continue}>
-                      <ListItemText primary="Bangalore" />
-                    </ListItem>
+                    <List
+                      component="nav"
+                      aria-label="main list folders"
+                      className={classes.list}
+                    >
+                      <ListItem button onClick={this.continue}>
+                        <ListItemText primary="Bangalore" />
+                      </ListItem>
 
-                    <ListItem button onClick={this.continue}>
-                      <ListItemText primary="Pune" />
-                    </ListItem>
+                      <ListItem button onClick={this.continue}>
+                        <ListItemText primary="Pune" />
+                      </ListItem>
 
-                    <ListItem button onClick={this.continue}>
-                      <ListItemText primary="Mumbai" />
-                    </ListItem>
+                      <ListItem button onClick={this.continue}>
+                        <ListItemText primary="Mumbai" />
+                      </ListItem>
 
-                    <ListItem button onClick={this.continue}>
-                      <ListItemText primary="Goa" />
-                    </ListItem>
+                      <ListItem button onClick={this.continue}>
+                        <ListItemText primary="Goa" />
+                      </ListItem>
 
-                    <ListItem button onClick={this.continue}>
-                      <ListItemText primary="Chennai" />
-                    </ListItem>
-                  </List>
-                </div>
-              </Fade>
-            </Modal>
+                      <ListItem button onClick={this.continue}>
+                        <ListItemText primary="Chennai" />
+                      </ListItem>
+                    </List>
+                  </div>
+                </Fade>
+              </Modal>
+            </div>
 
             {/* Date and time pick up */}
 
