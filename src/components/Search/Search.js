@@ -3,7 +3,6 @@ import LocationModal from './LocationModal';
 import Modal from '@material-ui/core/Modal';
 import Fade from '@material-ui/core/Fade';
 import Backdrop from '@material-ui/core/Backdrop';
-import 'react-datepicker/dist/react-datepicker.css';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -32,12 +31,11 @@ const useStyles = (theme) => ({
     marginRight: theme.spacing(1),
     marginTop: theme.spacing(2.5),
     marginBottom: theme.spacing(1),
-    width: 300,
+    width: 220,
   },
 
   paper: {
     width: '100%',
-    height: '100%',
     position: 'relative',
     overflow: 'auto',
     maxWidth: 400,
@@ -45,9 +43,9 @@ const useStyles = (theme) => ({
     backgroundColor: theme.palette.background.paper,
     border: '2px solid #000',
     boxShadow: theme.shadows[5],
-
     color: 'white',
     cursor: 'pointer',
+    outline: 'none',
   },
   header: {
     fontSize: '22px',
@@ -58,6 +56,10 @@ const useStyles = (theme) => ({
     color: 'green',
     height: '50px',
     textAlign: 'center',
+  },
+  headerList: {
+    marginTop: '0px',
+    top: '0',
   },
   list: {
     margin: '0',
@@ -153,13 +155,19 @@ class Search extends Component {
                 <div className={classes.paper}>
                   <List
                     component="nav"
-                    aria-label="main mailbox folders"
-                    className={classes.list}
+                    aria-label="main header folders"
+                    className={classes.headerList}
                   >
                     <ListSubheader
                       className={classes.header}
                     >{`Select Your City`}</ListSubheader>
+                  </List>
 
+                  <List
+                    component="nav"
+                    aria-label="main list folders"
+                    className={classes.list}
+                  >
                     <ListItem button onClick={this.continue}>
                       <ListItemText primary="Bangalore" />
                     </ListItem>

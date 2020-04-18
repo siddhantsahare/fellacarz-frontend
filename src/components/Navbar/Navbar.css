@@ -31,7 +31,7 @@
 }
 
 .main-nav ul li a:hover {
-  border-bottom: 10px solid rgba(219, 238, 222);
+  border-bottom: 10px solid green;
 }
 
 .dropbtn {

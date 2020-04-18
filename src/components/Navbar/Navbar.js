@@ -1,41 +1,64 @@
 import React, { Component } from 'react';
-import Popup from 'reactjs-popup';
-import Input from '@material-ui/core/Input';
+import Button from '@material-ui/core/Button';
+import Avatar from '@material-ui/core/Avatar';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import TextField from '@material-ui/core/TextField';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
+import Link from '@material-ui/core/Link';
+import Grid from '@material-ui/core/Grid';
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
+import Container from '@material-ui/core/Container';
 import Modal from '@material-ui/core/Modal';
 import Fade from '@material-ui/core/Fade';
 import Backdrop from '@material-ui/core/Backdrop';
-import TextField from '@material-ui/core/TextField';
-import Grid from '@material-ui/core/Grid';
 import './Navbar.css';
 import './NavbarPopup.css';
-import { withStyles } from '@material-ui/core/styles';
-import { withTheme } from '@material-ui/core/styles';
-import AccountCircle from '@material-ui/icons/AccountCircle';
+import { withStyles, fade } from '@material-ui/core/styles';
+import { withTheme, createMuiTheme } from '@material-ui/core/styles';
+import Signup from './Signup';
+import Login from './Login';
 
 const useStyles = (theme) => ({
   margin: {
     marginTop: '10px',
-    margin: theme.spacing(0),
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
   },
   modal: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     outline: 'none',
+    '&:active': {
+      outline: 'none', // override inline-style
+    },
+  },
+
+  container: {
+    display: 'flex',
+    flexWrap: 'wrap',
   },
 
   paper: {
+    margin: theme.spacing(0),
+    position: 'relative',
     width: '100%',
     height: '100%',
-    position: 'relative',
-    overflow: 'auto',
-    maxWidth: 400,
-    maxHeight: 400,
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
     backgroundColor: theme.palette.background.paper,
+    maxWidth: '500px',
+    maxHeight: '500px',
     border: '2px solid #000',
-    boxShadow: theme.shadows[5],
-    color: 'white',
-    cursor: 'pointer',
+    padding: '30px',
+    outline: 'none',
+    marginLeft: '-10px',
   },
 });
 
@@ -43,20 +66,29 @@ export class Navbar extends Component {
   constructor() {
     super();
     this.state = {
-      open: false,
+      openLogin: false,
+      openSignup: false,
     };
   }
 
-  handleOpen = () => {
-    this.setState({ open: true });
+  handleOpenLogin = () => {
+    this.setState({ openLogin: true });
   };
 
-  handleClose = () => {
-    this.setState({ open: false });
+  handleOpenSignUp = () => {
+    this.setState({ openSignup: true });
+  };
+
+  handleCloseLogin = () => {
+    this.setState({ openLogin: false });
+  };
+
+  handleCloseSignup = () => {
+    this.setState({ openSignup: false });
   };
   render() {
     const { classes } = this.props;
-    const { open } = this.state;
+    const { openLogin, openSignup } = this.state;
     return (
       <nav className="main-nav">
         <img
@@ -66,80 +98,81 @@ export class Navbar extends Component {
         />
         <ul className="main-menu">
           <li>
-            <a href="#">Book Now</a>
+            <a href="#">
+              <Button type="button" className="city-selector">
+                Book now
+              </Button>
+            </a>
           </li>
           <li>
-            <a href="#">Why Fellacarz</a>
+            <a href="#">
+              <Button type="button" className="city-selector">
+                Why Fellacarz
+              </Button>
+            </a>
+          </li>
+
+          <li>
+            <a href="#">
+              <Button type="button" className="city-selector">
+                Contact
+              </Button>
+            </a>
           </li>
           <li>
-            <a href="#">Contact</a>
-          </li>
-          <li>
-            <a onClick={this.handleOpen}>
-              Login
+            <a href="#">
+              <Button
+                type="button"
+                className="city-selector"
+                onClick={this.handleOpenLogin}
+              >
+                Login
+              </Button>
               <Modal
                 aria-labelledby="transition-modal-title"
                 aria-describedby="transition-modal-description"
                 className={classes.modal}
-                open={open}
-                onClose={this.handleClose}
+                open={openLogin}
+                onClose={this.handleCloseLogin}
                 closeAfterTransition
                 BackdropComponent={Backdrop}
                 BackdropProps={{
                   timeout: 500,
                 }}
               >
-                <Fade in={open}>
-                  <div className={classes.paper}>
-                    <div className={classes.margin}>
-                      <Grid container spacing={1} alignItems="flex-end">
-                        <Grid item>
-                          <AccountCircle />
-                        </Grid>
-                        <Grid item>
-                          <TextField
-                            id="input-with-icon-grid"
-                            label="With a grid"
-                          />
-                        </Grid>
-                      </Grid>
-                    </div>
-                  </div>
+                <Fade in={openLogin}>
+                  <Login />
                 </Fade>
               </Modal>
             </a>
           </li>
+
           <li>
-            <Modal
-              aria-labelledby="transition-modal-title"
-              aria-describedby="transition-modal-description"
-              className={classes.modal}
-              open={open}
-              onClose={this.handleClose}
-              closeAfterTransition
-              BackdropComponent={Backdrop}
-              BackdropProps={{
-                timeout: 500,
-              }}
-            >
-              <Fade in={open}>
-                <div className={classes.paper}>
-                  <div className={classes.margin}>
-                    <Grid container spacing={1} alignItems="flex-end">
-                      <Grid item>
-                        <AccountCircle />
-                      </Grid>
-                      <Grid item>
-                        <TextField
-                          id="input-with-icon-grid"
-                          label="With a grid"
-                        />
-                      </Grid>
-                    </Grid>
-                  </div>
-                </div>
-              </Fade>
-            </Modal>
+            <a href="#">
+              <Button
+                type="button"
+                className="city-selector"
+                onClick={this.handleOpenSignUp}
+              >
+                Sign up
+              </Button>
+              <Modal
+                aria-labelledby="transition-modal-title"
+                aria-describedby="transition-modal-description"
+                className={classes.modal}
+                open={openSignup}
+                onClose={this.handleCloseSignup}
+                closeAfterTransition
+                BackdropComponent={Backdrop}
+                BackdropProps={{
+                  timeout: 500,
+                }}
+              >
+                <Fade in={openSignup}>
+                  <Signup />
+                </Fade>
+              </Modal>
+            </a>
           </li>
         </ul>
       </nav>

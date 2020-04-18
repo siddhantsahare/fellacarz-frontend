@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
 import Modal from '@material-ui/core/Modal';
 import Fade from '@material-ui/core/Fade';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import { withStyles } from '@material-ui/core/styles';
 import { withTheme } from '@material-ui/core/styles';
-
+import TextField from '@material-ui/core/TextField';
 import Backdrop from '@material-ui/core/Backdrop';
 
 import './Search.css';
@@ -19,6 +17,18 @@ const useStyles = (theme) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  container: {
+    display: 'flex',
+    flexWrap: 'wrap',
+  },
+
+  textField: {
+    marginLeft: theme.spacing(2),
+    marginRight: theme.spacing(1),
+    marginTop: theme.spacing(2.5),
+    marginBottom: theme.spacing(1),
+    width: 200,
   },
   paper: {
     width: '100%',
@@ -129,25 +139,35 @@ export class LocationModal extends Component {
             {/* Date and time pick up */}
 
             <div className="date-picker">
-              <i className="fas fa-calendar-week"></i>
-              <DatePicker
-                selected={this.props.date}
-                dateFormat="MMMM d, yyyy h:mm aa"
-                className="picker"
-                placeholderText="From - Date and Time"
-              />
+              <form className={classes.container} noValidate>
+                <TextField
+                  id="datetime-local"
+                  label="From - Date & Time"
+                  type="datetime-local"
+                  defaultValue="2017-05-24T10:30"
+                  className={classes.textField}
+                  color="primary"
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                />
+              </form>
             </div>
             {/* Date and time dropoff */}
             <div className="date-picker">
-              <i className="fas fa-calendar-week"></i>
-              <DatePicker
-                selected={this.props.date}
-                dateFormat="MMMM d, yyyy h:mm aa"
-                className="picker"
-                placeholderText="To - Date and Time"
-              />
+              <form className={classes.container} noValidate>
+                <TextField
+                  id="datetime-local"
+                  label="To - Date & Time"
+                  type="datetime-local"
+                  defaultValue="2017-05-24T10:30"
+                  className={classes.textField}
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                />
+              </form>
             </div>
-
             <div className="find-button">
               <button class="find">Find</button>
             </div>

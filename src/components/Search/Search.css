@@ -50,6 +50,7 @@
   font-size: 16px;
   padding-left: 20px;
   background-color: rgb(211, 211, 211);
+  cursor: pointer;
 }
 
 /* city selector buttons */
@@ -82,6 +83,7 @@
   margin-top: 20px;
   border-radius: 10px;
   border: 2px solid black;
+  cursor: pointer;
 }
 
 .search .date-picker i {
@@ -129,6 +131,7 @@ i.fab {
   font-size: 18px;
   font-weight: 700;
   border-radius: 10px;
+  cursor: pointer;
 }
 
 .find:active {
