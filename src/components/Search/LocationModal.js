@@ -48,11 +48,11 @@ const useStyles = (theme) => ({
 
   header: {
     fontSize: '22px',
-    marginTop: '-7px',
+    marginTop: '-8px',
     fontWeight: '700',
-    background: 'white',
+    background: 'green',
     boxShadow: theme.shadows[3],
-    color: 'green',
+    color: 'white',
     height: '50px',
     textAlign: 'center',
   },
@@ -62,6 +62,12 @@ const useStyles = (theme) => ({
     marginLeft: '0px',
     color: 'black',
     marginTop: '0px',
+  },
+  listItem: {
+    '&:hover': {
+      backgroundColor: 'green',
+      color: 'white',
+    },
   },
 });
 
@@ -115,25 +121,25 @@ export class LocationModal extends Component {
                         <ListSubheader
                           className={classes.header}
                         >{`Select Your Location`}</ListSubheader>
-                        <ListItem button>
+                        <ListItem button className={classes.listItem}>
                           <ListItemText primary="Koramangala" />
                         </ListItem>
-                        <ListItem button>
+                        <ListItem button className={classes.listItem}>
                           <ListItemText primary="Indiranagar" />
                         </ListItem>
-                        <ListItem button>
+                        <ListItem button className={classes.listItem}>
                           <ListItemText primary="M.G. Road" />
                         </ListItem>
-                        <ListItem button>
+                        <ListItem button className={classes.listItem}>
                           <ListItemText primary="HSR Layout" />
                         </ListItem>
-                        <ListItem button>
+                        <ListItem button className={classes.listItem}>
                           <ListItemText primary="Richmond Town" />
                         </ListItem>
-                        <ListItem button>
+                        <ListItem button className={classes.listItem}>
                           <ListItemText primary="Jayanagar" />
                         </ListItem>
-                        <ListItem button>
+                        <ListItem button className={classes.listItem}>
                           <ListItemText primary="BTM Layout" />
                         </ListItem>
                       </List>

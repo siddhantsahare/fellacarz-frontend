@@ -19,6 +19,7 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     display: 'flex',
     width: '100%',
+    alignItem: 'center',
     position: 'relative',
     overflowx: 'none',
     overflowy: 'auto',
@@ -43,6 +44,12 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: '10px',
     color: 'black',
     width: '100vw',
+  },
+  listItem: {
+    '&:hover': {
+      backgroundColor: 'green',
+      color: 'white',
+    },
   },
 }));
 
@@ -69,23 +76,23 @@ export const LoadMobileCitySelector = ({ mobCitySelectorClicked }) => {
               aria-label="main list folders"
               className={classes.list}
             >
-              <ListItem button>
+              <ListItem button className={classes.listItem}>
                 <ListItemText primary="Bangalore" />
               </ListItem>
 
-              <ListItem button>
+              <ListItem button className={classes.listItem}>
                 <ListItemText primary="Pune" />
               </ListItem>
 
-              <ListItem button>
+              <ListItem button className={classes.listItem}>
                 <ListItemText primary="Mumbai" />
               </ListItem>
 
-              <ListItem button>
+              <ListItem button className={classes.listItem}>
                 <ListItemText primary="Goa" />
               </ListItem>
 
-              <ListItem button>
+              <ListItem button className={classes.listItem}>
                 <ListItemText primary="Chennai" />
               </ListItem>
             </List>

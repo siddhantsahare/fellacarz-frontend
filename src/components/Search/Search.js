@@ -51,11 +51,11 @@ const useStyles = (theme) => ({
   },
   header: {
     fontSize: '22px',
-    marginTop: '-7px',
+    marginTop: '-8px',
     fontWeight: '700',
-    background: 'white',
+    background: 'green',
     boxShadow: theme.shadows[3],
-    color: 'green',
+    color: 'white',
     height: '50px',
     textAlign: 'center',
   },
@@ -66,7 +66,14 @@ const useStyles = (theme) => ({
   list: {
     margin: '0',
     marginLeft: '10px',
+    marginRight: '10px',
     color: 'black',
+  },
+  listItem: {
+    '&:hover': {
+      backgroundColor: 'green',
+      color: 'white',
+    },
   },
 });
 
@@ -216,23 +223,43 @@ class Search extends Component {
                       aria-label="main list folders"
                       className={classes.list}
                     >
-                      <ListItem button onClick={this.continue}>
+                      <ListItem
+                        button
+                        className={classes.listItem}
+                        onClick={this.continue}
+                      >
                         <ListItemText primary="Bangalore" />
                       </ListItem>
 
-                      <ListItem button onClick={this.continue}>
+                      <ListItem
+                        button
+                        className={classes.listItem}
+                        onClick={this.continue}
+                      >
                         <ListItemText primary="Pune" />
                       </ListItem>
 
-                      <ListItem button onClick={this.continue}>
+                      <ListItem
+                        button
+                        className={classes.listItem}
+                        onClick={this.continue}
+                      >
                         <ListItemText primary="Mumbai" />
                       </ListItem>
 
-                      <ListItem button onClick={this.continue}>
+                      <ListItem
+                        button
+                        className={classes.listItem}
+                        onClick={this.continue}
+                      >
                         <ListItemText primary="Goa" />
                       </ListItem>
 
-                      <ListItem button onClick={this.continue}>
+                      <ListItem
+                        button
+                        className={classes.listItem}
+                        onClick={this.continue}
+                      >
                         <ListItemText primary="Chennai" />
                       </ListItem>
                     </List>
