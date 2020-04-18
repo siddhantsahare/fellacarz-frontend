@@ -65,6 +65,7 @@ const useStyles = (theme) => ({
   },
   listItem: {
     '&:hover': {
+      transition: 'all 0.4s ease-out',
       backgroundColor: 'green',
       color: 'white',
     },

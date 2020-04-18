@@ -1,9 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-
 import Paper from '@material-ui/core/Paper';
 import Fade from '@material-ui/core/Fade';
-
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -47,6 +45,7 @@ const useStyles = makeStyles((theme) => ({
   },
   listItem: {
     '&:hover': {
+      transition: 'all 0.4s ease-out',
       backgroundColor: 'green',
       color: 'white',
     },
