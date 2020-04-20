@@ -91,11 +91,7 @@ export class Navbar extends Component {
     const { openLogin, openSignup } = this.state;
     return (
       <nav className="main-nav">
-        <img
-          src="https://i.ibb.co/wwLhz98/logo.png"
-          alt="Fellacarz"
-          className="logo"
-        />
+        <img src="img/white.png" alt="Fellacarz" className="logo" />
         <ul className="main-menu">
           <li>
             <a href="#">

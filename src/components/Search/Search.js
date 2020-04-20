@@ -113,7 +113,16 @@ class Search extends Component {
       step: step - 1,
     });
   };
-
+  handleClearedDateChange = (e) => {
+    this.setState({
+      clearedDate: e.target.value,
+    });
+  };
+  handleDateChange = () => {
+    this.setState({
+      selectedDate: new Date(),
+    });
+  };
   continue = (e) => {
     e.preventDefault();
     this.nextStep();
@@ -145,6 +154,7 @@ class Search extends Component {
 
     return (
       <div class="section section-search">
+        <img src="img/fellacarz-home.png" alt="bg" />
         <div className="search-container">
           <p class="lead">Self Drive Car Rental</p>
 
@@ -158,14 +168,14 @@ class Search extends Component {
                 className="city-selector"
                 onClick={this.loadMobileCitySelector}
               >
-                Mob select city
+                Select City
               </button>
               <div className="popover">
                 <Popover
                   id={id}
                   open={popoverOpen}
                   anchorReference="anchorPosition"
-                  anchorPosition={{ top: 600, left: 200 }}
+                  anchorPosition={{ top: 1000, left: 200 }}
                   anchorEl={this.anchorEl}
                   onClose={this.handleClose}
                   anchorOrigin={{
