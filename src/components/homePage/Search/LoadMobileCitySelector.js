@@ -1,11 +1,11 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
-import Fade from '@material-ui/core/Fade';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import ListSubheader from '@material-ui/core/ListSubheader';
+import React from '../../../../node_modules/react';
+import { makeStyles } from '../../../../node_modules/@material-ui/core/styles';
+import Paper from '../../../../node_modules/@material-ui/core/Paper';
+import Fade from '../../../../node_modules/@material-ui/core/Fade';
+import List from '../../../../node_modules/@material-ui/core/List';
+import ListItem from '../../../../node_modules/@material-ui/core/ListItem';
+import ListItemText from '../../../../node_modules/@material-ui/core/ListItemText';
+import ListSubheader from '../../../../node_modules/@material-ui/core/ListSubheader';
 
 const useStyles = makeStyles((theme) => ({
   root: {

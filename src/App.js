@@ -1,19 +1,25 @@
 import React from 'react';
-import Navbar from './components/Navbar/Navbar';
-import Footer from './components/Footer/Footer';
-import Search from './components/Search/Search';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+
+import Navbar from './components/homePage/Navbar/Navbar';
+import Home from './components/homePage/Home';
+import Routes from './components/routing/Routes';
 
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <Navbar />
-      <div class="container">
-        <Footer />
-        <Search />
+    <Router>
+      <div className="App">
+        <Navbar />
+        <div class="container">
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route component={Routes} />
+          </Switch>
+        </div>
       </div>
-    </div>
+    </Router>
   );
 }
 
