@@ -1,11 +1,10 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import Filter from './Filter';
 import Sort from './Sort';
 import ViewBookings from './ViewBookings';
 import SearchByCity from './SearchByCity';
 import { makeStyles } from '@material-ui/core/styles';
 import Cars from './Cars';
-import Grid from '@material-ui/core/Grid';
 
 const useStyles = makeStyles((theme) => ({
   gridRow: {
@@ -16,10 +15,16 @@ const useStyles = makeStyles((theme) => ({
   },
   column1: {
     width: '23%',
+    marginLeft: '-3%',
+    marginTop: '2%',
+    position: 'fixed',
+    zIndex: '11',
   },
   column2: {
-    width: '75%',
-    marginLeft: '2%',
+    width: '77%',
+    marginLeft: '24%',
+    marginRight: '-10%',
+    zIndex: '1',
   },
 }));
 

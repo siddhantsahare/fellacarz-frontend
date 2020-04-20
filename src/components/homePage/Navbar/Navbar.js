@@ -5,10 +5,7 @@ import Fade from '../../../../node_modules/@material-ui/core/Fade';
 import Backdrop from '../../../../node_modules/@material-ui/core/Backdrop';
 import './Navbar.css';
 import './NavbarPopup.css';
-import {
-  withStyles,
-  fade,
-} from '../../../../node_modules/@material-ui/core/styles';
+import { withStyles } from '../../../../node_modules/@material-ui/core/styles';
 import { withTheme } from '../../../../node_modules/@material-ui/core/styles';
 import Signup from './Signup';
 import Login from './Login';

@@ -6,7 +6,6 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import { green } from '@material-ui/core/colors';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
-import InsertInvitationIcon from '@material-ui/icons/InsertInvitation';
 import Grid from '@material-ui/core/Grid';
 
 const useStyles = makeStyles((theme) => ({
@@ -49,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
     padding: '30px',
     width: '100%',
     backgroundColor: '#F9F9F9',
-    marginTop: '25px',
+    marginTop: '60px',
   },
 
   container: {

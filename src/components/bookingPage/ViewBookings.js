@@ -14,8 +14,8 @@ const useStyles = makeStyles((theme) => ({
   book: {
     display: 'flex',
     flexDirection: 'row',
-    marginTop: '10px',
-    marginBottom: '0px',
+    marginTop: '12px',
+    marginBottom: '5px',
     '& > h2': {
       fontSize: '18px',
     },
@@ -35,19 +35,21 @@ const useStyles = makeStyles((theme) => ({
       color: green[600],
     },
   },
+
+  item: {
+    display: 'flex',
+  },
   paper: {
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
     width: '100%',
-    backgroundColor: '#fff',
+    backgroundColor: 'transparent',
   },
   text: {
-    marginLeft: '10px',
+    marginTop: '10px',
   },
-  radio: {
-    marginLeft: '15px',
-  },
+  radio: {},
 }));
 
 const GreenRadio = withStyles({

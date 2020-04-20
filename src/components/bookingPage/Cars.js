@@ -127,7 +127,9 @@ const Cars = () => {
             </Grid>
             <Grid item lg={3} md={3}>
               <h2>
-                0.6kms <i class="fas fa-greater-than"></i>
+                <i class="fas fa-thumbtack"></i>
+                0.6kms
+                <i class="fas fa-greater-than"></i>
               </h2>
               <p>from railway station</p>
               <Button variant="contained" className={classes.button}>

@@ -1,5 +1,4 @@
-import React, { Fragment } from 'react';
-import FilterListIcon from '@material-ui/icons/FilterList';
+import React from 'react';
 import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
 import { withStyles } from '@material-ui/core/styles';
@@ -271,7 +270,7 @@ const Filter = () => {
             {/* Price */}
             <Grid item lg={12} md={12}>
               <div className={classes.prices}>
-                <i class="fas fa-gas-pump"></i>
+                <i class="fas fa-dollar-sign"></i>
                 <h4>Price</h4>
               </div>
               <div className={classes.price}>
