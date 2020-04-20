@@ -32,7 +32,7 @@
 }
 
 .main-nav ul li a:hover {
-  border-bottom: 10px solid green;
+  border-bottom: 5px solid #178a35;
 }
 
 .dropbtn {

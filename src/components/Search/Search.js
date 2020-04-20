@@ -202,7 +202,7 @@ class Search extends Component {
                 className="city-selector"
                 onClick={this.handleOpen}
               >
-                Select City
+                Select Your City
               </button>
 
               <Modal
@@ -282,6 +282,7 @@ class Search extends Component {
             {/* Date and time pick up */}
 
             <div className="date-picker">
+              <i class="fas fa-calendar-alt"></i>
               <form className={classes.container} noValidate>
                 <TextField
                   id="datetime-local"
@@ -298,6 +299,7 @@ class Search extends Component {
             </div>
             {/* Date and time dropoff */}
             <div className="date-picker">
+              <i class="fas fa-calendar-alt"></i>
               <form className={classes.container} noValidate>
                 <TextField
                   id="datetime-local"

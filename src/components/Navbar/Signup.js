@@ -50,11 +50,6 @@ const useStyles = makeStyles((theme) => ({
     flexWrap: 'wrap',
   },
 
-  submit: {
-    margin: theme.spacing(3, 0, 2),
-    backgroundColor: 'green',
-  },
-
   avatar: {
     margin: theme.spacing(1),
     background: 'linear-gradient(to right, #00f260, #0575e6)',
