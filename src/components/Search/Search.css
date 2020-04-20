@@ -119,6 +119,7 @@ i {
   font-size: 20px;
   color: #178a35;
   margin-left: 20px;
+  margin-right: 20px;
 }
 
 /* Find Button */
@@ -163,7 +164,7 @@ i {
     background-color: rgba(219, 238, 222) !important;
     top: 0 !important;
     width: 90vw !important;
-    max-height: 60vh !important;
+    max-height: 50vh !important;
     -webkit-box-shadow: 6px 10px 20px 0px rgba(0, 0, 0, 0.1);
     -moz-box-shadow: 6px 10px 20px 0px rgba(0, 0, 0, 0.1);
     box-shadow: 6px 10px 20px 0px rgba(0, 0, 0, 0.1);
@@ -193,6 +194,13 @@ i {
     width: 100% !important;
     font-size: 15px !important;
     background-color: #fff !important;
+  }
+
+  i {
+    font-size: 20px;
+    color: #178a35;
+    margin-left: 8px;
+    margin-right: 12px;
   }
 
   .find {
