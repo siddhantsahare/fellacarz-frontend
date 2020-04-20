@@ -37,17 +37,19 @@ const useStyles = makeStyles((theme) => ({
   },
 
   root: {
-    background: 'linear-gradient(to right, #00f260, #0575e6)',
+    background: 'linear-gradient(to right, #00f260, #2C9247)',
     border: 0,
     color: 'white',
     height: 48,
+    fontSize: '16px',
+    fontWeight: '700',
     padding: '0 30px',
     boxShadow: '0 3px 5px 2px #f3f3f3',
   },
 
   avatar: {
     margin: theme.spacing(1),
-    background: 'linear-gradient(to right, #00f260, #0575e6)',
+    background: 'linear-gradient(to right, #00f260, #2C9247)',
   },
   form: {
     width: '100%', // Fix IE 11 issue.

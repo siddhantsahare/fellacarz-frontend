@@ -202,7 +202,7 @@ class Search extends Component {
                 className="city-selector"
                 onClick={this.handleOpen}
               >
-                Select Your City
+                Select City
               </button>
 
               <Modal
