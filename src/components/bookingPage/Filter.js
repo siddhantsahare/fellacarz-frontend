@@ -8,18 +8,24 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { green } from '@material-ui/core/colors';
 import Checkbox from '@material-ui/core/Checkbox';
 import Slider from '@material-ui/core/Slider';
+import Grid from '@material-ui/core/Grid';
 
 const useStyles = makeStyles((theme) => ({
   filterPanel: {
-    margin: 0,
+    width: '100%',
     overFlow: 'none',
   },
   filter: {
     display: 'flex',
+    marginTop: '-10px',
+    marginBottom: '10px',
     flexDirection: 'row',
     '& > h2': {
-      marginLeft: '10px',
       fontSize: '18px',
+    },
+    '& > i': {
+      fontSize: '20px',
+      paddingTop: '5px',
     },
   },
   root: {
@@ -36,59 +42,62 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     display: 'flex',
     flexDirection: 'column',
-
-    padding: '30px 20px',
-    width: '90vw',
-
-    marginTop: '20px',
+    padding: '20px 20px',
+    width: '100%',
+    backgroundColor: ' #F4FDF5',
   },
   categories: {
+    '& > i': {
+      marginLeft: '10px',
+      marginBottom: '15px',
+    },
     '& > h4': {
       display: 'inline-block',
       color: '#2C9247',
       borderBottom: '1px solid #2C9247',
       fontWeight: '600',
-      fontSize: '22px',
-      marginBottom: '20px',
+      fontSize: '18px',
     },
   },
   category: {
-    marginLeft: '10px',
+    margin: '-10px 10px',
   },
   fuels: {
     '& > i': {
-      marginTop: '20px',
+      marginTop: '10px',
+      marginLeft: '10px',
+      marginBottom: '15px',
     },
     '& > h4': {
       display: 'inline-block',
       color: '#2C9247',
       borderBottom: '1px solid #2C9247',
       fontWeight: '600',
-      fontSize: '22px',
-      marginBottom: '20px',
+      fontSize: '18px',
     },
   },
   fuel: {
-    marginLeft: '10px',
+    margin: '-10px 10px',
   },
   prices: {
     '& > i': {
-      marginTop: '20px',
+      marginTop: '10px',
+      marginLeft: '10px',
     },
     '& > h4': {
       display: 'inline-block',
       color: '#2C9247',
       borderBottom: '1px solid #2C9247',
       fontWeight: '600',
-      fontSize: '22px',
-      marginBottom: '20px',
+      fontSize: '18px',
     },
   },
   price: {
-    marginLeft: '10px',
+    margin: '5px 10px',
   },
   priceSlider: {
-    marginTop: '10px',
+    marginTop: '3px',
+    marginBottom: '-10px',
   },
 }));
 
@@ -105,7 +114,7 @@ const GreenCheckbox = withStyles({
 // Styles for slider
 const PriceSlider = withStyles({
   root: {
-    color: '#3a8589',
+    color: '#2C9247',
     height: 3,
     padding: '13px 0',
   },
@@ -167,101 +176,122 @@ const Filter = () => {
   return (
     <div className={classes.filterPanel}>
       <div className={classes.filter}>
-        <FilterListIcon />
+        <i class="fas fa-filter"></i>
         <h2>Filter</h2>
       </div>
       <div className={classes.root}>
         <Paper className={classes.paper} elevation={3}>
-          <div className={classes.categories}>
-            <i class="fas fa-car-side"></i>
-            <h4>Category</h4>
-          </div>
-          <div className={classes.category}>
-            <FormControlLabel
-              control={
-                <GreenCheckbox
-                  checked={state.checkedG}
-                  onChange={handleChange}
-                  name="checkedG"
+          <Grid
+            container
+            direction="column"
+            spacing={1}
+            className={classes.grid}
+          >
+            <Grid item lg={12} md={12}>
+              <div className={classes.categories}>
+                <i class="fas fa-car-side"></i>
+                <h4>Category</h4>
+              </div>
+            </Grid>
+            <Grid item lg={12} md={12}>
+              <div className={classes.category}>
+                <FormControlLabel
+                  control={
+                    <GreenCheckbox
+                      checked={state.checkedG}
+                      onChange={handleChange}
+                      name="checkedG"
+                    />
+                  }
                 />
-              }
-            />
-            SUV
-          </div>
-          <div className={classes.category}>
-            <FormControlLabel
-              control={
-                <GreenCheckbox
-                  checked={state.checkedG}
-                  onChange={handleChange}
-                  name="checkedG"
+                SUV
+              </div>
+            </Grid>
+            <Grid item lg={12} md={12}>
+              <div className={classes.category}>
+                <FormControlLabel
+                  control={
+                    <GreenCheckbox
+                      checked={state.checkedG}
+                      onChange={handleChange}
+                      name="checkedG"
+                    />
+                  }
                 />
-              }
-            />
-            Sedan
-          </div>
-          <div className={classes.category}>
-            <FormControlLabel
-              control={
-                <GreenCheckbox
-                  checked={state.checkedG}
-                  onChange={handleChange}
-                  name="checkedG"
+                Sedan
+              </div>
+            </Grid>
+            <Grid item lg={12} md={12}>
+              <div className={classes.category}>
+                <FormControlLabel
+                  control={
+                    <GreenCheckbox
+                      checked={state.checkedG}
+                      onChange={handleChange}
+                      name="checkedG"
+                    />
+                  }
                 />
-              }
-            />
-            Hatchba
-          </div>
-          {/* Fuel */}
-          <div className={classes.fuels}>
-            <i class="fas fa-gas-pump"></i>
-            <h4>Fuel</h4>
-          </div>
-          <div className={classes.fuel}>
-            <FormControlLabel
-              control={
-                <GreenCheckbox
-                  checked={state.checkedG}
-                  onChange={handleChange}
-                  name="checkedG"
+                Hatchba
+              </div>
+            </Grid>
+            {/* Fuel */}
+            <Grid item lg={12} md={12}>
+              <div className={classes.fuels}>
+                <i class="fas fa-gas-pump"></i>
+                <h4>Fuel</h4>
+              </div>
+              <div className={classes.fuel}>
+                <FormControlLabel
+                  control={
+                    <GreenCheckbox
+                      checked={state.checkedG}
+                      onChange={handleChange}
+                      name="checkedG"
+                    />
+                  }
                 />
-              }
-            />
-            Petrol
-          </div>
-          <div className={classes.fuel}>
-            <FormControlLabel
-              control={
-                <GreenCheckbox
-                  checked={state.checkedG}
-                  onChange={handleChange}
-                  name="checkedG"
+                Petrol
+              </div>
+            </Grid>
+            <Grid item lg={12} md={12}>
+              <div className={classes.fuel}>
+                <FormControlLabel
+                  control={
+                    <GreenCheckbox
+                      checked={state.checkedG}
+                      onChange={handleChange}
+                      name="checkedG"
+                    />
+                  }
                 />
-              }
-            />
-            Diesel
-          </div>
-          {/* Price */}
-          <div className={classes.prices}>
-            <i class="fas fa-gas-pump"></i>
-            <h4>Price</h4>
-          </div>
-          <div className={classes.price}>
-            <TextField
-              id="standard-helperText"
-              defaultValue="1000 - 10,000"
-              helperText="Select a price range"
-            />
-            <div className={classes.priceSlider}>
-              <PriceSlider
-                ThumbComponent={PriceSliderComponent}
-                getAriaLabel={(index) =>
-                  index === 0 ? 'Minimum price' : 'Maximum price'
-                }
-                defaultValue={[20, 80]}
-              />
-            </div>
-          </div>
+                Diesel
+              </div>
+            </Grid>
+            {/* Price */}
+            <Grid item lg={12} md={12}>
+              <div className={classes.prices}>
+                <i class="fas fa-gas-pump"></i>
+                <h4>Price</h4>
+              </div>
+              <div className={classes.price}>
+                <TextField
+                  id="standard-helperText"
+                  defaultValue="1000 - 10,000"
+                  helperText="Select a price range"
+                />
+                <div className={classes.priceSlider}>
+                  <PriceSlider
+                    ThumbComponent={PriceSliderComponent}
+                    getAriaLabel={(index) =>
+                      index === 0 ? 'Minimum price' : 'Maximum price'
+                    }
+                    defaultValue={[20, 80]}
+                  />
+                </div>
+              </div>
+            </Grid>
+          </Grid>
         </Paper>
       </div>
     </div>
