@@ -96,14 +96,14 @@ export class Navbar extends Component {
           <li>
             <a href="#">
               <Button type="button" className="city-selector">
-                Book now
+                <span className="nav-links">Book now</span>
               </Button>
             </a>
           </li>
           <li>
             <a href="#">
               <Button type="button" className="city-selector">
-                Why Fellacarz
+                <span className="nav-links">Why Fellacarz</span>
               </Button>
             </a>
           </li>
@@ -111,7 +111,7 @@ export class Navbar extends Component {
           <li>
             <a href="#">
               <Button type="button" className="city-selector">
-                Contact
+                <span className="nav-links">Contact</span>
               </Button>
             </a>
           </li>
@@ -122,7 +122,7 @@ export class Navbar extends Component {
                 className="city-selector"
                 onClick={this.handleOpenLogin}
               >
-                Login
+                <span className="nav-links">Login</span>
               </Button>
               <Modal
                 aria-labelledby="transition-modal-title"
@@ -150,7 +150,7 @@ export class Navbar extends Component {
                 className="city-selector"
                 onClick={this.handleOpenSignUp}
               >
-                Sign up
+                <span className="signupLink">Sign up</span>
               </Button>
               <Modal
                 aria-labelledby="transition-modal-title"
