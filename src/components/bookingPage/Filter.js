@@ -16,11 +16,12 @@ const useStyles = makeStyles((theme) => ({
   },
   filter: {
     display: 'flex',
-    marginTop: '-10px',
+    marginTop: '10px',
     marginBottom: '10px',
     flexDirection: 'row',
     '& > h2': {
       fontSize: '18px',
+      color: '#2C9247',
     },
     '& > i': {
       fontSize: '20px',

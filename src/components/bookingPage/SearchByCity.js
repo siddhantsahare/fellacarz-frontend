@@ -66,13 +66,19 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(1),
     minWidth: 190,
   },
+
+  textFieldMain: {
+    marginLeft: theme.spacing(1),
+    marginRight: theme.spacing(1),
+    minWidth: 250,
+  },
   button: {
     color: '#2C9247',
     border: '2px solid #2C9247',
     minWidth: '140px',
     height: '52px',
     fontSize: '18px',
-    marginLeft: '40px',
+
     fontWeight: '600',
   },
 }));
@@ -90,6 +96,7 @@ const SearchByCity = () => {
                 id="standard-helperText"
                 defaultValue="Malviya Nagar, Jaipur"
                 label="Pick up location"
+                className={classes.textFieldMain}
                 InputProps={{
                   startAdornment: (
                     <InputAdornment position="start">

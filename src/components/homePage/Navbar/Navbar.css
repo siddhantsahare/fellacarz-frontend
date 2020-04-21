@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  height: 80px;
+  height: 70px;
   width: 100%;
   padding: 20px 20px;
   font-size: 18px;
@@ -13,8 +13,8 @@
 }
 
 .main-nav .logo {
-  width: 150px;
-  margin-bottom: 15px;
+  width: 180px;
+  margin-bottom: 12px;
 }
 
 .main-nav ul {
@@ -41,14 +41,15 @@
   background-color: #178a35;
 } */
 
-.main-nav ul li:last-child > a {
+.main-nav ul li:last-child a {
   display: inline-block;
   line-height: 0.1;
   background-color: #178a35;
   border-radius: 15px;
+  height: 50px;
 }
 
-.main-nav ul li:last-child > a:hover {
+.main-nav ul li:last-child a:hover {
   border-bottom: none;
 }
 

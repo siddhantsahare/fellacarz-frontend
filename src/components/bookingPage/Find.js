@@ -16,15 +16,23 @@ const useStyles = makeStyles((theme) => ({
   column1: {
     width: '23%',
     marginLeft: '-3%',
-    marginTop: '2%',
+    marginTop: '0.75%',
     position: 'fixed',
     zIndex: '11',
+    [theme.breakpoints.down('md')]: {
+      display: 'none',
+    },
   },
   column2: {
     width: '77%',
     marginLeft: '24%',
     marginRight: '-10%',
     zIndex: '1',
+    [theme.breakpoints.down('md')]: {
+      width: '100%',
+      marginLeft: '0',
+      marginRight: '0%',
+    },
   },
 }));
 

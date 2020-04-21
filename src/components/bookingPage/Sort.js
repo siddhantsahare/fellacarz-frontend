@@ -19,6 +19,7 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: '10px',
     '& > h2': {
       fontSize: '18px',
+      color: '#2C9247',
     },
     '& > i': {
       fontSize: '25px',

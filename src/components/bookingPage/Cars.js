@@ -46,6 +46,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'space-around',
     width: '100%',
     backgroundColor: '#fff',
+    padding: '10px',
   },
 
   grid: {
@@ -64,9 +65,9 @@ const useStyles = makeStyles((theme) => ({
   box: {
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center',
     border: '2px solid green',
     marginTop: '20px',
+    marginRight: '5px',
     padding: '5px 20px',
   },
 

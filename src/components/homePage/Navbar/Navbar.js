@@ -1,4 +1,5 @@
 import React, { Component } from '../../../../node_modules/react';
+import { Link } from 'react-router-dom';
 import Button from '../../../../node_modules/@material-ui/core/Button';
 import Modal from '../../../../node_modules/@material-ui/core/Modal';
 import Fade from '../../../../node_modules/@material-ui/core/Fade';
@@ -80,32 +81,34 @@ export class Navbar extends Component {
     const { openLogin, openSignup } = this.state;
     return (
       <nav className="main-nav">
-        <img src="img/white.png" alt="Fellacarz" className="logo" />
+        <Link to="/">
+          <img src="img/white.png" alt="Fellacarz" className="logo" />
+        </Link>
         <ul className="main-menu">
           <li>
-            <a href="#">
+            <Link to="/find">
               <Button type="button" className="city-selector">
                 <span className="nav-links">Book now</span>
               </Button>
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#">
+            <Link to="/">
               <Button type="button" className="city-selector">
                 <span className="nav-links">Why Fellacarz</span>
               </Button>
-            </a>
+            </Link>
           </li>
 
           <li>
-            <a href="#">
+            <Link to="/">
               <Button type="button" className="city-selector">
                 <span className="nav-links">Contact</span>
               </Button>
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#">
+            <Link to="#">
               <Button
                 type="button"
                 className="city-selector"
@@ -129,11 +132,11 @@ export class Navbar extends Component {
                   <Login />
                 </Fade>
               </Modal>
-            </a>
+            </Link>
           </li>
 
           <li>
-            <a href="#">
+            <Link to="#">
               <Button
                 type="button"
                 className="city-selector"
@@ -157,7 +160,7 @@ export class Navbar extends Component {
                   <Signup />
                 </Fade>
               </Modal>
-            </a>
+            </Link>
           </li>
         </ul>
       </nav>

@@ -1,4 +1,5 @@
 import React, { Component } from '../../../../node_modules/react';
+import { Link } from 'react-router-dom';
 import LocationModal from './LocationModal';
 import Modal from '../../../../node_modules/@material-ui/core/Modal';
 import Fade from '../../../../node_modules/@material-ui/core/Fade';
@@ -315,7 +316,9 @@ class Search extends Component {
             </div>
 
             <div className="find-button">
-              <button class="find">Find</button>
+              <Link to="/find">
+                <button class="find">Find</button>
+              </Link>
             </div>
           </div>
         </div>

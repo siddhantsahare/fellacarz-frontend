@@ -18,6 +18,7 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: '5px',
     '& > h2': {
       fontSize: '18px',
+      color: '#2C9247',
     },
     '& > i': {
       fontSize: '25px',
@@ -36,9 +37,6 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 
-  item: {
-    display: 'flex',
-  },
   paper: {
     display: 'flex',
     flexDirection: 'row',
