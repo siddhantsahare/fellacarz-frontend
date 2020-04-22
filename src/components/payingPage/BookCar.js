@@ -20,8 +20,8 @@ const useStyles = makeStyles((theme) => ({
   container: {
     display: 'grid',
     margin: '0',
-    gridGap: '50px',
-    gridTemplateColumns: 'repeat(2, 1fr)',
+    gridGap: '30px',
+    gridTemplateColumns: '50% 50%',
     paddingTop: '20px',
     [theme.breakpoints.down('md')]: {
       display: 'flex',
@@ -32,9 +32,11 @@ const useStyles = makeStyles((theme) => ({
   grid1: {
     display: 'grid',
     gridTemplateRows: '75% 25%',
-    gridGap: '10px',
+    marginTop: '20px',
     [theme.breakpoints.down('md')]: {
       gridTemplateRows: '50% 50%',
+      gridGap: '10px',
+      marginTop: '5px',
     },
   },
 
@@ -85,13 +87,21 @@ const useStyles = makeStyles((theme) => ({
     height: '95%',
     border: '1px solid black',
     borderRadius: '10px',
+    [theme.breakpoints.down('md')]: {
+      height: '60%',
+    },
     boxShadow: '4px 4px 4px 0px rgba(0,0,0,0.75)',
     background: 'linear-gradient(to right, #000, #fff)',
   },
 
   imageSet: {
     [theme.breakpoints.down('md')]: {
-      display: 'none',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'space-evenly',
+      position: 'absolute',
+      top: '300px',
+      width: '90%',
     },
   },
 
@@ -101,8 +111,8 @@ const useStyles = makeStyles((theme) => ({
     maxHeight: '150px',
     borderRadius: '10px',
     [theme.breakpoints.down('md')]: {
-      maxWidth: '100px',
-      maxHeight: '100px',
+      maxWidth: '70px',
+      maxHeight: '70px',
       margin: '0px 5px',
     },
     boxShadow: '2px 2px 2px 0px rgba(0,0,0,0.75)',
@@ -113,6 +123,7 @@ const useStyles = makeStyles((theme) => ({
 
   grid2: {
     display: 'flex',
+    marginTop: '20px',
     [theme.breakpoints.down('md')]: {
       marginTop: '30px',
     },
@@ -216,7 +227,7 @@ const Car = () => {
               />
               <img
                 src="img/nexon.png"
-                alt="image"
+                alt="car"
                 className={classes.imageSmall}
               />
             </div>
@@ -354,12 +365,12 @@ const Car = () => {
             <span>I accept the T&C and insurance terms</span>
           </div>
           <br />
-          <br />
           <div className={classes.btn}>
             <Button variant="contained" className={classes.proceedToPayButton}>
               Proceed To Pay
             </Button>
           </div>
+          <br />
         </div>
       </div>
     </Fragment>
