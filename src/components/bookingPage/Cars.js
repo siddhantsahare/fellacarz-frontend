@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
@@ -8,11 +9,6 @@ import Grid from '@material-ui/core/Grid';
 
 const useStyles = makeStyles((theme) => ({
   cars: {
-    // position: 'absolute',
-    // top: 250,
-    // right: 0,
-    // margin: 0,
-    // maxWidth: '800px',
     width: '100%',
     overFlow: 'none',
     margin: '10px 0px',
@@ -133,9 +129,11 @@ const Cars = () => {
                 <i class="fas fa-greater-than"></i>
               </h2>
               <p>from railway station</p>
-              <Button variant="contained" className={classes.button}>
-                Book
-              </Button>
+              <Link to="/book-car">
+                <Button variant="contained" className={classes.button}>
+                  Book
+                </Button>
+              </Link>
             </Grid>
           </Grid>
         </Paper>
