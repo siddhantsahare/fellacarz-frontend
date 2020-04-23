@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import { Link } from 'react-router-dom';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Checkbox from '@material-ui/core/Checkbox';
@@ -23,10 +24,11 @@ const useStyles = makeStyles((theme) => ({
     gridGap: '30px',
     gridTemplateColumns: '50% 50%',
     paddingTop: '20px',
-    [theme.breakpoints.down('md')]: {
-      display: 'flex',
-      flexDirection: 'column',
-      gridGap: '0px',
+    [theme.breakpoints.down('sm')]: {
+      display: 'none',
+      // display: 'flex',
+      // flexDirection: 'column',
+      // gridGap: '0px',
     },
   },
   grid1: {
@@ -42,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
 
   gallery: {
     display: 'grid',
-    gridTemplateColumns: '30% 70%',
+    gridTemplateColumns: '20% 80%',
     [theme.breakpoints.down('md')]: {
       display: 'flex',
       flexDirection: 'column',
@@ -83,8 +85,10 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   imageBig: {
+    maxWidth: '616px',
+    maxHeight: '487px',
     width: '100%',
-    height: '95%',
+    height: '100%',
     border: '1px solid black',
     borderRadius: '10px',
     [theme.breakpoints.down('md')]: {
@@ -96,20 +100,22 @@ const useStyles = makeStyles((theme) => ({
 
   imageSet: {
     [theme.breakpoints.down('md')]: {
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'space-evenly',
-      position: 'absolute',
-      top: '300px',
-      width: '90%',
+      display: 'none',
+      // display: 'flex',
+      // alignItems: 'center',
+      // justifyContent: 'space-evenly',
+      // position: 'absolute',
+      // top: '300px',
+      // width: '90%',
     },
   },
 
   imageSmall: {
     width: '100%',
-    maxWidth: '150px',
-    maxHeight: '150px',
+    maxWidth: '102px',
+    maxHeight: '80px',
     borderRadius: '10px',
+    marginBottom: '52px',
     [theme.breakpoints.down('md')]: {
       maxWidth: '70px',
       maxHeight: '70px',
@@ -365,11 +371,16 @@ const Car = () => {
             <span>I accept the T&C and insurance terms</span>
           </div>
           <br />
-          <div className={classes.btn}>
-            <Button variant="contained" className={classes.proceedToPayButton}>
-              Proceed To Pay
-            </Button>
-          </div>
+          <Link to="/booked">
+            <div className={classes.btn}>
+              <Button
+                variant="contained"
+                className={classes.proceedToPayButton}
+              >
+                Proceed To Pay
+              </Button>
+            </div>
+          </Link>
           <br />
         </div>
       </div>
