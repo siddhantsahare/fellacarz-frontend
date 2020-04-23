@@ -99,6 +99,12 @@ const useStyles = makeStyles((theme) => ({
       },
     },
   },
+  regNo: {
+    backgroundColor: 'black',
+    color: '#E4EE5E',
+    borderRadius: '5px',
+    padding: '5px',
+  },
 }));
 const Booked = () => {
   const classes = useStyles();
