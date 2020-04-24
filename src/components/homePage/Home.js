@@ -266,19 +266,19 @@ const Home = () => {
                 </ListItem>
 
                 <ListItem button className={classes.listItem}>
-                  <ListItemText primary="Pune" />
+                  <ListItemText primary="Pune" onClick={continued} />
                 </ListItem>
 
                 <ListItem button className={classes.listItem}>
-                  <ListItemText primary="Mumbai" />
+                  <ListItemText primary="Mumbai" onClick={continued} />
                 </ListItem>
 
                 <ListItem button className={classes.listItem}>
-                  <ListItemText primary="Goa" />
+                  <ListItemText primary="Goa" onClick={continued} />
                 </ListItem>
 
                 <ListItem button className={classes.listItem}>
-                  <ListItemText primary="Chennai" />
+                  <ListItemText primary="Chennai" onClick={continued} />
                 </ListItem>
               </List>
             </div>
