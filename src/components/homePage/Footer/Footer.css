@@ -21,6 +21,21 @@
     text-align: center;
     height: 60px;
     cursor: pointer;
+    z-index: 100;
+  }
+  .app-footer:hover {
+    outline: 'none';
+    background: #f4f4f4;
+  }
+
+  .app-footer:active {
+    outline: 'none';
+    background: #f4f4f4;
+  }
+
+  .app-footer:focus {
+    outline: 'none';
+    background: #f4f4f4;
   }
 
   .app-footer ul {
@@ -37,9 +52,22 @@
 
   .app-footer ul li i {
     font-size: 22px;
+    color: #444;
   }
 
-  .app-footer ul li:hover {
-    color: rgba(138, 43, 226);
+  .app-footer ul li:focus {
+    color: #2c9247;
+  }
+
+  .app-footer ul li:active {
+    color: #2c9247;
+  }
+
+  .app-footer ul li i:focus {
+    color: #2c9247;
+  }
+
+  .app-footer ul li i:active {
+    color: #2c9247;
   }
 }

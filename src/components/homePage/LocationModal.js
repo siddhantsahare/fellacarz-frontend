@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import LocationModal from './LocationModal';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
@@ -177,45 +176,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Home = () => {
+const Home = (open, handleClose, handleOpen, prevStep) => {
   const classes = useStyles();
-  const [open, setOpen] = useState(false);
-  const [step, setStep] = useState(0);
-  const [anchorEl, setAnchorEl] = useState(null);
-  const handleOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-
-  // Proceed to next step of city modal
-  const nextStep = () => {
-    setStep(1);
-  };
-
-  // Go back to prev step of city modal
-  const prevStep = () => {
-    setStep(0);
-  };
-
-  const continued = (e) => {
-    e.preventDefault();
-    nextStep();
-  };
-
-  switch (step) {
-    case 1:
-      return (
-        <LocationModal
-          prevStep={prevStep}
-          open={open}
-          handleOpen={handleOpen}
-          handleClose={handleClose}
-        />
-      );
-  }
 
   return (
     <div className={classes.container}>
@@ -238,7 +200,6 @@ const Home = () => {
             aria-describedby="transition-modal-description"
             className={classes.modal}
             open={open}
-            onClose={handleClose}
             closeAfterTransition
             BackdropComponent={Backdrop}
             BackdropProps={{
@@ -261,29 +222,19 @@ const Home = () => {
                 aria-label="main list folders"
                 className={classes.list}
               >
+                {/* Once selected the location, store it global state and redirect to homepage */}
                 <ListItem button className={classes.listItem}>
-                  <ListItemText primary="Bangalore" onClick={continued} />
+                  <ListItemText primary="Area 1" />
                 </ListItem>
-
                 <ListItem button className={classes.listItem}>
-                  <ListItemText primary="Pune" />
+                  <ListItemText primary="Area 2" />
                 </ListItem>
-
                 <ListItem button className={classes.listItem}>
-                  <ListItemText primary="Mumbai" />
-                </ListItem>
-
-                <ListItem button className={classes.listItem}>
-                  <ListItemText primary="Goa" />
-                </ListItem>
-
-                <ListItem button className={classes.listItem}>
-                  <ListItemText primary="Chennai" />
+                  <ListItemText primary="Area 3" />
                 </ListItem>
               </List>
             </div>
           </Modal>
-
           <div className={classes.inputs}>
             <div>
               <div>
