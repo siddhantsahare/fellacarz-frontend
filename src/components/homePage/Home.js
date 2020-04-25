@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import LocationModal from './LocationModal';
+import LoadMobileCitySelector from './LoadMobileCitySelector';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
@@ -10,6 +12,7 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListSubheader from '@material-ui/core/ListSubheader';
+import Popover from '@material-ui/core/Popover';
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -67,13 +70,7 @@ const useStyles = makeStyles((theme) => ({
       color: '#2E7240',
     },
     [theme.breakpoints.down('md')]: {
-      margin: '20px 0px',
-      fontSize: '14px',
-      '& > i': {
-        marginRight: '10px',
-        fontSize: '20px',
-        color: '#2E7240',
-      },
+      display: 'none',
     },
   },
   inputs: {
@@ -175,6 +172,20 @@ const useStyles = makeStyles((theme) => ({
     height: '50px',
     textAlign: 'center',
   },
+
+  // Styles of popover
+  searchBtnMob: {
+    [theme.breakpoints.up('md')]: {
+      display: 'none',
+    },
+    margin: '20px 0px',
+    fontSize: '14px',
+    '& > i': {
+      marginRight: '10px',
+      fontSize: '20px',
+      color: '#2E7240',
+    },
+  },
 }));
 
 const Home = () => {
@@ -182,12 +193,17 @@ const Home = () => {
   const [open, setOpen] = useState(false);
   const [step, setStep] = useState(0);
   const [anchorEl, setAnchorEl] = useState(null);
+  const [popover, setPopover] = useState(false);
+  const popoverOpen = Boolean(anchorEl);
+  const id = popoverOpen ? 'simple-popover' : undefined;
+
   const handleOpen = () => {
     setOpen(true);
   };
 
   const handleClose = () => {
     setOpen(false);
+    setAnchorEl(null);
   };
 
   // Proceed to next step of city modal
@@ -205,12 +221,21 @@ const Home = () => {
     nextStep();
   };
 
+  const loadMobileCitySelector = (e) => {
+    setPopover({
+      popover: true,
+    });
+    setAnchorEl({
+      anchorEl: e.currentTarget,
+    });
+  };
+
   switch (step) {
     case 1:
       return (
         <LocationModal
-          prevStep={prevStep}
           open={open}
+          prevStep={prevStep}
           handleOpen={handleOpen}
           handleClose={handleClose}
         />
@@ -223,7 +248,16 @@ const Home = () => {
         <Paper elevation={3} className={classes.paper}>
           <h1>Self Drive Car Rental</h1>
           <h3>Book your car now</h3>
-
+          {/* City Button for mob */}
+          <Button
+            variant="contained"
+            className={classes.searchBtnMob}
+            onClick={loadMobileCitySelector}
+          >
+            <i className="fas fa-thumbtack"></i>
+            <p>&nbsp;&nbsp;&nbsp;Enter the pick up address</p>
+          </Button>
+          {/* City Button for desktop */}
           <Button
             variant="contained"
             className={classes.searchBtn}
@@ -232,7 +266,28 @@ const Home = () => {
             <i className="fas fa-thumbtack"></i>
             <p>&nbsp;&nbsp;&nbsp;Enter the pick up address</p>
           </Button>
-
+          {/* Popover from bottom for Mobile */}
+          <div className="popover">
+            <Popover
+              id={id}
+              open={popoverOpen}
+              anchorReference="anchorPosition"
+              anchorPosition={{ top: 1000, left: 200 }}
+              anchorEl={anchorEl}
+              onClose={handleClose}
+              anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'center',
+              }}
+              transformOrigin={{
+                vertical: 'bottom',
+                horizontal: 'center',
+              }}
+            >
+              {popover && <LoadMobileCitySelector popover={popover} />}
+            </Popover>
+          </div>
+          {/* Modal for desktop */}
           <Modal
             aria-labelledby="transition-modal-title"
             aria-describedby="transition-modal-description"
@@ -320,9 +375,11 @@ const Home = () => {
               </form>
             </div>
           </div>
-          <Button variant="contained" className={classes.findBtn}>
-            <p>Find</p>
-          </Button>
+          <Link to="/find">
+            <Button variant="contained" className={classes.findBtn}>
+              <p>Find</p>
+            </Button>
+          </Link>
         </Paper>
       </div>
       <div>

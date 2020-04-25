@@ -1,4 +1,5 @@
-import React, { Component } from '../../../../node_modules/react';
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import './Footer.css';
 
 export class Footer extends Component {
@@ -6,14 +7,19 @@ export class Footer extends Component {
     return (
       <footer class="app-footer">
         <ul>
-          <li>
-            <i class="fa fa-heart"></i>
-            Home
-          </li>
-          <li>
-            <i class="fa fa-barcode"></i>
-            Booking
-          </li>
+          <Link to="/">
+            <li>
+              <i class="fa fa-heart"></i>
+              Home
+            </li>
+          </Link>
+
+          <Link to="/upcoming-bookings">
+            <li>
+              <i class="fa fa-barcode"></i>
+              Booking
+            </li>
+          </Link>
           <li>
             <i class="fa fa-map-marker"></i>
             Offers

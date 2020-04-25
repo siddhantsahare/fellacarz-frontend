@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { useEffect, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
@@ -6,6 +6,19 @@ import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { green } from '@material-ui/core/colors';
 import Button from '@material-ui/core/Button';
+
+// icons
+import EventIcon from '@material-ui/icons/Event';
+import RoomIcon from '@material-ui/icons/Room';
+import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
+import LocalOfferIcon from '@material-ui/icons/LocalOffer';
+import LocalGasStationIcon from '@material-ui/icons/LocalGasStation';
+import AirlineSeatReclineExtraIcon from '@material-ui/icons/AirlineSeatReclineExtra';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+
+// Slideshow library source: https://www.npmjs.com/package/react-responsive-carousel
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import { Carousel } from 'react-responsive-carousel';
 
 const GreenCheckbox = withStyles({
   root: {
@@ -25,10 +38,14 @@ const useStyles = makeStyles((theme) => ({
     gridTemplateColumns: '50% 50%',
     paddingTop: '20px',
     [theme.breakpoints.down('sm')]: {
+      display: 'flex',
+      flexDirection: 'column',
+    },
+  },
+  backBtn: {
+    zIndex: '3', //Z-index of Navbar is 10 and footer is 20
+    [theme.breakpoints.up('sm')]: {
       display: 'none',
-      // display: 'flex',
-      // flexDirection: 'column',
-      // gridGap: '0px',
     },
   },
   grid1: {
@@ -46,8 +63,14 @@ const useStyles = makeStyles((theme) => ({
     display: 'grid',
     gridTemplateColumns: '20% 80%',
     [theme.breakpoints.down('md')]: {
-      display: 'flex',
-      flexDirection: 'column',
+      display: 'none',
+    },
+  },
+
+  // gallery for mob styles
+  galleryMobile: {
+    [theme.breakpoints.up('sm')]: {
+      display: 'none',
     },
   },
 
@@ -55,7 +78,6 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     [theme.breakpoints.down('md')]: {
       display: 'flex',
-      flexDirection: 'column',
       justifyContent: 'flex-start',
       padding: '20px 20px',
     },
@@ -68,11 +90,10 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 
-  paper1inner: {
+  paper1inner1: {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
-
     '& > div': {
       display: 'flex',
       justifyContent: 'flex-start',
@@ -83,7 +104,45 @@ const useStyles = makeStyles((theme) => ({
         color: '#2C9247',
       },
     },
+    [theme.breakpoints.down('md')]: {
+      marginRight: '10px',
+      '& > h4': {
+        marginRight: '10px',
+      },
+    },
   },
+
+  paper1inner2: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    '& > div': {
+      display: 'flex',
+      justifyContent: 'flex-start',
+      '& > h4': {
+        marginRight: '20px',
+      },
+      '& > p': {
+        color: '#2C9247',
+      },
+    },
+    [theme.breakpoints.down('md')]: {
+      marginLeft: '10px',
+      '& > h4': {
+        marginRight: '10px',
+      },
+    },
+  },
+
+  iconspaper1: {
+    margin: '0px 20px',
+    color: '#2C9247',
+    [theme.breakpoints.down('md')]: {
+      margin: '0px 5px',
+    },
+  },
+
+  // For Desktop
   imageBig: {
     maxWidth: '616px',
     maxHeight: '487px',
@@ -96,18 +155,6 @@ const useStyles = makeStyles((theme) => ({
     },
     boxShadow: '4px 4px 4px 0px rgba(0,0,0,0.75)',
     background: 'linear-gradient(to right, #000, #fff)',
-  },
-
-  imageSet: {
-    [theme.breakpoints.down('md')]: {
-      display: 'none',
-      // display: 'flex',
-      // alignItems: 'center',
-      // justifyContent: 'space-evenly',
-      // position: 'absolute',
-      // top: '300px',
-      // width: '90%',
-    },
   },
 
   imageSmall: {
@@ -125,7 +172,7 @@ const useStyles = makeStyles((theme) => ({
     background: 'linear-gradient(to right, #000, #fff)',
   },
 
-  carDetails: {},
+  // Styles for Slideshow for mob
 
   grid2: {
     display: 'flex',
@@ -136,19 +183,33 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
   },
 
+  carDetails: {
+    [theme.breakpoints.down('sm')]: {
+      display: 'none',
+    },
+  },
+
+  carDetailsMobile: {
+    marginTop: '10px',
+    [theme.breakpoints.up('sm')]: {
+      display: 'none',
+    },
+  },
+
   paper2: {
     backgroundColor: ' #F4FDF5',
     padding: '20px',
-    marginTop: '10px',
+    margin: '10px 0px',
     '& > div': {
       display: 'flex',
       '& > span': {
         display: 'flex',
-        justifyContent: 'space-between',
+        justifyContent: 'flex-start',
       },
     },
     '& > div:last-child': {
       display: 'flex',
+
       flexDirection: 'column',
       '& > p': {
         marginLeft: '20px',
@@ -158,17 +219,51 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: 'flex-start',
       },
     },
+    [theme.breakpoints.down('sm')]: {
+      backgroundColor: ' #F2F2F2',
+      display: 'flex',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      '& > div': {
+        display: 'flex',
+        '& > span': {
+          display: 'flex',
+          justifyContent: 'flex-start',
+        },
+        '& > span > p': {
+          fontSize: '14px',
+        },
+      },
+      '& > div:last-child': {
+        display: 'flex',
+
+        flexDirection: 'column',
+        '& > p': {
+          marginLeft: '20px',
+          fontSize: '14px',
+        },
+        '& > span': {
+          display: 'flex',
+          justifyContent: 'flex-start',
+        },
+      },
+    },
+  },
+  icons: {
+    margin: '0px 5px',
+    color: '#2C9247',
   },
   promo: {
+    display: 'flex',
+    margin: '10px 0px',
+    alignItems: 'center',
     backgroundColor: ' #f3f3f3',
     padding: '20px',
     color: 'gray',
-    '& > i': {
-      color: 'gray',
-    },
   },
   accept: {
     color: 'gray',
+    margin: '5px 0px',
   },
   tariff: {
     display: 'flex',
@@ -190,6 +285,9 @@ const useStyles = makeStyles((theme) => ({
   btn: {
     display: 'flex',
     justifyContent: 'center',
+    [theme.breakpoints.down('sm')]: {
+      display: 'none',
+    },
   },
   proceedToPayButton: {
     width: '100%',
@@ -202,6 +300,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 const Car = () => {
   const classes = useStyles();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const [state, setState] = React.useState({
     checkedGreen: true,
   });
@@ -213,7 +316,13 @@ const Car = () => {
   return (
     <Fragment>
       <div className={classes.container}>
+        <div className={classes.backBtn}>
+          <Link to="/find">
+            <ArrowBackIcon />
+          </Link>
+        </div>
         <div className={classes.grid1}>
+          {/* Gallery for desktop */}
           <div className={classes.gallery}>
             <div className={classes.imageSet}>
               <img
@@ -241,44 +350,74 @@ const Car = () => {
               <img src="img/nexon.png" alt="car" className={classes.imageBig} />
             </div>
           </div>
+          {/* Gallery for Mobile */}
+          <div className={classes.galleryMobile}>
+            <Carousel
+              showArrows={false}
+              showThumbs={false}
+              showStatus={false}
+              infiniteLoop={true}
+            >
+              <div>
+                <img src="https://picsum.photos/id/1018/250/150/" />
+              </div>
+              <div>
+                <img src="https://picsum.photos/id/1015/250/150/" />
+              </div>
+              <div>
+                <img src="https://picsum.photos/id/1019/250/150/" />
+              </div>
+            </Carousel>
+          </div>
+          {/* Car details for Desktop */}
           <div className={classes.carDetails}>
             <h3>Car details</h3>
             <Paper className={classes.paper1}>
-              <div className={classes.paper1inner}>
+              <div className={classes.paper1inner1}>
                 <div>
-                  <i class="fa fa-tint" aria-hidden="true"></i>
+                  <LocalGasStationIcon className={classes.iconspaper1} />
                   <h4>Fuel</h4>
                   <p>Diesel</p>
                 </div>
                 <br />
                 <div>
-                  <i class="fa fa-steam" aria-hidden="true"></i>
+                  <AirlineSeatReclineExtraIcon
+                    className={classes.iconspaper1}
+                  />
                   <h4>Engine</h4>
                   <p>xyz</p>
                 </div>
                 <br />
                 <div>
-                  <i class="fa fa-tint" aria-hidden="true"></i>
+                  <AirlineSeatReclineExtraIcon
+                    className={classes.iconspaper1}
+                  />
                   <h4>Milage</h4>
                   <p>14.03 kmpl</p>
                 </div>
               </div>
-              <br />
-              <div className={classes.paper1inner}>
+
+              <div className={classes.paper1inner2}>
                 <div>
-                  <i class="fa fa-car" aria-hidden="true"></i>
+                  <AirlineSeatReclineExtraIcon
+                    className={classes.iconspaper1}
+                  />
                   <h4>Seats</h4>
                   <p>Five</p>
                 </div>
                 <br />
                 <div>
-                  <i class="fa fa-cog" aria-hidden="true"></i>
+                  <AirlineSeatReclineExtraIcon
+                    className={classes.iconspaper1}
+                  />
                   <h4>Gear</h4>
                   <p>Automatic</p>
                 </div>
                 <br />
                 <div>
-                  <i class="fa fa-tint" aria-hidden="true"></i>
+                  <AirlineSeatReclineExtraIcon
+                    className={classes.iconspaper1}
+                  />
                   <h4>BHP</h4>
                   <p>81 to 95 kW</p>
                 </div>
@@ -291,37 +430,102 @@ const Car = () => {
           <h2>Tata Nexon</h2>
           <br />
           <h3>Km Package - 150km | Excess Package - Rs.11/km</h3>
+          {/* Car details for mobile */}
+          <div className={classes.carDetailsMobile}>
+            <h3>Car details</h3>
+            <Paper className={classes.paper1}>
+              <div className={classes.paper1inner1}>
+                <div>
+                  <LocalGasStationIcon className={classes.iconspaper1} />
+                  <h4>Fuel</h4>
+                  <p>Diesel</p>
+                </div>
+                <br />
+                <div>
+                  <AirlineSeatReclineExtraIcon
+                    className={classes.iconspaper1}
+                  />
+                  <h4>Engine</h4>
+                  <p>xyz</p>
+                </div>
+                <br />
+                <div>
+                  <AirlineSeatReclineExtraIcon
+                    className={classes.iconspaper1}
+                  />
+                  <h4>Milage</h4>
+                  <p>14.03 kmpl</p>
+                </div>
+              </div>
+
+              <div className={classes.paper1inner2}>
+                <div>
+                  <AirlineSeatReclineExtraIcon
+                    className={classes.iconspaper1}
+                  />
+                  <h4>Seats</h4>
+                  <p>Five</p>
+                </div>
+                <br />
+                <div>
+                  <AirlineSeatReclineExtraIcon
+                    className={classes.iconspaper1}
+                  />
+                  <h4>Gear</h4>
+                  <p>Automatic</p>
+                </div>
+                <br />
+                <div>
+                  <AirlineSeatReclineExtraIcon
+                    className={classes.iconspaper1}
+                  />
+                  <h4>BHP</h4>
+                  <p>81 to 95 kW</p>
+                </div>
+              </div>
+            </Paper>
+          </div>
           <Paper className={classes.paper2}>
-            <br />
             <div>
               <span>
-                <i class="fa fa-calendar" aria-hidden="true"></i>
+                <EventIcon className={classes.icons} />
                 <p>12/04/2020, 06:00pm </p>
               </span>
-              <span>&nbsp;&nbsp; -- &nbsp;</span>
+              <span>&nbsp;&nbsp; - &nbsp;</span>
               <span>
-                <i class="fa fa-calendar" aria-hidden="true"></i>
                 <p>15/04/2020, 06:00pm </p>
               </span>
             </div>
             <br />
             <div>
               <span>
-                <i class="fas fa-thumbtack"></i>
+                <RoomIcon className={classes.icons} />
                 0.6kms
-                <i class="fas fa-greater-than"></i>
+                <ArrowForwardIosIcon className={classes.icons} />
               </span>
               <p>from railway station</p>
             </div>
           </Paper>
-          <br />
-          <br />
+
           <Paper className={classes.promo}>
-            <i class="fa fa-tags" aria-hidden="true"></i>
-            Apply Promocode
+            <LocalOfferIcon />
+            &nbsp;&nbsp;Apply Promocode
           </Paper>
-          <br />
-          <br />
+          {/* Terms & Condition for mob */}
+          <div className={classes.acceptMobile}>
+            <FormControlLabel
+              control={
+                <GreenCheckbox
+                  checked={state.checkedG}
+                  onChange={handleChange}
+                  name="checkedG"
+                  className={classes.itemElm}
+                />
+              }
+            />
+            <span>I accept the T&C and insurance terms</span>
+          </div>
+
           <div className={classes.paymentBreakdown}>
             <h3>Payment Breakdown</h3>
             <br />
@@ -355,8 +559,8 @@ const Car = () => {
               </div>
             </div>
           </div>
-          <br />
-          <br />
+
+          {/* Terms and condition for desktop */}
           <div className={classes.accept}>
             <FormControlLabel
               control={
@@ -370,7 +574,7 @@ const Car = () => {
             />
             <span>I accept the T&C and insurance terms</span>
           </div>
-          <br />
+          {/* Button for desktop */}
           <Link to="/booked">
             <div className={classes.btn}>
               <Button

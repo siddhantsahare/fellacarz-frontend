@@ -26,6 +26,7 @@ const useStyles = makeStyles((theme) => ({
     '& > i': {
       fontSize: '20px',
       paddingTop: '5px',
+      marginLeft: '5px',
     },
   },
   root: {

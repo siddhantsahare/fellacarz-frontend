@@ -176,16 +176,18 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Home = (open, handleClose, handleOpen, prevStep) => {
+const Home = ({ open, handleOpen, prevStep }) => {
   const classes = useStyles();
-
+  const back = (e) => {
+    e.preventDefault();
+    prevStep();
+  };
   return (
     <div className={classes.container}>
       <div className={classes.search}>
         <Paper elevation={3} className={classes.paper}>
           <h1>Self Drive Car Rental</h1>
           <h3>Book your car now</h3>
-
           <Button
             variant="contained"
             className={classes.searchBtn}
@@ -194,12 +196,12 @@ const Home = (open, handleClose, handleOpen, prevStep) => {
             <i className="fas fa-thumbtack"></i>
             <p>&nbsp;&nbsp;&nbsp;Enter the pick up address</p>
           </Button>
-
           <Modal
             aria-labelledby="transition-modal-title"
             aria-describedby="transition-modal-description"
             className={classes.modal}
             open={open}
+            onClose={back}
             closeAfterTransition
             BackdropComponent={Backdrop}
             BackdropProps={{
