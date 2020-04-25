@@ -50,6 +50,10 @@ const useStyles = (theme) => ({
     outline: 'none',
     marginLeft: '-10px',
   },
+  signupBtn: {
+    display: 'flex',
+    height: '100%',
+  },
 });
 
 export class Navbar extends Component {
@@ -139,7 +143,7 @@ export class Navbar extends Component {
             <Link to="#">
               <Button
                 type="button"
-                className="city-selector"
+                className={classes.signupBtn}
                 onClick={this.handleOpenSignUp}
               >
                 <span className="signupLink">Sign up</span>

@@ -6,6 +6,9 @@ import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import { green } from '@material-ui/core/colors';
 import Grid from '@material-ui/core/Grid';
+// icons
+import RoomIcon from '@material-ui/icons/Room';
+import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 
 const useStyles = makeStyles((theme) => ({
   cars: {
@@ -87,6 +90,10 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: '600',
     marginTop: '20px',
   },
+  icons: {
+    margin: '0px 5px',
+    color: '#2C9247',
+  },
 }));
 
 const Cars = () => {
@@ -124,9 +131,9 @@ const Cars = () => {
             </Grid>
             <Grid item lg={3} md={3}>
               <h2>
-                <i class="fas fa-thumbtack"></i>
+                <RoomIcon className={classes.icons} />
                 0.6kms
-                <i class="fas fa-greater-than"></i>
+                <ArrowForwardIosIcon className={classes.icons} />
               </h2>
               <p>from railway station</p>
               <Link to="/book-car">

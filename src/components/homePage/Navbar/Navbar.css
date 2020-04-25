@@ -111,8 +111,8 @@
   background-color: #fff;
 }
 
-/* For Mobile */
-@media (max-width: 820px) {
+/* For Mobile & Tablets*/
+@media (max-width: 1200px) {
   .main-nav {
     display: flex;
     align-items: center;

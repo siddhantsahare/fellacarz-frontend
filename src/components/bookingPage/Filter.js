@@ -8,6 +8,11 @@ import { green } from '@material-ui/core/colors';
 import Checkbox from '@material-ui/core/Checkbox';
 import Slider from '@material-ui/core/Slider';
 import Grid from '@material-ui/core/Grid';
+// icons
+import FilterListIcon from '@material-ui/icons/FilterList';
+import DriveEtaIcon from '@material-ui/icons/DriveEta';
+import LocalGasStationIcon from '@material-ui/icons/LocalGasStation';
+import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 
 const useStyles = makeStyles((theme) => ({
   filterPanel: {
@@ -48,10 +53,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: ' #F4FDF5',
   },
   categories: {
-    '& > i': {
-      marginLeft: '10px',
-      marginBottom: '15px',
-    },
+    display: 'flex',
     '& > h4': {
       display: 'inline-block',
       color: '#2C9247',
@@ -64,11 +66,7 @@ const useStyles = makeStyles((theme) => ({
     margin: '-10px 10px',
   },
   fuels: {
-    '& > i': {
-      marginTop: '10px',
-      marginLeft: '10px',
-      marginBottom: '15px',
-    },
+    display: 'flex',
     '& > h4': {
       display: 'inline-block',
       color: '#2C9247',
@@ -81,10 +79,7 @@ const useStyles = makeStyles((theme) => ({
     margin: '-10px 10px',
   },
   prices: {
-    '& > i': {
-      marginTop: '10px',
-      marginLeft: '10px',
-    },
+    display: 'flex',
     '& > h4': {
       display: 'inline-block',
       color: '#2C9247',
@@ -99,6 +94,10 @@ const useStyles = makeStyles((theme) => ({
   priceSlider: {
     marginTop: '3px',
     marginBottom: '-10px',
+  },
+  icons: {
+    margin: '0px 10px',
+    color: '#2C9247',
   },
 }));
 
@@ -177,7 +176,7 @@ const Filter = () => {
   return (
     <div className={classes.filterPanel}>
       <div className={classes.filter}>
-        <i class="fas fa-filter"></i>
+        <FilterListIcon className={classes.icons} />
         <h2>Filter</h2>
       </div>
       <div className={classes.root}>
@@ -190,7 +189,7 @@ const Filter = () => {
           >
             <Grid item lg={12} md={12}>
               <div className={classes.categories}>
-                <i class="fas fa-car-side"></i>
+                <DriveEtaIcon className={classes.icons} />
                 <h4>Category</h4>
               </div>
             </Grid>
@@ -239,7 +238,7 @@ const Filter = () => {
             {/* Fuel */}
             <Grid item lg={12} md={12}>
               <div className={classes.fuels}>
-                <i class="fas fa-gas-pump"></i>
+                <LocalGasStationIcon className={classes.icons} />
                 <h4>Fuel</h4>
               </div>
               <div className={classes.fuel}>
@@ -272,7 +271,7 @@ const Filter = () => {
             {/* Price */}
             <Grid item lg={12} md={12}>
               <div className={classes.prices}>
-                <i class="fas fa-dollar-sign"></i>
+                <AttachMoneyIcon className={classes.icons} />
                 <h4>Price</h4>
               </div>
               <div className={classes.price}>

@@ -6,6 +6,12 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { green } from '@material-ui/core/colors';
 import Checkbox from '@material-ui/core/Checkbox';
 import Grid from '@material-ui/core/Grid';
+// Sort
+import SortIcon from '@material-ui/icons/Sort';
+import WhatshotIcon from '@material-ui/icons/Whatshot';
+import RoomIcon from '@material-ui/icons/Room';
+import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
+import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 
 const useStyles = makeStyles((theme) => ({
   sortPanel: {
@@ -60,9 +66,14 @@ const useStyles = makeStyles((theme) => ({
   },
   item: {
     marginLeft: '10px',
+    display: 'flex',
   },
   grid: {
     marginLeft: '-35px',
+  },
+  icons: {
+    margin: '0px 5px',
+    color: '#2C9247',
   },
 }));
 
@@ -89,7 +100,7 @@ const Sort = () => {
   return (
     <div className={classes.sortPanel}>
       <div className={classes.sort}>
-        <i class="fas fa-sort"></i>
+        <SortIcon className={classes.icons} />
         <h2>Sort</h2>
       </div>
       <div className={classes.root}>
@@ -102,7 +113,7 @@ const Sort = () => {
           >
             <Grid item lg={12} md={12}>
               <div className={classes.item}>
-                <i class="fas fa-fire"></i>
+                <WhatshotIcon className={classes.icons} />
                 <span>Popularity</span>
                 <FormControlLabel
                   control={
@@ -118,7 +129,7 @@ const Sort = () => {
             </Grid>
             <Grid item lg={12} md={12}>
               <div className={classes.item}>
-                <i class="fas fa-thumbtack"></i>
+                <RoomIcon className={classes.icons} />
                 <span>Distance</span>
                 <FormControlLabel
                   control={
@@ -134,7 +145,7 @@ const Sort = () => {
             </Grid>
             <Grid item lg={12} md={12}>
               <div className={classes.item}>
-                <i class="fas fa-sort-numeric-up-alt"></i>
+                <ArrowUpwardIcon className={classes.icons} />
                 <span>Price High to Low</span>
                 <FormControlLabel
                   control={
@@ -150,7 +161,7 @@ const Sort = () => {
             </Grid>
             <Grid item lg={12} md={12}>
               <div className={classes.item}>
-                <i class="fas fa-sort-numeric-down-alt"></i>
+                <ArrowDownwardIcon className={classes.icons} />
                 <span>Price Low to High</span>
                 <FormControlLabel
                   control={

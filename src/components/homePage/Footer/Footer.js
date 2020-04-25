@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './Footer.css';
+// icons
+import HomeIcon from '@material-ui/icons/Home';
+import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
+import LocalOfferIcon from '@material-ui/icons/LocalOffer';
+import AccountBoxIcon from '@material-ui/icons/AccountBox';
 
 export class Footer extends Component {
   render() {
@@ -9,23 +14,23 @@ export class Footer extends Component {
         <ul>
           <Link to="/">
             <li>
-              <i class="fa fa-heart"></i>
+              <HomeIcon />
               Home
             </li>
           </Link>
 
           <Link to="/upcoming-bookings">
             <li>
-              <i class="fa fa-barcode"></i>
+              <CalendarTodayIcon />
               Booking
             </li>
           </Link>
           <li>
-            <i class="fa fa-map-marker"></i>
+            <LocalOfferIcon />
             Offers
           </li>
           <li>
-            <i class="fa fa-user"></i>
+            <AccountBoxIcon />
             Account
           </li>
         </ul>

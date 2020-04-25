@@ -177,10 +177,14 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     marginTop: '20px',
     '& > h3': {
-      fontSize: '15px',
+      margin: '10px 0px',
+      fontSize: '18px',
     },
     [theme.breakpoints.down('md')]: {
       marginTop: '30px',
+      '& > h3': {
+        fontSize: '15px',
+      },
     },
     flexDirection: 'column',
   },
@@ -204,6 +208,8 @@ const useStyles = makeStyles((theme) => ({
   paper2: {
     backgroundColor: ' #F4FDF5',
     padding: '20px',
+    fontSize: '18px',
+    fontWeight: '500',
     margin: '10px 0px',
     '& > div': {
       display: 'flex',
@@ -226,6 +232,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('sm')]: {
       backgroundColor: ' #F2F2F2',
       padding: '10px',
+      fontSize: '14px',
       display: 'flex',
       justifyContent: 'space-between',
       alignItems: 'center',
@@ -241,7 +248,7 @@ const useStyles = makeStyles((theme) => ({
       },
       '& > div:last-child': {
         display: 'flex',
-
+        marginTop: '20px',
         flexDirection: 'column',
         '& > p': {
           marginLeft: '20px',
@@ -263,15 +270,26 @@ const useStyles = makeStyles((theme) => ({
     margin: '10px 0px',
     alignItems: 'center',
     backgroundColor: ' #f3f3f3',
+    fontSize: '16px',
     padding: '20px',
     color: 'gray',
     [theme.breakpoints.down('sm')]: {
       padding: '10px',
+      fontSize: '16px',
     },
   },
   accept: {
     color: 'gray',
-    margin: '5px 0px',
+    margin: '10px 0px',
+    fontSize: '16px',
+  },
+  acceptMobile: {
+    [theme.breakpoints.up('sm')]: {
+      display: 'none',
+    },
+    color: 'gray',
+    margin: '10px 0px',
+    fontSize: '16px',
   },
   tariff: {
     display: 'flex',
@@ -289,6 +307,8 @@ const useStyles = makeStyles((theme) => ({
   total: {
     display: 'flex',
     justifyContent: 'space-between',
+    fontSize: '20px',
+    fontWeight: '600',
   },
   btn: {
     display: 'flex',
@@ -398,13 +418,13 @@ const Car = () => {
               infiniteLoop={true}
             >
               <div>
-                <img src="https://picsum.photos/id/1018/250/150/" />
+                <img src="https://picsum.photos/id/1018/250/150/" alt="dummy" />
               </div>
               <div>
-                <img src="https://picsum.photos/id/1015/250/150/" />
+                <img src="https://picsum.photos/id/1015/250/150/" alt="dummy" />
               </div>
               <div>
-                <img src="https://picsum.photos/id/1019/250/150/" />
+                <img src="https://picsum.photos/id/1019/250/150/" alt="dummy" />
               </div>
             </Carousel>
           </div>
@@ -531,6 +551,7 @@ const Car = () => {
               </span>
               <span>&nbsp;&nbsp; - &nbsp;</span>
               <span>
+                <EventIcon className={classes.icons} />
                 <p>15/04/2020, 06:00pm </p>
               </span>
             </div>

@@ -13,14 +13,17 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import Popover from '@material-ui/core/Popover';
+// icons
+import RoomIcon from '@material-ui/icons/Room';
+import EventIcon from '@material-ui/icons/Event';
 
 const useStyles = makeStyles((theme) => ({
   container: {
     overflowY: 'none',
     scroll: 'none',
     display: 'flex',
+    width: '100%',
     marginTop: '100px',
-    justifyContent: 'center',
     marginLeft: '-50px',
     alignItems: 'center',
 
@@ -37,6 +40,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
+    width: '100%',
     padding: '50px 20px',
     backgroundColor: '#EEEEEE',
     '& > h1': {
@@ -120,9 +124,11 @@ const useStyles = makeStyles((theme) => ({
   homeImage: {
     width: '700px',
     height: '600px',
-    [theme.breakpoints.down('md')]: {
-      width: '320px',
-      height: '220px',
+
+    [theme.breakpoints.down('sm')]: {
+      position: 'relative',
+      width: '100%',
+      height: '100%',
     },
   },
   // Styles for modal
@@ -173,18 +179,18 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center',
   },
 
-  // Styles of popover
+  // Styles of popover button
   searchBtnMob: {
     [theme.breakpoints.up('md')]: {
       display: 'none',
     },
     margin: '20px 0px',
     fontSize: '14px',
-    '& > i': {
-      marginRight: '10px',
-      fontSize: '20px',
-      color: '#2E7240',
-    },
+    fontWeight: '600',
+  },
+  icons: {
+    margin: '0px 5px',
+    color: '#2C9247',
   },
 }));
 
@@ -254,7 +260,7 @@ const Home = () => {
             className={classes.searchBtnMob}
             onClick={loadMobileCitySelector}
           >
-            <i className="fas fa-thumbtack"></i>
+            <RoomIcon />
             <p>&nbsp;&nbsp;&nbsp;Enter the pick up address</p>
           </Button>
           {/* City Button for desktop */}
@@ -263,7 +269,7 @@ const Home = () => {
             className={classes.searchBtn}
             onClick={handleOpen}
           >
-            <i className="fas fa-thumbtack"></i>
+            <RoomIcon />
             <p>&nbsp;&nbsp;&nbsp;Enter the pick up address</p>
           </Button>
           {/* Popover from bottom for Mobile */}
@@ -342,7 +348,7 @@ const Home = () => {
           <div className={classes.inputs}>
             <div>
               <div>
-                <i className="fas fa-calendar-day"></i>
+                <EventIcon className={classes.icons} />
               </div>
               <form className={classes.form} noValidate>
                 <TextField
@@ -359,7 +365,7 @@ const Home = () => {
             </div>
             <div>
               <div>
-                <i className="fas fa-calendar-day"></i>
+                <EventIcon className={classes.icons} />
               </div>
               <form className={classes.form} noValidate>
                 <TextField
