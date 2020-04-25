@@ -176,6 +176,9 @@ const useStyles = makeStyles((theme) => ({
   grid2: {
     display: 'flex',
     marginTop: '20px',
+    '& > h3': {
+      fontSize: '15px',
+    },
     [theme.breakpoints.down('md')]: {
       marginTop: '30px',
     },
@@ -189,7 +192,10 @@ const useStyles = makeStyles((theme) => ({
   },
 
   carDetailsMobile: {
-    marginTop: '10px',
+    margin: '10px 0px',
+    '& > h3': {
+      fontSize: '15px',
+    },
     [theme.breakpoints.up('md')]: {
       display: 'none',
     },
@@ -208,7 +214,6 @@ const useStyles = makeStyles((theme) => ({
     },
     '& > div:last-child': {
       display: 'flex',
-
       flexDirection: 'column',
       '& > p': {
         marginLeft: '20px',
@@ -220,6 +225,7 @@ const useStyles = makeStyles((theme) => ({
     },
     [theme.breakpoints.down('sm')]: {
       backgroundColor: ' #F2F2F2',
+      padding: '10px',
       display: 'flex',
       justifyContent: 'space-between',
       alignItems: 'center',
@@ -259,6 +265,9 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: ' #f3f3f3',
     padding: '20px',
     color: 'gray',
+    [theme.breakpoints.down('sm')]: {
+      padding: '10px',
+    },
   },
   accept: {
     color: 'gray',
@@ -293,6 +302,37 @@ const useStyles = makeStyles((theme) => ({
     height: '50px',
     color: 'white',
     fontSize: '18px',
+    fontWeight: '700',
+    backgroundColor: '#2C9247',
+  },
+  proceedToPayButtonMobileView: {
+    height: '75px',
+    width: '100%',
+    position: 'fixed',
+    padding: '10px 15px',
+    justifyContent: 'space-between',
+    left: '0',
+    bottom: '0',
+    backgroundColor: '#EEEEEE',
+    display: 'flex',
+    zIndex: '21', //Footer has z-index of 10
+    [theme.breakpoints.up('sm')]: {
+      display: 'none',
+    },
+    '& > div > p': {
+      fontSize: '16px',
+      fontWeight: '600',
+    },
+    '& > div > h3': {
+      fontSize: '14px',
+      fontWeight: '600',
+    },
+  },
+
+  proceedToPayButtonMobile: {
+    height: '50px',
+    color: 'white',
+    fontSize: '13px',
     fontWeight: '700',
     backgroundColor: '#2C9247',
   },
@@ -427,7 +467,6 @@ const Car = () => {
 
         <div className={classes.grid2}>
           <h2>Tata Nexon</h2>
-          <br />
           <h3>Km Package - 150km | Excess Package - Rs.11/km</h3>
           {/* Car details for mobile */}
           <div className={classes.carDetailsMobile}>
@@ -523,6 +562,7 @@ const Car = () => {
               }
             />
             <span>I accept the T&C and insurance terms</span>
+            <br />
           </div>
 
           <div className={classes.paymentBreakdown}>
@@ -584,6 +624,20 @@ const Car = () => {
               </Button>
             </div>
           </Link>
+          <div className={classes.proceedToPayButtonMobileView}>
+            <div>
+              <h3>Total Amount</h3>
+              <p>6000</p>
+            </div>
+            <div>
+              <Button
+                variant="contained"
+                className={classes.proceedToPayButtonMobile}
+              >
+                Proceed To Pay
+              </Button>
+            </div>
+          </div>
           <br />
         </div>
       </div>
