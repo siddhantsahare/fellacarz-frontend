@@ -265,6 +265,9 @@ const useStyles = makeStyles((theme) => ({
     margin: '0px 5px',
     color: '#2C9247',
   },
+  paymentBreakdown: {
+    margin: '20px 0px',
+  },
   promo: {
     display: 'flex',
     margin: '10px 0px',
@@ -324,6 +327,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: '18px',
     fontWeight: '700',
     backgroundColor: '#2C9247',
+    marginTop: '20px',
   },
   proceedToPayButtonMobileView: {
     height: '75px',
