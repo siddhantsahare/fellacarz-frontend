@@ -316,7 +316,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: '#EEEEEE',
     display: 'flex',
     zIndex: '21', //Footer has z-index of 10
-    [theme.breakpoints.up('sm')]: {
+    [theme.breakpoints.up('md')]: {
       display: 'none',
     },
     '& > div > p': {
