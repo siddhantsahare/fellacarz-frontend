@@ -46,7 +46,10 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   backBtn: {
-    zIndex: '3', //Z-index of Navbar is 10 and footer is 20
+    zIndex: '3',
+    //Z-index of Navbar is 10 and footer is 20
+    position: 'absolute',
+    margin: '10px 10px',
     [theme.breakpoints.up('sm')]: {
       display: 'none',
     },
@@ -392,11 +395,6 @@ const Car = () => {
   return (
     <Fragment>
       <div className={classes.container}>
-        <div className={classes.backBtn}>
-          <Link to="/find">
-            <ArrowBackIcon />
-          </Link>
-        </div>
         <div className={classes.grid1}>
           {/* Gallery for desktop */}
           <div className={classes.gallery}>
@@ -428,6 +426,11 @@ const Car = () => {
           </div>
           {/* Gallery for Mobile */}
           <div className={classes.galleryMobile}>
+            <div className={classes.backBtn}>
+              <Link to="/find">
+                <ArrowBackIcon />
+              </Link>
+            </div>
             <Carousel
               showArrows={false}
               showThumbs={false}
