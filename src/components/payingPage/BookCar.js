@@ -62,14 +62,14 @@ const useStyles = makeStyles((theme) => ({
   gallery: {
     display: 'grid',
     gridTemplateColumns: '20% 80%',
-    [theme.breakpoints.down('md')]: {
+    [theme.breakpoints.down('sm')]: {
       display: 'none',
     },
   },
 
   // gallery for mob styles
   galleryMobile: {
-    [theme.breakpoints.up('sm')]: {
+    [theme.breakpoints.up('md')]: {
       display: 'none',
     },
   },
@@ -150,9 +150,10 @@ const useStyles = makeStyles((theme) => ({
     height: '100%',
     border: '1px solid black',
     borderRadius: '10px',
-    [theme.breakpoints.down('md')]: {
-      height: '60%',
-    },
+    // [theme.breakpoints.down('md')]: {
+    //   width: '100%',
+    //   height: '60%',
+    // },
     boxShadow: '4px 4px 4px 0px rgba(0,0,0,0.75)',
     background: 'linear-gradient(to right, #000, #fff)',
   },
@@ -164,9 +165,7 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: '10px',
     marginBottom: '52px',
     [theme.breakpoints.down('md')]: {
-      maxWidth: '70px',
-      maxHeight: '70px',
-      margin: '0px 5px',
+      display: 'none',
     },
     boxShadow: '2px 2px 2px 0px rgba(0,0,0,0.75)',
     background: 'linear-gradient(to right, #000, #fff)',
@@ -191,7 +190,7 @@ const useStyles = makeStyles((theme) => ({
 
   carDetailsMobile: {
     marginTop: '10px',
-    [theme.breakpoints.up('sm')]: {
+    [theme.breakpoints.up('md')]: {
       display: 'none',
     },
   },
