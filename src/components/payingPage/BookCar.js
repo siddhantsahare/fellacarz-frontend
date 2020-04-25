@@ -33,11 +33,14 @@ const GreenCheckbox = withStyles({
 const useStyles = makeStyles((theme) => ({
   container: {
     display: 'grid',
+    position: 'relative',
+    top: '0',
     margin: '0',
     gridGap: '30px',
     gridTemplateColumns: '50% 50%',
     paddingTop: '20px',
     [theme.breakpoints.down('sm')]: {
+      marginTop: '-80px',
       display: 'flex',
       flexDirection: 'column',
     },
@@ -79,7 +82,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('md')]: {
       display: 'flex',
       justifyContent: 'flex-start',
-      padding: '20px 20px',
+      padding: '10px 5px',
     },
     justifyContent: 'space-between',
     backgroundColor: ' #F4FDF5',
@@ -119,6 +122,7 @@ const useStyles = makeStyles((theme) => ({
     '& > div': {
       display: 'flex',
       justifyContent: 'flex-start',
+      margin: '3px 0px',
       '& > h4': {
         marginRight: '20px',
       },
@@ -181,8 +185,9 @@ const useStyles = makeStyles((theme) => ({
       fontSize: '18px',
     },
     [theme.breakpoints.down('md')]: {
-      marginTop: '30px',
+      marginTop: '0px',
       '& > h3': {
+        margin: '5px 0px',
         fontSize: '15px',
       },
     },
@@ -196,9 +201,12 @@ const useStyles = makeStyles((theme) => ({
   },
 
   carDetailsMobile: {
-    margin: '10px 0px',
+    margin: '2px 0px',
     '& > h3': {
       fontSize: '15px',
+    },
+    '& > div': {
+      fontSize: '12px',
     },
     [theme.breakpoints.up('md')]: {
       display: 'none',
@@ -231,7 +239,8 @@ const useStyles = makeStyles((theme) => ({
     },
     [theme.breakpoints.down('sm')]: {
       backgroundColor: ' #F2F2F2',
-      padding: '10px',
+      padding: '5px',
+      margin: '5px 0px',
       fontSize: '14px',
       display: 'flex',
       justifyContent: 'space-between',
@@ -243,16 +252,16 @@ const useStyles = makeStyles((theme) => ({
           justifyContent: 'flex-start',
         },
         '& > span > p': {
-          fontSize: '14px',
+          fontSize: '12px',
         },
       },
       '& > div:last-child': {
         display: 'flex',
-        marginTop: '20px',
+
         flexDirection: 'column',
         '& > p': {
           marginLeft: '20px',
-          fontSize: '14px',
+          fontSize: '12px',
         },
         '& > span': {
           display: 'flex',
@@ -267,6 +276,9 @@ const useStyles = makeStyles((theme) => ({
   },
   paymentBreakdown: {
     margin: '20px 0px',
+    [theme.breakpoints.down('sm')]: {
+      margin: '10px 0px',
+    },
   },
   promo: {
     display: 'flex',
@@ -277,8 +289,9 @@ const useStyles = makeStyles((theme) => ({
     padding: '20px',
     color: 'gray',
     [theme.breakpoints.down('sm')]: {
-      padding: '10px',
-      fontSize: '16px',
+      padding: '5px 10px',
+      fontSize: '14px',
+      margin: '0px 0px',
     },
   },
   accept: {
@@ -291,8 +304,8 @@ const useStyles = makeStyles((theme) => ({
       display: 'none',
     },
     color: 'gray',
-    margin: '10px 0px',
-    fontSize: '16px',
+    margin: '2px 0px',
+    fontSize: '14px',
   },
   tariff: {
     display: 'flex',
@@ -435,7 +448,7 @@ const Car = () => {
           {/* Car details for Desktop */}
           <div className={classes.carDetails}>
             <h3>Car details</h3>
-            <Paper className={classes.paper1}>
+            <Paper elevation={0} className={classes.paper1}>
               <div className={classes.paper1inner1}>
                 <div>
                   <LocalGasStationIcon className={classes.iconspaper1} />
@@ -495,14 +508,14 @@ const Car = () => {
           {/* Car details for mobile */}
           <div className={classes.carDetailsMobile}>
             <h3>Car details</h3>
-            <Paper className={classes.paper1}>
+            <Paper elevation={0} className={classes.paper1}>
               <div className={classes.paper1inner1}>
                 <div>
                   <LocalGasStationIcon className={classes.iconspaper1} />
                   <h4>Fuel</h4>
                   <p>Diesel</p>
                 </div>
-                <br />
+
                 <div>
                   <AirlineSeatReclineExtraIcon
                     className={classes.iconspaper1}
@@ -510,7 +523,7 @@ const Car = () => {
                   <h4>Engine</h4>
                   <p>xyz</p>
                 </div>
-                <br />
+
                 <div>
                   <AirlineSeatReclineExtraIcon
                     className={classes.iconspaper1}
@@ -528,7 +541,7 @@ const Car = () => {
                   <h4>Seats</h4>
                   <p>Five</p>
                 </div>
-                <br />
+
                 <div>
                   <AirlineSeatReclineExtraIcon
                     className={classes.iconspaper1}
@@ -536,7 +549,7 @@ const Car = () => {
                   <h4>Gear</h4>
                   <p>Automatic</p>
                 </div>
-                <br />
+
                 <div>
                   <AirlineSeatReclineExtraIcon
                     className={classes.iconspaper1}
@@ -547,7 +560,7 @@ const Car = () => {
               </div>
             </Paper>
           </div>
-          <Paper className={classes.paper2}>
+          <Paper elevation={0} className={classes.paper2}>
             <div>
               <span>
                 <EventIcon className={classes.icons} />
@@ -569,11 +582,6 @@ const Car = () => {
               <p>from railway station</p>
             </div>
           </Paper>
-
-          <Paper className={classes.promo}>
-            <LocalOfferIcon />
-            &nbsp;&nbsp;Apply Promocode
-          </Paper>
           {/* Terms & Condition for mob */}
           <div className={classes.acceptMobile}>
             <FormControlLabel
@@ -589,6 +597,10 @@ const Car = () => {
             <span>I accept the T&C and insurance terms</span>
             <br />
           </div>
+          <Paper elevation={0} className={classes.promo}>
+            <LocalOfferIcon />
+            &nbsp;&nbsp;Apply Promocode
+          </Paper>
 
           <div className={classes.paymentBreakdown}>
             <h3>Payment Breakdown</h3>

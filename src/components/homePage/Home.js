@@ -13,6 +13,8 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import Popover from '@material-ui/core/Popover';
+import Navbar from '../homePage/Navbar/Navbar';
+
 // icons
 import RoomIcon from '@material-ui/icons/Room';
 import EventIcon from '@material-ui/icons/Event';
@@ -250,6 +252,7 @@ const Home = () => {
 
   return (
     <div className={classes.container}>
+      <Navbar />
       <div className={classes.search}>
         <Paper elevation={3} className={classes.paper}>
           <h1>Self Drive Car Rental</h1>

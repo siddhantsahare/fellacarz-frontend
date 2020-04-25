@@ -10,6 +10,9 @@
   background-color: #ffffff;
   position: fixed;
   z-index: 10;
+  top: 0;
+  left: 0;
+  right: 0;
 }
 
 .main-nav .logo {
@@ -114,9 +117,7 @@
 /* For Mobile & Tablets*/
 @media (max-width: 1200px) {
   .main-nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
+    display: none;
   }
   .main-nav ul {
     display: none;
