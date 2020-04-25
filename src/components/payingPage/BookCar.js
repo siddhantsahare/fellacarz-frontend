@@ -313,6 +313,7 @@ const useStyles = makeStyles((theme) => ({
   tariff: {
     display: 'flex',
     justifyContent: 'space-between',
+    margin: '5px 0px',
     '& > div > span': {
       color: 'gray',
     },
@@ -321,6 +322,7 @@ const useStyles = makeStyles((theme) => ({
   deposit: {
     display: 'flex',
     justifyContent: 'space-between',
+    margin: '5px 0px',
   },
 
   total: {
@@ -328,6 +330,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'space-between',
     fontSize: '20px',
     fontWeight: '600',
+    margin: '5px 0px',
   },
   btn: {
     display: 'flex',
@@ -607,7 +610,7 @@ const Car = () => {
 
           <div className={classes.paymentBreakdown}>
             <h3>Payment Breakdown</h3>
-            <br />
+
             <div className={classes.tariff}>
               <div>
                 <p>Tariff Price - 150km </p>
@@ -617,7 +620,7 @@ const Car = () => {
                 <p>Rs.1000</p>
               </div>
             </div>
-            <br />
+
             <div className={classes.deposit}>
               <div>
                 <p>Refundable Security Deposit </p>
@@ -626,9 +629,9 @@ const Car = () => {
                 <p>Rs.5000</p>
               </div>
             </div>
-            <br />
+
             <hr />
-            <br />
+
             <div className={classes.total}>
               <div>
                 <p>Total</p>

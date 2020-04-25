@@ -12,6 +12,9 @@ const useStyles = makeStyles((theme) => ({
   },
   flex: {
     display: 'flex',
+    [theme.breakpoints.down('md')]: {
+      marginTop: '-80px',
+    },
   },
   column1: {
     width: '23%',
