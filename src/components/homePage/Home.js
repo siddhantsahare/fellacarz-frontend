@@ -19,12 +19,12 @@ import EventIcon from '@material-ui/icons/Event';
 
 const useStyles = makeStyles((theme) => ({
   container: {
-    overflowY: 'none',
+    overflow: 'none',
     scroll: 'none',
     display: 'flex',
     width: '100%',
     marginTop: '100px',
-    marginLeft: '-50px',
+
     alignItems: 'center',
 
     [theme.breakpoints.down('md')]: {

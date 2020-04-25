@@ -2,7 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Paper from '@material-ui/core/Paper';
-
+import DoneIcon from '@material-ui/icons/Done';
 const useStyles = makeStyles((theme) => ({
   container: {
     display: 'flex',
@@ -19,10 +19,10 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    '& > i': {
-      fontSize: '60px',
-      color: 'green',
-    },
+  },
+  tick: {
+    fontSize: '60px',
+    color: 'green',
   },
   bookedText: {
     marginTop: '15px',
@@ -111,7 +111,7 @@ const Booked = () => {
   return (
     <div className={classes.container}>
       <span className={classes.dot}>
-        <i class="fas fa-check"></i>
+        <DoneIcon className={classes.tick} />
       </span>
       <div className={classes.bookedText}>
         <h3>Booked!</h3>
