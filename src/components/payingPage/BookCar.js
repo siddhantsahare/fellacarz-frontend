@@ -191,7 +191,7 @@ const useStyles = makeStyles((theme) => ({
       marginTop: '0px',
       '& > h3': {
         margin: '5px 0px',
-        fontSize: '15px',
+        fontSize: '14px',
       },
     },
     flexDirection: 'column',
