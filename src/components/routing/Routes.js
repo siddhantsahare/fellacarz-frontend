@@ -7,6 +7,9 @@ import CancelledBookings from '../bookingFooterTab/MobileViews/CancelledBookings
 import CompleteBookings from '../bookingFooterTab/MobileViews/CompleteBookings';
 import Summary from '../bookingFooterTab/MobileViews/Summary';
 
+import ProfileMobile from '../profile/mobile-views/ProfileMobile';
+import ChecklistMobile from '../checklist/mobile-views/ChecklistMobile';
+
 import { Route, Switch } from 'react-router-dom';
 
 const Routes = () => {
@@ -20,6 +23,8 @@ const Routes = () => {
         <Route exact path="/cancelled-bookings" component={CancelledBookings} />
         <Route exact path="/complete-bookings" component={CompleteBookings} />
         <Route exact path="/summary" component={Summary} />
+        <Route exact path="/profile-mobile" component={ProfileMobile} />
+        <Route exact path="/checklist-mobile" component={ChecklistMobile} />
       </Switch>
     </section>
   );
