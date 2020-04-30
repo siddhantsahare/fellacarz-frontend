@@ -6,6 +6,7 @@ import Switch from '@material-ui/core/Switch';
 import { green } from '@material-ui/core/colors';
 import CameraAltIcon from '@material-ui/icons/CameraAlt';
 import AddIcon from '@material-ui/icons/Add';
+// import '../../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 const useStyles = makeStyles((theme) => ({
   content: {
@@ -81,7 +82,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    padding: '6px 6px',
+    padding: '0px 6px',
     cursor: 'pointer',
     '& > p': {
       fontSize: '12px',
@@ -136,6 +137,22 @@ const ChecklistMobile = () => {
     dent: false,
     damage: true,
   });
+  // For multiple image uploader
+  // const [file, setfile] = useState([null]);
+  // let fileObj = [];
+  // let fileArray = [];
+  // const uploadMultipleFiles = (e) => {
+  //   fileObj.push(e.target.files);
+  //   for (let i = 0; i < fileObj[0].length; i++) {
+  //     fileArray.push(URL.createObjectURL(fileObj[0][i]));
+  //   }
+  //   setfile({ file: fileArray });
+  // };
+
+  // const uploadFiles = (e) => {
+  //   e.preventDefault();
+  //   console.log(file);
+  // };
 
   // image upload states
   const [file, setfile] = useState('');
@@ -214,6 +231,30 @@ const ChecklistMobile = () => {
           }}
         >
           <div className={classes.content}>
+            {/* Image uploader for multiple images */}
+            {/* <form>
+              <div className="form-group multi-preview">
+                {(fileArray || []).map((url) => (
+                  <img src={url} alt="..." />
+                ))}
+              </div>
+
+              <div className="form-group">
+                <input
+                  type="file"
+                  className="form-control"
+                  onChange={(e) => uploadMultipleFiles(e)}
+                  multiple
+                />
+              </div>
+              <button
+                type="button"
+                className="btn btn-danger btn-block"
+                onClick={(e) => uploadFiles(e)}
+              >
+                Upload
+              </button>
+            </form> */}
             <p className={classes.header}>Check List</p>
 
             <div className={classes.togglers}>
@@ -256,7 +297,7 @@ const ChecklistMobile = () => {
                       for="file-upload"
                       className={classes.customfileupload}
                     >
-                      <AddIcon className={classes.icon} /> <p>Add images</p>
+                      <p>Add images</p>
                     </label>
                     <input
                       id="file-upload"
