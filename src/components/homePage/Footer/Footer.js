@@ -14,23 +14,23 @@ export class Footer extends Component {
         <ul>
           <Link to="/">
             <li>
-              <HomeIcon />
+              <HomeIcon className="icons" />
               Home
             </li>
           </Link>
 
           <Link to="/upcoming-bookings">
             <li>
-              <CalendarTodayIcon />
+              <CalendarTodayIcon className="icons" />
               Booking
             </li>
           </Link>
           <li>
-            <LocalOfferIcon />
+            <LocalOfferIcon className="icons" />
             Offers
           </li>
           <li>
-            <AccountBoxIcon />
+            <AccountBoxIcon className="icons" />
             Account
           </li>
         </ul>

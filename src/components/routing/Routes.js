@@ -6,6 +6,7 @@ import UpcomingBookings from '../bookingFooterTab/MobileViews/UpcomingBookings';
 import CancelledBookings from '../bookingFooterTab/MobileViews/CancelledBookings';
 import CompleteBookings from '../bookingFooterTab/MobileViews/CompleteBookings';
 import Summary from '../bookingFooterTab/MobileViews/Summary';
+import PreDeliveryInspectionMobile from '../checklist/PreDeliveryInspectionMobile';
 
 import { Route, Switch } from 'react-router-dom';
 import ChecklistMobile from '../checklist/ChecklistMobile';
@@ -22,6 +23,11 @@ const Routes = () => {
         <Route exact path="/complete-bookings" component={CompleteBookings} />
         <Route exact path="/summary" component={Summary} />
         <Route exact path="/checklist-mobile" component={ChecklistMobile} />
+        <Route
+          exact
+          path="/predeliveryinspection-mobile"
+          component={PreDeliveryInspectionMobile}
+        />
       </Switch>
     </section>
   );
