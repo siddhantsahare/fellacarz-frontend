@@ -94,7 +94,7 @@ const useStyles = makeStyles((theme) => ({
 const PreDeliveryInspectionMobile = () => {
   const classes = useStyles();
   //   To avoid re-rendering I have used multiple states.
-  const [checkedExterior, setcheckedExterior] = React.useState(true);
+  const [checkedExterior] = React.useState(true);
   const [loadExterior, setloadExterior] = React.useState(true);
 
   const [checkedInterior, setcheckedInterior] = React.useState(false);

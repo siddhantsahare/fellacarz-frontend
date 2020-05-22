@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import LocationModal from './LocationModal';
-import LoadMobileCitySelector from './LoadMobileCitySelector';
+import Drawer from '@material-ui/core/Drawer';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
@@ -12,7 +11,6 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListSubheader from '@material-ui/core/ListSubheader';
-import Popover from '@material-ui/core/Popover';
 import Navbar from '../homePage/Navbar/Navbar';
 
 // icons
@@ -199,11 +197,8 @@ const useStyles = makeStyles((theme) => ({
 const Home = () => {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
-  const [step, setStep] = useState(0);
-  const [anchorEl, setAnchorEl] = useState(null);
-  const [popover, setPopover] = useState(false);
-  const popoverOpen = Boolean(anchorEl);
-  const id = popoverOpen ? 'simple-popover' : undefined;
+  const [openLocation, setOpenLocation] = useState(false);
+  const [drawerOpen, setdrawerOpen] = useState(false);
 
   const handleOpen = () => {
     setOpen(true);
@@ -211,44 +206,23 @@ const Home = () => {
 
   const handleClose = () => {
     setOpen(false);
-    setAnchorEl(null);
+  };
+  const handledrawerOpen = () => {
+    setdrawerOpen(true);
   };
 
-  // Proceed to next step of city modal
-  const nextStep = () => {
-    setStep(1);
+  const handledrawerClose = () => {
+    setdrawerOpen(false);
   };
 
-  // Go back to prev step of city modal
-  const prevStep = () => {
-    setStep(0);
+  const openLocationClose = () => {
+    setOpenLocation(false);
   };
 
-  const continued = (e) => {
-    e.preventDefault();
-    nextStep();
+  const handleOpenLocation = () => {
+    setOpenLocation(true);
+    setdrawerOpen(false);
   };
-
-  const loadMobileCitySelector = (e) => {
-    setPopover({
-      popover: true,
-    });
-    setAnchorEl({
-      anchorEl: e.currentTarget,
-    });
-  };
-
-  switch (step) {
-    case 1:
-      return (
-        <LocationModal
-          open={open}
-          prevStep={prevStep}
-          handleOpen={handleOpen}
-          handleClose={handleClose}
-        />
-      );
-  }
 
   return (
     <div className={classes.container}>
@@ -261,7 +235,7 @@ const Home = () => {
           <Button
             variant="contained"
             className={classes.searchBtnMob}
-            onClick={loadMobileCitySelector}
+            onClick={handledrawerOpen}
           >
             <RoomIcon />
             <p>&nbsp;&nbsp;&nbsp;Enter the pick up address</p>
@@ -275,26 +249,100 @@ const Home = () => {
             <RoomIcon />
             <p>&nbsp;&nbsp;&nbsp;Enter the pick up address</p>
           </Button>
-          {/* Popover from bottom for Mobile */}
+          {/* Drawer from bottom for Mobile */}
           <div className="popover">
-            <Popover
-              id={id}
-              open={popoverOpen}
-              anchorReference="anchorPosition"
-              anchorPosition={{ top: 1000, left: 200 }}
-              anchorEl={anchorEl}
-              onClose={handleClose}
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'center',
-              }}
-              transformOrigin={{
-                vertical: 'bottom',
-                horizontal: 'center',
-              }}
+            {/* Drawer for city */}
+            <Drawer
+              anchor="bottom"
+              open={drawerOpen}
+              onClose={handledrawerClose}
             >
-              {popover && <LoadMobileCitySelector popover={popover} />}
-            </Popover>
+              <div>
+                <List
+                  component="nav"
+                  aria-label="main header folders"
+                  className={classes.headerList}
+                >
+                  <ListSubheader
+                    className={classes.header}
+                  >{`Select Your City`}</ListSubheader>
+                </List>
+
+                <List
+                  component="nav"
+                  aria-label="main list folders"
+                  className={classes.list}
+                >
+                  <ListItem
+                    button
+                    className={classes.listItem}
+                    onClick={handleOpenLocation}
+                  >
+                    <ListItemText primary="Bangalore" />
+                  </ListItem>
+
+                  <ListItem
+                    button
+                    className={classes.listItem}
+                    onClick={handleOpenLocation}
+                  >
+                    <ListItemText primary="Pune" />
+                  </ListItem>
+
+                  <ListItem
+                    button
+                    className={classes.listItem}
+                    onClick={handleOpenLocation}
+                  >
+                    <ListItemText primary="Mumbai" />
+                  </ListItem>
+
+                  <ListItem
+                    button
+                    className={classes.listItem}
+                    onClick={handleOpenLocation}
+                  >
+                    <ListItemText primary="Goa" />
+                  </ListItem>
+                </List>
+              </div>
+            </Drawer>
+            {/* Locations */}
+            <Drawer
+              anchor="bottom"
+              open={openLocation}
+              onClose={openLocationClose}
+            >
+              <div>
+                <List
+                  component="nav"
+                  aria-label="main header folders"
+                  className={classes.headerList}
+                >
+                  <ListSubheader
+                    className={classes.header}
+                  >{`Select Location`}</ListSubheader>
+                </List>
+
+                <List
+                  component="nav"
+                  aria-label="main list folders"
+                  className={classes.list}
+                >
+                  <ListItem button className={classes.listItem}>
+                    <ListItemText primary="MG Road" />
+                  </ListItem>
+
+                  <ListItem button className={classes.listItem}>
+                    <ListItemText primary="New orleans" />
+                  </ListItem>
+
+                  <ListItem button className={classes.listItem}>
+                    <ListItemText primary="Byculla" />
+                  </ListItem>
+                </List>
+              </div>
+            </Drawer>
           </div>
           {/* Modal for desktop */}
           <Modal
@@ -326,23 +374,23 @@ const Home = () => {
                 className={classes.list}
               >
                 <ListItem button className={classes.listItem}>
-                  <ListItemText primary="Bangalore" onClick={continued} />
+                  <ListItemText primary="Bangalore" />
                 </ListItem>
 
                 <ListItem button className={classes.listItem}>
-                  <ListItemText primary="Pune" onClick={continued} />
+                  <ListItemText primary="Pune" />
                 </ListItem>
 
                 <ListItem button className={classes.listItem}>
-                  <ListItemText primary="Mumbai" onClick={continued} />
+                  <ListItemText primary="Mumbai" />
                 </ListItem>
 
                 <ListItem button className={classes.listItem}>
-                  <ListItemText primary="Goa" onClick={continued} />
+                  <ListItemText primary="Goa" />
                 </ListItem>
 
                 <ListItem button className={classes.listItem}>
-                  <ListItemText primary="Chennai" onClick={continued} />
+                  <ListItemText primary="Chennai" />
                 </ListItem>
               </List>
             </div>

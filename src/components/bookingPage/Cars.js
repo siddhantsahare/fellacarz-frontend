@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Paper from '@material-ui/core/Paper';
+import Drawer from '@material-ui/core/Drawer';
+
 import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
@@ -94,10 +96,77 @@ const useStyles = makeStyles((theme) => ({
     margin: '0px 5px',
     color: '#2C9247',
   },
+  drawer: {},
+  drawerCars: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: '20px',
+
+    '& > h3': {
+      marginBottom: '10px',
+      color: '#2C9247',
+    },
+    '& > div': {
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      margin: '20px 0px',
+      backgroundColor: '#F2F2F2',
+      width: '300px',
+      height: '80px',
+      padding: '5px 10px',
+      borderRadius: '5px',
+      '& > h3': {
+        display: 'flex',
+        justifyContent: 'space-between',
+        '& > div': {
+          display: 'flex',
+          alignItems: 'center',
+        },
+      },
+      '& > p': {
+        marginLeft: '30px',
+      },
+    },
+  },
+  btnWrapper: {
+    display: 'flex',
+  },
+  doneBtn: {
+    width: '100px',
+    backgroundColor: '#2C9247',
+    borderRadius: '5px',
+    color: 'white',
+    fontSize: '15px',
+    fontWeight: '700',
+    marginLeft: '50px',
+  },
+
+  cancelBtn: {
+    backgroundColor: 'white',
+    color: '#2C9247',
+    border: '1px solid #2C9247',
+    borderRadius: '5px',
+    width: '100px',
+    fontSize: '15px',
+    fontWeight: '700',
+    marginRight: '50px',
+  },
 }));
 
 const Cars = () => {
   const classes = useStyles();
+  const [drawerOpen, setdrawerOpen] = useState(false);
+
+  const handleDrawerOpen = () => {
+    setdrawerOpen(true);
+  };
+
+  const handleDrawerClose = () => {
+    setdrawerOpen(false);
+  };
 
   return (
     <div className={classes.cars}>
@@ -130,11 +199,49 @@ const Cars = () => {
               </div>
             </Grid>
             <Grid item lg={3} md={3}>
-              <h2>
+              <h2 onClick={handleDrawerOpen}>
                 <RoomIcon className={classes.icons} />
                 0.6kms
                 <ArrowForwardIosIcon className={classes.icons} />
               </h2>
+              <Drawer
+                anchor="bottom"
+                open={drawerOpen}
+                onClose={handleDrawerClose}
+                className={classes.drawer}
+              >
+                <div className={classes.drawerCars}>
+                  <h3>Location</h3>
+                  <div>
+                    <h3>
+                      <div>
+                        <RoomIcon className={classes.icons} />
+                        0.6kms
+                      </div>
+                      <ArrowForwardIosIcon className={classes.icons} />
+                    </h3>
+                    <p>from railway station</p>
+                  </div>
+                  <div>
+                    <h3>
+                      <div>
+                        <RoomIcon className={classes.icons} />
+                        0.6kms
+                      </div>
+                      <ArrowForwardIosIcon className={classes.icons} />
+                    </h3>
+                    <p>from railway station</p>
+                  </div>
+                  <span className={classes.btnWrapper}>
+                    <Button variant="contained" className={classes.cancelBtn}>
+                      Cancel
+                    </Button>
+                    <Button variant="contained" className={classes.doneBtn}>
+                      Done
+                    </Button>
+                  </span>
+                </div>
+              </Drawer>
               <p>from railway station</p>
               <Link to="/book-car">
                 <Button variant="contained" className={classes.button}>

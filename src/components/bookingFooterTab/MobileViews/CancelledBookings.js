@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles, withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
@@ -12,7 +12,6 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import EventIcon from '@material-ui/icons/Event';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import RoomIcon from '@material-ui/icons/Room';
-import CallIcon from '@material-ui/icons/Call';
 import AirportShuttleIcon from '@material-ui/icons/AirportShuttle';
 
 const useStyles = makeStyles((theme) => ({

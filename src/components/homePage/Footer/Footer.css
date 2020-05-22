@@ -9,7 +9,7 @@
 @media (max-width: 1200px) {
   .app-footer {
     flex-shrink: 0;
-    background: #f4f4f4;
+    background: #e0fae7;
     color: #444;
     padding: 10px 5px;
     font-size: 14px;
@@ -29,17 +29,17 @@
   }
   .app-footer:hover {
     outline: 'none';
-    background: #f4f4f4;
+    background: #e0fae7;
   }
 
   .app-footer:active {
     outline: 'none';
-    background: #f4f4f4;
+    background: #e0fae7;
   }
 
   .app-footer:focus {
     outline: 'none';
-    background: #f4f4f4;
+    background: #e0fae7;
   }
 
   .app-footer ul {

@@ -29,10 +29,12 @@ export class Footer extends Component {
             <LocalOfferIcon className="icons" />
             Offers
           </li>
-          <li>
-            <AccountBoxIcon className="icons" />
-            Account
-          </li>
+          <Link to="/account">
+            <li>
+              <AccountBoxIcon className="icons" />
+              Account
+            </li>
+          </Link>
         </ul>
       </footer>
     );

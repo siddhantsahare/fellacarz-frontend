@@ -1,8 +1,6 @@
 import React from 'react';
-import { makeStyles, withStyles } from '@material-ui/core/styles';
-
+import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
-
 // icons
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import TimerIcon from '@material-ui/icons/Timer';

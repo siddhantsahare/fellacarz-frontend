@@ -7,6 +7,7 @@ import CancelledBookings from '../bookingFooterTab/MobileViews/CancelledBookings
 import CompleteBookings from '../bookingFooterTab/MobileViews/CompleteBookings';
 import Summary from '../bookingFooterTab/MobileViews/Summary';
 import PreDeliveryInspectionMobile from '../checklist/PreDeliveryInspectionMobile';
+import Account from '../bookingFooterTab/MobileViews/Account';
 
 import { Route, Switch } from 'react-router-dom';
 import ChecklistMobile from '../checklist/ChecklistMobile';
@@ -28,6 +29,7 @@ const Routes = () => {
           path="/predeliveryinspection-mobile"
           component={PreDeliveryInspectionMobile}
         />
+        <Route exact path="/account" component={Account} />
       </Switch>
     </section>
   );

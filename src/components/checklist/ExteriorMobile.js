@@ -1,6 +1,5 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import PreDeliveryInspectionMobile from './PreDeliveryInspectionMobile';
 
 const useStyles = makeStyles((theme) => ({
   exterior: {

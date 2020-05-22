@@ -1,16 +1,13 @@
 import React, { useState } from 'react';
 import Button from '@material-ui/core/Button';
-import Popover from '@material-ui/core/Popover';
+import Drawer from '@material-ui/core/Drawer';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Switch from '@material-ui/core/Switch';
 import { green } from '@material-ui/core/colors';
 import CameraAltIcon from '@material-ui/icons/CameraAlt';
-import AddIcon from '@material-ui/icons/Add';
-// import '../../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 const useStyles = makeStyles((theme) => ({
   content: {
-    width: '355px',
     display: 'flex',
     flexDirection: 'column',
     padding: '10px 40px',
@@ -38,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
   imagesContainer: {
     display: 'grid',
     gridTemplateColumns: 'repeat(3, 1fr)',
-    gridGap: '5px',
+    gridGap: '10px',
     '& > div': {
       width: '90px',
       height: '90px',
@@ -130,8 +127,7 @@ const GreenSwitch = withStyles({
 
 const ChecklistMobile = () => {
   const classes = useStyles();
-  const [anchorEl, setAnchorEl] = useState(null);
-  const [popover, setPopover] = useState(false);
+  const [open, setopen] = useState(false);
   const [state, setState] = React.useState({
     scratches: true,
     dent: false,
@@ -181,20 +177,12 @@ const ChecklistMobile = () => {
     setState({ ...state, [event.target.name]: event.target.checked });
   };
 
-  const popoverOpen = Boolean(anchorEl);
-  const id = popoverOpen ? 'simple-popover' : undefined;
-
-  const handleClose = () => {
-    setAnchorEl(null);
+  const checklistDrawer = (e) => {
+    setopen(true);
   };
 
-  const checklistPopover = (e) => {
-    setPopover({
-      popover: true,
-    });
-    setAnchorEl({
-      anchorEl: e.currentTarget,
-    });
+  const handleClose = (e) => {
+    setopen(false);
   };
 
   let $imagePreview = null;
@@ -208,28 +196,12 @@ const ChecklistMobile = () => {
       <Button
         variant="contained"
         className={classes.searchBtnMob}
-        onClick={checklistPopover}
+        onClick={checklistDrawer}
       >
         Click me to trigger the popover
       </Button>
       <div className="popover">
-        <Popover
-          id={id}
-          open={popoverOpen}
-          anchorReference="anchorPosition"
-          anchorPosition={{ top: 1800, left: 150 }}
-          anchorEl={anchorEl}
-          onClose={handleClose}
-          className={classes.popover}
-          anchorOrigin={{
-            vertical: 'bottom',
-            horizontal: 'center',
-          }}
-          transformOrigin={{
-            vertical: 'bottom',
-            horizontal: 'center',
-          }}
-        >
+        <Drawer open={open} onClose={handleClose} anchor="bottom">
           <div className={classes.content}>
             {/* Image uploader for multiple images */}
             {/* <form>
@@ -310,10 +282,12 @@ const ChecklistMobile = () => {
               </div>
             </div>
             <div className={classes.btnContainer}>
-              <button className={classes.done}>Done</button>
+              <button className={classes.done} onClick={handleClose}>
+                Done
+              </button>
             </div>
           </div>
-        </Popover>
+        </Drawer>
       </div>
     </div>
   );
