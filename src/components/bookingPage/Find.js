@@ -4,7 +4,10 @@ import Sort from './Sort';
 import ViewBookings from './ViewBookings';
 import SearchByCity from './SearchByCity';
 import { makeStyles } from '@material-ui/core/styles';
+import FilterMobile from './FilterMobile';
 import Cars from './Cars';
+import CarsMobile from './CarsMobile';
+import SearchByCityMobile from './SearchByCityMobile';
 
 const useStyles = makeStyles((theme) => ({
   gridRow: {
@@ -32,11 +35,17 @@ const useStyles = makeStyles((theme) => ({
     marginRight: '-10%',
     zIndex: '1',
     [theme.breakpoints.down('md')]: {
-      width: '100%',
-      marginLeft: '0',
-      marginRight: '0%',
-      marginTop: '-30px',
+      display: 'none',
     },
+  },
+  column3: {
+    zIndex: '20',
+    [theme.breakpoints.up('md')]: {
+      display: 'none',
+    },
+  },
+  carMobileContainer: {
+    marginTop: '130px',
   },
 }));
 
@@ -56,6 +65,18 @@ const Find = () => {
         <Cars />
         <Cars />
         <Cars />
+      </div>
+
+      <div className={classes.column3}>
+        <SearchByCityMobile />
+
+        <div className={classes.carMobileContainer}>
+          <CarsMobile />
+          <CarsMobile />
+          <CarsMobile />
+          <CarsMobile />
+        </div>
+        <FilterMobile />
       </div>
     </div>
   );

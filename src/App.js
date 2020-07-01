@@ -1,7 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Navbar from './components/homePage/Navbar/Navbar';
-import Home from './components/homePage/Home';
+import HomePageNew from './components/homePageNew/HomePageNew';
 import Routes from './components/routing/Routes';
 
 import './App.css';
@@ -10,17 +9,16 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <Navbar />
         {/* Uses Line breaks because the Navbar is fixed and has low z-index */}
         <br />
         <br />
         <br />
-        <div class="container">
-          <Switch>
-            <Route exact path="/" component={Home} />
+        <Switch>
+          <Route exact path="/" component={HomePageNew} />
+          <div class="container">
             <Route component={Routes} />
-          </Switch>
-        </div>
+          </div>
+        </Switch>
         {/* <Footer /> */}
       </div>
     </Router>

@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, Fragment } from 'react';
+import Skeleton from '@material-ui/lab/Skeleton';
 import { Link } from 'react-router-dom';
 import Paper from '@material-ui/core/Paper';
 import Drawer from '@material-ui/core/Drawer';
@@ -15,6 +16,13 @@ import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 const useStyles = makeStyles((theme) => ({
   cars: {
     width: '100%',
+    height: '240px',
+    overFlow: 'none',
+    margin: '10px 0px',
+  },
+  skeleton: {
+    width: '100%',
+    height: '240px',
     overFlow: 'none',
     margin: '10px 0px',
   },
@@ -159,6 +167,7 @@ const useStyles = makeStyles((theme) => ({
 const Cars = () => {
   const classes = useStyles();
   const [drawerOpen, setdrawerOpen] = useState(false);
+  const [loading, setloading] = useState(true);
 
   const handleDrawerOpen = () => {
     setdrawerOpen(true);
@@ -169,90 +178,219 @@ const Cars = () => {
   };
 
   return (
-    <div className={classes.cars}>
-      <div className={classes.root}>
-        <Paper className={classes.paper} elevation={3}>
-          <Grid container direction="row" spacing={2} className={classes.grid}>
-            <Grid item lg={3} md={3}>
-              <img
-                src="img/nexon.png"
-                className={classes.carImage}
-                alt="carImage"
-              />
-            </Grid>
-            <Grid item lg={6} md={6}>
-              <h2>Tata Nexon</h2>
-              <p>SUV | 5Seater | Diesel | Without Fuel</p>
-              <div className={classes.boxContainer}>
-                <Box className={classes.box} component="span">
-                  <h4>21917</h4>
-                  <p>1302 kms</p>
-                </Box>
-                <Box className={classes.box} component="span">
-                  <h4>21917</h4>
-                  <p>1302 kms</p>
-                </Box>
-                <Box className={classes.box} component="span">
-                  <h4>21917</h4>
-                  <p>1302 kms</p>
-                </Box>
-              </div>
-            </Grid>
-            <Grid item lg={3} md={3}>
-              <h2 onClick={handleDrawerOpen}>
-                <RoomIcon className={classes.icons} />
-                0.6kms
-                <ArrowForwardIosIcon className={classes.icons} />
-              </h2>
-              <Drawer
-                anchor="bottom"
-                open={drawerOpen}
-                onClose={handleDrawerClose}
-                className={classes.drawer}
+    <Fragment>
+      {loading ? (
+        <div className={classes.skeleton}>
+          <div className={classes.cars}>
+            <div className={classes.root}>
+              <Paper className={classes.paper} elevation={3}>
+                <Grid
+                  container
+                  direction="row"
+                  spacing={2}
+                  className={classes.grid}
+                >
+                  <Grid item lg={3} md={3}>
+                    <Skeleton
+                      animation="wave"
+                      variant="square"
+                      height="200px"
+                    />
+                  </Grid>
+                  <Grid item lg={6} md={6}>
+                    <Skeleton
+                      animation="wave"
+                      height="30px"
+                      style={{ marginBottom: '5px', marginTop: '-30px' }}
+                    />
+                    <Skeleton animation="wave" height="30px" />
+
+                    <div
+                      className={classes.boxContainer}
+                      style={{ margin: '20px' }}
+                    >
+                      <Skeleton animation="wave">
+                        <h4>21917</h4>
+                        <p>1302 kms</p>
+                      </Skeleton>
+
+                      <Skeleton animation="wave">
+                        <h4>21917</h4>
+                        <p>1302 kms</p>
+                      </Skeleton>
+                      <Skeleton animation="wave">
+                        <h4>21917</h4>
+                        <p>1302 kms</p>
+                      </Skeleton>
+                    </div>
+                  </Grid>
+                  <Grid item lg={3} md={3}>
+                    <Skeleton
+                      animation="wave"
+                      height="60px"
+                      width="120px"
+                      style={{ marginTop: '-20px', marginLeft: '20px' }}
+                    >
+                      <RoomIcon className={classes.icons} />
+
+                      <ArrowForwardIosIcon className={classes.icons} />
+                    </Skeleton>
+                    <Drawer
+                      anchor="bottom"
+                      open={drawerOpen}
+                      onClose={handleDrawerClose}
+                      className={classes.drawer}
+                    >
+                      <div className={classes.drawerCars}>
+                        <h3>Location</h3>
+                        <div>
+                          <h3>
+                            <div>
+                              <RoomIcon className={classes.icons} />
+                              0.6kms
+                            </div>
+                            <ArrowForwardIosIcon className={classes.icons} />
+                          </h3>
+                          <p>from railway station</p>
+                        </div>
+                        <div>
+                          <h3>
+                            <div>
+                              <RoomIcon className={classes.icons} />
+                              0.6kms
+                            </div>
+                            <ArrowForwardIosIcon className={classes.icons} />
+                          </h3>
+                          <p>from railway station</p>
+                        </div>
+                        <span className={classes.btnWrapper}>
+                          <Button
+                            variant="contained"
+                            className={classes.cancelBtn}
+                          >
+                            Cancel
+                          </Button>
+                          <Button
+                            variant="contained"
+                            className={classes.doneBtn}
+                          >
+                            Done
+                          </Button>
+                        </span>
+                      </div>
+                    </Drawer>
+
+                    <Link to="/book-car">
+                      <Skeleton
+                        animation="wave"
+                        style={{ marginTop: '20px', marginLeft: '20px' }}
+                      >
+                        <Button variant="contained" className={classes.button}>
+                          Book
+                        </Button>
+                      </Skeleton>
+                    </Link>
+                  </Grid>
+                </Grid>
+              </Paper>
+            </div>
+          </div>
+        </div>
+      ) : (
+        <div className={classes.cars}>
+          <div className={classes.root}>
+            <Paper className={classes.paper} elevation={3}>
+              <Grid
+                container
+                direction="row"
+                spacing={2}
+                className={classes.grid}
               >
-                <div className={classes.drawerCars}>
-                  <h3>Location</h3>
-                  <div>
-                    <h3>
-                      <div>
-                        <RoomIcon className={classes.icons} />
-                        0.6kms
-                      </div>
-                      <ArrowForwardIosIcon className={classes.icons} />
-                    </h3>
-                    <p>from railway station</p>
+                <Grid item lg={3} md={3}>
+                  <img
+                    src="img/nexon.png"
+                    className={classes.carImage}
+                    alt="carImage"
+                  />
+                </Grid>
+                <Grid item lg={6} md={6}>
+                  <h2>Tata Nexon</h2>
+                  <p>SUV | 5Seater | Diesel | Without Fuel</p>
+                  <div className={classes.boxContainer}>
+                    <Box className={classes.box} component="span">
+                      <h4>21917</h4>
+                      <p>1302 kms</p>
+                    </Box>
+                    <Box className={classes.box} component="span">
+                      <h4>21917</h4>
+                      <p>1302 kms</p>
+                    </Box>
+                    <Box className={classes.box} component="span">
+                      <h4>21917</h4>
+                      <p>1302 kms</p>
+                    </Box>
                   </div>
-                  <div>
-                    <h3>
+                </Grid>
+                <Grid item lg={3} md={3}>
+                  <h2 onClick={handleDrawerOpen}>
+                    <RoomIcon className={classes.icons} />
+                    0.6kms
+                    <ArrowForwardIosIcon className={classes.icons} />
+                  </h2>
+                  <Drawer
+                    anchor="bottom"
+                    open={drawerOpen}
+                    onClose={handleDrawerClose}
+                    className={classes.drawer}
+                  >
+                    <div className={classes.drawerCars}>
+                      <h3>Location</h3>
                       <div>
-                        <RoomIcon className={classes.icons} />
-                        0.6kms
+                        <h3>
+                          <div>
+                            <RoomIcon className={classes.icons} />
+                            0.6kms
+                          </div>
+                          <ArrowForwardIosIcon className={classes.icons} />
+                        </h3>
+                        <p>from railway station</p>
                       </div>
-                      <ArrowForwardIosIcon className={classes.icons} />
-                    </h3>
-                    <p>from railway station</p>
-                  </div>
-                  <span className={classes.btnWrapper}>
-                    <Button variant="contained" className={classes.cancelBtn}>
-                      Cancel
+                      <div>
+                        <h3>
+                          <div>
+                            <RoomIcon className={classes.icons} />
+                            0.6kms
+                          </div>
+                          <ArrowForwardIosIcon className={classes.icons} />
+                        </h3>
+                        <p>from railway station</p>
+                      </div>
+                      <span className={classes.btnWrapper}>
+                        <Button
+                          variant="contained"
+                          className={classes.cancelBtn}
+                        >
+                          Cancel
+                        </Button>
+                        <Button variant="contained" className={classes.doneBtn}>
+                          Done
+                        </Button>
+                      </span>
+                    </div>
+                  </Drawer>
+                  <p>from railway station</p>
+                  <Link to="/book-car">
+                    <Button variant="contained" className={classes.button}>
+                      Book
                     </Button>
-                    <Button variant="contained" className={classes.doneBtn}>
-                      Done
-                    </Button>
-                  </span>
-                </div>
-              </Drawer>
-              <p>from railway station</p>
-              <Link to="/book-car">
-                <Button variant="contained" className={classes.button}>
-                  Book
-                </Button>
-              </Link>
-            </Grid>
-          </Grid>
-        </Paper>
-      </div>
-    </div>
+                  </Link>
+                </Grid>
+              </Grid>
+            </Paper>
+          </div>
+        </div>
+      )}
+    </Fragment>
   );
 };
 

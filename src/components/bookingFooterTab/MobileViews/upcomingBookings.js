@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
@@ -6,7 +6,8 @@ import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-
+import Skeleton from '@material-ui/lab/Skeleton';
+import Footer from '../../homePage/Footer/Footer';
 // icons
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import EventIcon from '@material-ui/icons/Event';
@@ -275,6 +276,7 @@ const UpcomingBookings = () => {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
   const [expandedInnerPanel, setExpandedInnerPanel] = React.useState(false);
+  const [loading, setLoading] = useState(true);
 
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
@@ -284,291 +286,620 @@ const UpcomingBookings = () => {
     setExpandedInnerPanel(isExpandedInnerPanel ? panel : false);
   };
   return (
-    <div className={classes.bookingTabMobile}>
-      <div className={classes.header}>
-        <div className={classes.headerInner1}>
-          <ArrowBackIcon />
-          <p>Booking</p>
-          <MoreVertIcon />
-        </div>
-        <div className={classes.headerInner2}>
-          <Button variant="contained" className={classes.headerButton1}>
-            Upcoming
-          </Button>
-          <Button variant="contained" className={classes.headerButton2}>
-            Complete
-          </Button>
-          <Button variant="contained" className={classes.headerButton3}>
-            Cancelled
-          </Button>
-        </div>
-      </div>
-      {/* Main Content */}
-      <div className={classes.content}>
-        <Paper elevation={3} className={classes.paper}>
-          <div className={classes.paperInner1}>
-            <p>Jaipur</p>
-            <p>Booked on: 12/04/2020</p>
-          </div>
-          <div className={classes.paperInner2}>
-            <img src="img/nexon.png" alt="car" className={classes.image} />
-            <div>
-              <h2>Tata Nexon</h2>
-              <p>Booking Id: 1245863</p>
-              <p>
-                Registration No.: <span>RJ14F1258</span>
-              </p>
-              <p>KM Package : 150 km</p>
+    <>
+      {loading ? (
+        <div className={classes.bookingTabMobile}>
+          <div className={classes.header}>
+            <div className={classes.headerInner1}>
+              <ArrowBackIcon />
+              <p>Booking</p>
+              <MoreVertIcon />
+            </div>
+            <div className={classes.headerInner2}>
+              <Button variant="contained" className={classes.headerButton1}>
+                Upcoming
+              </Button>
+              <Button variant="contained" className={classes.headerButton2}>
+                Complete
+              </Button>
+              <Button variant="contained" className={classes.headerButton3}>
+                Cancelled
+              </Button>
             </div>
           </div>
-          <div className={classes.paperInner3}>
-            <div>
-              <EventIcon className={classes.icons} />
-              <p>
-                <span>From:</span>
-                <span>
-                  &nbsp;&nbsp;12/04/2020
-                  <span>&nbsp;&nbsp;&nbsp;&nbsp;06:00 PM</span>
-                </span>
-              </p>
-            </div>
-            <div>
-              <p>
-                <span>To:</span>
-                <span>
-                  &nbsp;&nbsp;15/04/2020
-                  <span>&nbsp;&nbsp;&nbsp;&nbsp;06:00 PM</span>
-                </span>
-              </p>
-            </div>
-            <div className={classes.location}>
-              <div>
-                <RoomIcon className={classes.icons} />
-                <p>Pick up Location</p>
+          {/* Main Content */}
+          <div className={classes.content}>
+            {/* Iterate over one paper */}
+            {/* Used just one paper card for skeleton */}
+            <Paper elevation={3} className={classes.paper}>
+              <div className={classes.paperInner1}>
+                <Skeleton
+                  animation="wave"
+                  variant="rect"
+                  style={{ margin: '5px' }}
+                >
+                  <p>Jaipur</p>
+                </Skeleton>
+                <Skeleton
+                  animation="wave"
+                  variant="rect"
+                  style={{ margin: '5px' }}
+                >
+                  <p>Booked on: 12/04/2020</p>
+                </Skeleton>
               </div>
-              <p>XYZ Location</p>
+              <div className={classes.paperInner2}>
+                <Skeleton
+                  animation="wave"
+                  variant="rect"
+                  style={{ margin: '5px' }}
+                >
+                  <img
+                    src="img/nexon.png"
+                    alt="car"
+                    className={classes.image}
+                  />
+                </Skeleton>
+
+                <div>
+                  <Skeleton
+                    animation="wave"
+                    variant="rect"
+                    width="100px"
+                    height="20px"
+                    style={{ margin: '10px' }}
+                  >
+                    <h2>Tata Nexon</h2>
+                  </Skeleton>
+
+                  <Skeleton
+                    animation="wave"
+                    variant="rect"
+                    width="140px"
+                    height="20px"
+                    style={{ margin: '10px' }}
+                  >
+                    <p>Booking Id: 1245863</p>
+                  </Skeleton>
+
+                  <Skeleton
+                    animation="wave"
+                    variant="rect"
+                    width="150px"
+                    height="20px"
+                    style={{ margin: '10px' }}
+                  >
+                    <p>
+                      Registration No.: <span>RJ14F1258</span>
+                    </p>
+                  </Skeleton>
+                  <Skeleton
+                    animation="wave"
+                    variant="rect"
+                    width="150px"
+                    height="20px"
+                    style={{ margin: '10px' }}
+                  >
+                    <p>KM Package : 150 km</p>
+                  </Skeleton>
+                </div>
+              </div>
+              <div className={classes.paperInner3}>
+                <div>
+                  <Skeleton
+                    animation="wave"
+                    variant="rect"
+                    width="90px"
+                    style={{ margin: '5px' }}
+                  >
+                    <p>
+                      <span>From:</span>
+                      <span>
+                        &nbsp;&nbsp;12/04/2020
+                        <span>&nbsp;&nbsp;&nbsp;&nbsp;06:00 PM</span>
+                      </span>
+                    </p>
+                  </Skeleton>
+                </div>
+                <div>
+                  <Skeleton
+                    animation="wave"
+                    variant="rect"
+                    width="90px"
+                    style={{ margin: '5px' }}
+                  >
+                    <p>
+                      <span>From:</span>
+                      <span>
+                        &nbsp;&nbsp;12/04/2020
+                        <span>&nbsp;&nbsp;&nbsp;&nbsp;06:00 PM</span>
+                      </span>
+                    </p>
+                  </Skeleton>
+                </div>
+                <div className={classes.location}>
+                  <Skeleton
+                    animation="wave"
+                    variant="rect"
+                    width="90px"
+                    // height="20px"
+                    style={{ margin: '5px' }}
+                  >
+                    <div>
+                      <RoomIcon className={classes.icons} />
+                      <p>Pick up Location</p>
+                    </div>
+                  </Skeleton>
+                </div>
+              </div>
+              <div className={classes.callButton}>
+                <Skeleton
+                  animation="wave"
+                  variant="rect"
+                  width="95%"
+                  // height="20px"
+                  style={{ margin: '5px' }}
+                >
+                  <Button variant="contained" className={classes.panelButton}>
+                    <CallIcon />
+                    &nbsp;&nbsp;&nbsp;Call Delivery Partner
+                  </Button>
+                </Skeleton>
+              </div>
+
+              <div className={classes.twoButtons}>
+                <Button variant="contained" className={classes.lastButton1}>
+                  Modify Booking
+                </Button>
+                <Button variant="contained" className={classes.lastButton2}>
+                  Cancel Booking
+                </Button>
+              </div>
+            </Paper>
+            <br />
+            {/* Second paper */}
+            <Paper elevation={3} className={classes.paper}>
+              <div className={classes.paperInner1}>
+                <Skeleton
+                  animation="wave"
+                  variant="rect"
+                  style={{ margin: '5px' }}
+                >
+                  <p>Jaipur</p>
+                </Skeleton>
+                <Skeleton
+                  animation="wave"
+                  variant="rect"
+                  style={{ margin: '5px' }}
+                >
+                  <p>Booked on: 12/04/2020</p>
+                </Skeleton>
+              </div>
+              <div className={classes.paperInner2}>
+                <Skeleton
+                  animation="wave"
+                  variant="rect"
+                  style={{ margin: '5px' }}
+                >
+                  <img
+                    src="img/nexon.png"
+                    alt="car"
+                    className={classes.image}
+                  />
+                </Skeleton>
+
+                <div>
+                  <Skeleton
+                    animation="wave"
+                    variant="rect"
+                    width="100px"
+                    height="20px"
+                    style={{ margin: '10px' }}
+                  >
+                    <h2>Tata Nexon</h2>
+                  </Skeleton>
+
+                  <Skeleton
+                    animation="wave"
+                    variant="rect"
+                    width="140px"
+                    height="20px"
+                    style={{ margin: '10px' }}
+                  >
+                    <p>Booking Id: 1245863</p>
+                  </Skeleton>
+
+                  <Skeleton
+                    animation="wave"
+                    variant="rect"
+                    width="150px"
+                    height="20px"
+                    style={{ margin: '10px' }}
+                  >
+                    <p>
+                      Registration No.: <span>RJ14F1258</span>
+                    </p>
+                  </Skeleton>
+                  <Skeleton
+                    animation="wave"
+                    variant="rect"
+                    width="150px"
+                    height="20px"
+                    style={{ margin: '10px' }}
+                  >
+                    <p>KM Package : 150 km</p>
+                  </Skeleton>
+                </div>
+              </div>
+              <div className={classes.paperInner3}>
+                <div>
+                  <Skeleton
+                    animation="wave"
+                    variant="rect"
+                    width="90px"
+                    style={{ margin: '5px' }}
+                  >
+                    <p>
+                      <span>From:</span>
+                      <span>
+                        &nbsp;&nbsp;12/04/2020
+                        <span>&nbsp;&nbsp;&nbsp;&nbsp;06:00 PM</span>
+                      </span>
+                    </p>
+                  </Skeleton>
+                </div>
+                <div>
+                  <Skeleton
+                    animation="wave"
+                    variant="rect"
+                    width="90px"
+                    style={{ margin: '5px' }}
+                  >
+                    <p>
+                      <span>From:</span>
+                      <span>
+                        &nbsp;&nbsp;12/04/2020
+                        <span>&nbsp;&nbsp;&nbsp;&nbsp;06:00 PM</span>
+                      </span>
+                    </p>
+                  </Skeleton>
+                </div>
+                <div className={classes.location}>
+                  <Skeleton
+                    animation="wave"
+                    variant="rect"
+                    width="90px"
+                    // height="20px"
+                    style={{ margin: '5px' }}
+                  >
+                    <div>
+                      <RoomIcon className={classes.icons} />
+                      <p>Pick up Location</p>
+                    </div>
+                  </Skeleton>
+                </div>
+              </div>
+              <div className={classes.callButton}>
+                <Skeleton
+                  animation="wave"
+                  variant="rect"
+                  width="95%"
+                  // height="20px"
+                  style={{ margin: '5px' }}
+                >
+                  <Button variant="contained" className={classes.panelButton}>
+                    <CallIcon />
+                    &nbsp;&nbsp;&nbsp;Call Delivery Partner
+                  </Button>
+                </Skeleton>
+              </div>
+
+              <div className={classes.twoButtons}>
+                <Button variant="contained" className={classes.lastButton1}>
+                  Modify Booking
+                </Button>
+                <Button variant="contained" className={classes.lastButton2}>
+                  Cancel Booking
+                </Button>
+              </div>
+            </Paper>
+          </div>
+          <Footer />
+        </div>
+      ) : (
+        <div className={classes.bookingTabMobile}>
+          <div className={classes.header}>
+            <div className={classes.headerInner1}>
+              <ArrowBackIcon />
+              <p>Booking</p>
+              <MoreVertIcon />
+            </div>
+            <div className={classes.headerInner2}>
+              <Button variant="contained" className={classes.headerButton1}>
+                Upcoming
+              </Button>
+              <Button variant="contained" className={classes.headerButton2}>
+                Complete
+              </Button>
+              <Button variant="contained" className={classes.headerButton3}>
+                Cancelled
+              </Button>
             </div>
           </div>
-          <div className={classes.callButton}>
-            <Button variant="contained" className={classes.panelButton}>
-              <CallIcon />
-              &nbsp;&nbsp;&nbsp;Call Delivery Partner
-            </Button>
-          </div>
-          <div className={classes.expansionMain}>
-            <ExpansionPanel
-              elevation={0}
-              expanded={expanded === 'panel1'}
-              onChange={handleChange('panel1')}
-              className={classes.expansionPanel}
-            >
-              <ExpansionPanelSummary
-                aria-controls="panel1bh-content"
-                id="panel1bh-header"
-                className={classes.expansionPanelSummary}
-              >
-                <ExpandMoreIcon className={classes.expansionIcon} />
-                {/* <p className={classes.secondaryHeading}>
+          {/* Main Content */}
+          <div className={classes.content}>
+            <Paper elevation={3} className={classes.paper}>
+              <div className={classes.paperInner1}>
+                <p>Jaipur</p>
+                <p>Booked on: 12/04/2020</p>
+              </div>
+              <div className={classes.paperInner2}>
+                <img src="img/nexon.png" alt="car" className={classes.image} />
+                <div>
+                  <h2>Tata Nexon</h2>
+                  <p>Booking Id: 1245863</p>
+                  <p>
+                    Registration No.: <span>RJ14F1258</span>
+                  </p>
+                  <p>KM Package : 150 km</p>
+                </div>
+              </div>
+              <div className={classes.paperInner3}>
+                <div>
+                  <EventIcon className={classes.icons} />
+                  <p>
+                    <span>From:</span>
+                    <span>
+                      &nbsp;&nbsp;12/04/2020
+                      <span>&nbsp;&nbsp;&nbsp;&nbsp;06:00 PM</span>
+                    </span>
+                  </p>
+                </div>
+                <div>
+                  <p>
+                    <span>To:</span>
+                    <span>
+                      &nbsp;&nbsp;15/04/2020
+                      <span>&nbsp;&nbsp;&nbsp;&nbsp;06:00 PM</span>
+                    </span>
+                  </p>
+                </div>
+                <div className={classes.location}>
+                  <div>
+                    <RoomIcon className={classes.icons} />
+                    <p>Pick up Location</p>
+                  </div>
+                  <p>XYZ Location</p>
+                </div>
+              </div>
+              <div className={classes.callButton}>
+                <Button variant="contained" className={classes.panelButton}>
+                  <CallIcon />
+                  &nbsp;&nbsp;&nbsp;Call Delivery Partner
+                </Button>
+              </div>
+              <div className={classes.expansionMain}>
+                <ExpansionPanel
+                  elevation={0}
+                  expanded={expanded === 'panel1'}
+                  onChange={handleChange('panel1')}
+                  className={classes.expansionPanel}
+                >
+                  <ExpansionPanelSummary
+                    aria-controls="panel1bh-content"
+                    id="panel1bh-header"
+                    className={classes.expansionPanelSummary}
+                  >
+                    <ExpandMoreIcon className={classes.expansionIcon} />
+                    {/* <p className={classes.secondaryHeading}>
                   I am an expansion panel
                 </p>  */}
-              </ExpansionPanelSummary>
-              <ExpansionPanelDetails>
-                <div className={classes.expansionPanelDetails}>
-                  <div>
-                    <Button variant="contained" className={classes.panelButton}>
-                      <AirportShuttleIcon />
-                      &nbsp;&nbsp;&nbsp; Pick up Car
-                    </Button>
-                  </div>
-                  <div className={classes.innerPanel}>
-                    <ExpansionPanel
-                      elevation={0}
-                      expanded={expandedInnerPanel === 'panel2'}
-                      onChange={handleChangeInnerPanel('panel2')}
-                      className={classes.expansionPanelInner}
-                    >
-                      <ExpansionPanelSummary
-                        expandIcon={<ExpandMoreIcon />}
-                        aria-controls="panel2bh-content"
-                        id="panel2bh-header"
-                        className={classes.expansionPanelInnerSummary}
-                      >
-                        <p className={classes.heading}>Payment Breakdown</p>
-                      </ExpansionPanelSummary>
-                      <ExpansionPanelDetails>
-                        <div className={classes.expansionPanelDetailsInner}>
-                          <div>
-                            <p>Tariff Price - 150km</p>
-                            <p>₹​ 1000</p>
-                          </div>
-                          <div>
-                            <p>Refundable Security Deposit</p>
-                            <p>₹​ 5000</p>
-                          </div>
-                          <hr />
-                          <div className={classes.totalPaid}>
-                            <p>Total Paid</p>
-                            <p>₹​ 6000</p>
-                          </div>
-                          <div>
-                            <p>Balance Amount</p>
-                            <p>₹​ 200</p>
-                          </div>
-                          <div>
-                            <p> </p>
-                            <p>View Summary</p>
-                          </div>
-                        </div>
-                      </ExpansionPanelDetails>
-                    </ExpansionPanel>
-                  </div>
-                </div>
-              </ExpansionPanelDetails>
-            </ExpansionPanel>
-          </div>
-          <div className={classes.twoButtons}>
-            <Button variant="contained" className={classes.lastButton1}>
-              Modify Booking
-            </Button>
-            <Button variant="contained" className={classes.lastButton2}>
-              Cancel Booking
-            </Button>
-          </div>
-        </Paper>
-        {/* Iterate over one paper */}
-        {/* Just for display purpose */}
-        <Paper elevation={3} className={classes.paper}>
-          <div className={classes.paperInner1}>
-            <p>Jaipur</p>
-            <p>Booked on: 12/04/2020</p>
-          </div>
-          <div className={classes.paperInner2}>
-            <img src="img/nexon.png" alt="car" className={classes.image} />
-            <div>
-              <h2>Tata Nexon</h2>
-              <p>Booking Id: 1245863</p>
-              <p>
-                Registration No.: <span>RJ14F1258</span>
-              </p>
-              <p>KM Package : 150 km</p>
-            </div>
-          </div>
-          <div className={classes.paperInner3}>
-            <div>
-              <EventIcon className={classes.icons} />
-              <p>
-                <span>From:</span>
-                <span>
-                  &nbsp;&nbsp;12/04/2020
-                  <span>&nbsp;&nbsp;&nbsp;&nbsp;06:00 PM</span>
-                </span>
-              </p>
-            </div>
-            <div>
-              <p>
-                <span>To:</span>
-                <span>
-                  &nbsp;&nbsp;15/04/2020
-                  <span>&nbsp;&nbsp;&nbsp;&nbsp;06:00 PM</span>
-                </span>
-              </p>
-            </div>
-            <div className={classes.location}>
-              <div>
-                <RoomIcon className={classes.icons} />
-                <p>Pick up Location</p>
+                  </ExpansionPanelSummary>
+                  <ExpansionPanelDetails>
+                    <div className={classes.expansionPanelDetails}>
+                      <div>
+                        <Button
+                          variant="contained"
+                          className={classes.panelButton}
+                        >
+                          <AirportShuttleIcon />
+                          &nbsp;&nbsp;&nbsp; Pick up Car
+                        </Button>
+                      </div>
+                      <div className={classes.innerPanel}>
+                        <ExpansionPanel
+                          elevation={0}
+                          expanded={expandedInnerPanel === 'panel2'}
+                          onChange={handleChangeInnerPanel('panel2')}
+                          className={classes.expansionPanelInner}
+                        >
+                          <ExpansionPanelSummary
+                            expandIcon={<ExpandMoreIcon />}
+                            aria-controls="panel2bh-content"
+                            id="panel2bh-header"
+                            className={classes.expansionPanelInnerSummary}
+                          >
+                            <p className={classes.heading}>Payment Breakdown</p>
+                          </ExpansionPanelSummary>
+                          <ExpansionPanelDetails>
+                            <div className={classes.expansionPanelDetailsInner}>
+                              <div>
+                                <p>Tariff Price - 150km</p>
+                                <p>₹​ 1000</p>
+                              </div>
+                              <div>
+                                <p>Refundable Security Deposit</p>
+                                <p>₹​ 5000</p>
+                              </div>
+                              <hr />
+                              <div className={classes.totalPaid}>
+                                <p>Total Paid</p>
+                                <p>₹​ 6000</p>
+                              </div>
+                              <div>
+                                <p>Balance Amount</p>
+                                <p>₹​ 200</p>
+                              </div>
+                              <div>
+                                <p> </p>
+                                <p>View Summary</p>
+                              </div>
+                            </div>
+                          </ExpansionPanelDetails>
+                        </ExpansionPanel>
+                      </div>
+                    </div>
+                  </ExpansionPanelDetails>
+                </ExpansionPanel>
               </div>
-              <p>XYZ Location</p>
-            </div>
-          </div>
-          <div className={classes.callButton}>
-            <Button variant="contained" className={classes.panelButton}>
-              <CallIcon />
-              &nbsp;&nbsp;&nbsp;Call Delivery Partner
-            </Button>
-          </div>
-          <div className={classes.expansionMain}>
-            <ExpansionPanel
-              elevation={0}
-              expanded={expanded === 'panel1'}
-              onChange={handleChange('panel1')}
-              className={classes.expansionPanel}
-            >
-              <ExpansionPanelSummary
-                aria-controls="panel1bh-content"
-                id="panel1bh-header"
-                className={classes.expansionPanelSummary}
-              >
-                <ExpandMoreIcon className={classes.expansionIcon} />
-                {/* <p className={classes.secondaryHeading}>
+              <div className={classes.twoButtons}>
+                <Button variant="contained" className={classes.lastButton1}>
+                  Modify Booking
+                </Button>
+                <Button variant="contained" className={classes.lastButton2}>
+                  Cancel Booking
+                </Button>
+              </div>
+            </Paper>
+            {/* Iterate over one paper */}
+            {/* Just for display purpose */}
+            <Paper elevation={3} className={classes.paper}>
+              <div className={classes.paperInner1}>
+                <p>Jaipur</p>
+                <p>Booked on: 12/04/2020</p>
+              </div>
+              <div className={classes.paperInner2}>
+                <img src="img/nexon.png" alt="car" className={classes.image} />
+                <div>
+                  <h2>Tata Nexon</h2>
+                  <p>Booking Id: 1245863</p>
+                  <p>
+                    Registration No.: <span>RJ14F1258</span>
+                  </p>
+                  <p>KM Package : 150 km</p>
+                </div>
+              </div>
+              <div className={classes.paperInner3}>
+                <div>
+                  <EventIcon className={classes.icons} />
+                  <p>
+                    <span>From:</span>
+                    <span>
+                      &nbsp;&nbsp;12/04/2020
+                      <span>&nbsp;&nbsp;&nbsp;&nbsp;06:00 PM</span>
+                    </span>
+                  </p>
+                </div>
+                <div>
+                  <p>
+                    <span>To:</span>
+                    <span>
+                      &nbsp;&nbsp;15/04/2020
+                      <span>&nbsp;&nbsp;&nbsp;&nbsp;06:00 PM</span>
+                    </span>
+                  </p>
+                </div>
+                <div className={classes.location}>
+                  <div>
+                    <RoomIcon className={classes.icons} />
+                    <p>Pick up Location</p>
+                  </div>
+                  <p>XYZ Location</p>
+                </div>
+              </div>
+              <div className={classes.callButton}>
+                <Button variant="contained" className={classes.panelButton}>
+                  <CallIcon />
+                  &nbsp;&nbsp;&nbsp;Call Delivery Partner
+                </Button>
+              </div>
+              <div className={classes.expansionMain}>
+                <ExpansionPanel
+                  elevation={0}
+                  expanded={expanded === 'panel1'}
+                  onChange={handleChange('panel1')}
+                  className={classes.expansionPanel}
+                >
+                  <ExpansionPanelSummary
+                    aria-controls="panel1bh-content"
+                    id="panel1bh-header"
+                    className={classes.expansionPanelSummary}
+                  >
+                    <ExpandMoreIcon className={classes.expansionIcon} />
+                    {/* <p className={classes.secondaryHeading}>
                   I am an expansion panel
                 </p>  */}
-              </ExpansionPanelSummary>
-              <ExpansionPanelDetails>
-                <div className={classes.expansionPanelDetails}>
-                  <div>
-                    <Button variant="contained" className={classes.panelButton}>
-                      <AirportShuttleIcon />
-                      &nbsp;&nbsp;&nbsp; Pick up Car
-                    </Button>
-                  </div>
-                  <div className={classes.innerPanel}>
-                    <ExpansionPanel
-                      elevation={0}
-                      expanded={expandedInnerPanel === 'panel2'}
-                      onChange={handleChangeInnerPanel('panel2')}
-                      className={classes.expansionPanelInner}
-                    >
-                      <ExpansionPanelSummary
-                        expandIcon={<ExpandMoreIcon />}
-                        aria-controls="panel2bh-content"
-                        id="panel2bh-header"
-                        className={classes.expansionPanelInnerSummary}
-                      >
-                        <p className={classes.heading}>Payment Breakdown</p>
-                      </ExpansionPanelSummary>
-                      <ExpansionPanelDetails>
-                        <div className={classes.expansionPanelDetailsInner}>
-                          <div>
-                            <p>Tariff Price - 150km</p>
-                            <p>₹​ 1000</p>
-                          </div>
-                          <div>
-                            <p>Refundable Security Deposit</p>
-                            <p>₹​ 5000</p>
-                          </div>
-                          <hr />
-                          <div className={classes.totalPaid}>
-                            <p>Total Paid</p>
-                            <p>₹​ 6000</p>
-                          </div>
-                          <div>
-                            <p>Balance Amount</p>
-                            <p>₹​ 200</p>
-                          </div>
-                          <div>
-                            <p> </p>
-                            <p>View Summary</p>
-                          </div>
-                        </div>
-                      </ExpansionPanelDetails>
-                    </ExpansionPanel>
-                  </div>
-                </div>
-              </ExpansionPanelDetails>
-            </ExpansionPanel>
+                  </ExpansionPanelSummary>
+                  <ExpansionPanelDetails>
+                    <div className={classes.expansionPanelDetails}>
+                      <div>
+                        <Button
+                          variant="contained"
+                          className={classes.panelButton}
+                        >
+                          <AirportShuttleIcon />
+                          &nbsp;&nbsp;&nbsp; Pick up Car
+                        </Button>
+                      </div>
+                      <div className={classes.innerPanel}>
+                        <ExpansionPanel
+                          elevation={0}
+                          expanded={expandedInnerPanel === 'panel2'}
+                          onChange={handleChangeInnerPanel('panel2')}
+                          className={classes.expansionPanelInner}
+                        >
+                          <ExpansionPanelSummary
+                            expandIcon={<ExpandMoreIcon />}
+                            aria-controls="panel2bh-content"
+                            id="panel2bh-header"
+                            className={classes.expansionPanelInnerSummary}
+                          >
+                            <p className={classes.heading}>Payment Breakdown</p>
+                          </ExpansionPanelSummary>
+                          <ExpansionPanelDetails>
+                            <div className={classes.expansionPanelDetailsInner}>
+                              <div>
+                                <p>Tariff Price - 150km</p>
+                                <p>₹​ 1000</p>
+                              </div>
+                              <div>
+                                <p>Refundable Security Deposit</p>
+                                <p>₹​ 5000</p>
+                              </div>
+                              <hr />
+                              <div className={classes.totalPaid}>
+                                <p>Total Paid</p>
+                                <p>₹​ 6000</p>
+                              </div>
+                              <div>
+                                <p>Balance Amount</p>
+                                <p>₹​ 200</p>
+                              </div>
+                              <div>
+                                <p> </p>
+                                <p>View Summary</p>
+                              </div>
+                            </div>
+                          </ExpansionPanelDetails>
+                        </ExpansionPanel>
+                      </div>
+                    </div>
+                  </ExpansionPanelDetails>
+                </ExpansionPanel>
+              </div>
+              <div className={classes.twoButtons}>
+                <Button variant="contained" className={classes.lastButton1}>
+                  Modify Booking
+                </Button>
+                <Button variant="contained" className={classes.lastButton2}>
+                  Cancel Booking
+                </Button>
+              </div>
+            </Paper>
           </div>
-          <div className={classes.twoButtons}>
-            <Button variant="contained" className={classes.lastButton1}>
-              Modify Booking
-            </Button>
-            <Button variant="contained" className={classes.lastButton2}>
-              Cancel Booking
-            </Button>
-          </div>
-        </Paper>
-      </div>
-    </div>
+        </div>
+      )}
+    </>
   );
 };
 

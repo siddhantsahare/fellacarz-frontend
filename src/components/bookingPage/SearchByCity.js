@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useState, Fragment } from 'react';
 import Paper from '@material-ui/core/Paper';
+import Skeleton from '@material-ui/lab/Skeleton';
+
 import { makeStyles } from '@material-ui/core/styles';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import Button from '@material-ui/core/Button';
@@ -10,11 +12,6 @@ import Grid from '@material-ui/core/Grid';
 
 const useStyles = makeStyles((theme) => ({
   searchByCity: {
-    // position: 'absolute',
-    // top: 110,
-    // right: 10,
-    // margin: 0,
-    // minWidth: '74vw',
     width: '100%',
     overFlow: 'none',
   },
@@ -85,66 +82,129 @@ const useStyles = makeStyles((theme) => ({
 
 const SearchByCity = () => {
   const classes = useStyles();
+  const [loading, setloading] = useState(true);
 
   return (
-    <div className={classes.searchByCity}>
-      <div className={classes.root}>
-        <Paper className={classes.paper} elevation={3}>
-          <Grid container direction="row" spacing={3} className={classes.grid}>
-            <Grid item lg={3} md={3}>
-              <TextField
-                id="standard-helperText"
-                defaultValue="Malviya Nagar, Jaipur"
-                label="Pick up location"
-                className={classes.textFieldMain}
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <LocationOnIcon />
-                    </InputAdornment>
-                  ),
-                }}
-              />
-            </Grid>
-            <Grid item lg={3} md={3}>
-              <form className={classes.container} noValidate>
-                <TextField
-                  id="datetime-local"
-                  label="From: Date & Time "
-                  type="datetime-local"
-                  defaultValue="2017-05-24T10:30"
-                  className={classes.textField}
-                  InputLabelProps={{
-                    shrink: true,
-                  }}
-                />
-              </form>
-            </Grid>
+    <Fragment>
+      {loading ? (
+        <div className={classes.searchByCity}>
+          <div className={classes.root}>
+            <Paper className={classes.paper} elevation={3}>
+              <Grid
+                container
+                direction="row"
+                spacing={3}
+                className={classes.grid}
+              >
+                <Grid item lg={3} md={3}>
+                  <Skeleton
+                    animation="wave"
+                    variant="square"
+                    className={classes.textFieldMain}
+                    height="40px"
+                  ></Skeleton>
+                </Grid>
+                <Grid item lg={3} md={3}>
+                  <form className={classes.container} noValidate>
+                    <Skeleton
+                      animation="wave"
+                      variant="square"
+                      className={classes.textFieldMain}
+                      height="40px"
+                    ></Skeleton>
+                  </form>
+                </Grid>
 
-            <Grid item lg={3} md={3}>
-              <form className={classes.container} noValidate>
-                <TextField
-                  id="datetime-local"
-                  label="To: Date & Time"
-                  type="datetime-local"
-                  defaultValue="2017-05-24T10:30"
-                  className={classes.textField}
-                  InputLabelProps={{
-                    shrink: true,
-                  }}
-                />
-              </form>
-            </Grid>
+                <Grid item lg={3} md={3}>
+                  <form className={classes.container} noValidate>
+                    <Skeleton
+                      animation="wave"
+                      variant="square"
+                      className={classes.textFieldMain}
+                      height="40px"
+                    ></Skeleton>
+                  </form>
+                </Grid>
 
-            <Grid item lg={3} md={3}>
-              <Button variant="outlined" className={classes.button}>
-                Find
-              </Button>
-            </Grid>
-          </Grid>
-        </Paper>
-      </div>
-    </div>
+                <Grid item lg={3} md={3}>
+                  <Skeleton
+                    animation="wave"
+                    variant="square"
+                    height="40px"
+                    width="180px"
+                    style={{ marginLeft: '50px' }}
+                  ></Skeleton>
+                </Grid>
+              </Grid>
+            </Paper>
+          </div>
+        </div>
+      ) : (
+        <div className={classes.searchByCity}>
+          <div className={classes.root}>
+            <Paper className={classes.paper} elevation={3}>
+              <Grid
+                container
+                direction="row"
+                spacing={3}
+                className={classes.grid}
+              >
+                <Grid item lg={3} md={3}>
+                  <TextField
+                    id="standard-helperText"
+                    defaultValue="Malviya Nagar, Jaipur"
+                    label="Pick up location"
+                    className={classes.textFieldMain}
+                    InputProps={{
+                      startAdornment: (
+                        <InputAdornment position="start">
+                          <LocationOnIcon />
+                        </InputAdornment>
+                      ),
+                    }}
+                  />
+                </Grid>
+                <Grid item lg={3} md={3}>
+                  <form className={classes.container} noValidate>
+                    <TextField
+                      id="datetime-local"
+                      label="From: Date & Time "
+                      type="datetime-local"
+                      defaultValue="2017-05-24T10:30"
+                      className={classes.textField}
+                      InputLabelProps={{
+                        shrink: true,
+                      }}
+                    />
+                  </form>
+                </Grid>
+
+                <Grid item lg={3} md={3}>
+                  <form className={classes.container} noValidate>
+                    <TextField
+                      id="datetime-local"
+                      label="To: Date & Time"
+                      type="datetime-local"
+                      defaultValue="2017-05-24T10:30"
+                      className={classes.textField}
+                      InputLabelProps={{
+                        shrink: true,
+                      }}
+                    />
+                  </form>
+                </Grid>
+
+                <Grid item lg={3} md={3}>
+                  <Button variant="outlined" className={classes.button}>
+                    Find
+                  </Button>
+                </Grid>
+              </Grid>
+            </Paper>
+          </div>
+        </div>
+      )}
+    </Fragment>
   );
 };
 

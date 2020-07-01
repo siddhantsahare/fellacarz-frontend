@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Paper from '@material-ui/core/Paper';
+import Skeleton from '@material-ui/lab/Skeleton';
 import { makeStyles } from '@material-ui/core/styles';
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
@@ -13,6 +14,7 @@ import FilterListIcon from '@material-ui/icons/FilterList';
 import DriveEtaIcon from '@material-ui/icons/DriveEta';
 import LocalGasStationIcon from '@material-ui/icons/LocalGasStation';
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
+import { Fragment } from 'react';
 
 const useStyles = makeStyles((theme) => ({
   filterPanel: {
@@ -51,6 +53,13 @@ const useStyles = makeStyles((theme) => ({
     padding: '20px 20px',
     width: '100%',
     backgroundColor: ' #F4FDF5',
+  },
+  paperSkeleton: {
+    display: 'flex',
+    flexDirection: 'column',
+    padding: '20px 20px',
+    width: '100%',
+    backgroundColor: 'white',
   },
   categories: {
     display: 'flex',
@@ -169,132 +178,305 @@ const Filter = () => {
     checkedGreen: true,
   });
 
+  const [loading, setloading] = useState(true);
+
   const handleChange = (event) => {
     setState({ ...state, [event.target.name]: event.target.checked });
   };
 
   return (
-    <div className={classes.filterPanel}>
-      <div className={classes.filter}>
-        <FilterListIcon className={classes.icons} />
-        <h2>Filter</h2>
-      </div>
-      <div className={classes.root}>
-        <Paper className={classes.paper} elevation={3}>
-          <Grid
-            container
-            direction="column"
-            spacing={1}
-            className={classes.grid}
+    <Fragment>
+      {loading ? (
+        <div className={classes.filterPanel}>
+          <Skeleton
+            className={classes.filter}
+            animation="wave"
+            variant="square"
           >
-            <Grid item lg={12} md={12}>
-              <div className={classes.categories}>
-                <DriveEtaIcon className={classes.icons} />
-                <h4>Category</h4>
-              </div>
-            </Grid>
-            <Grid item lg={12} md={12}>
-              <div className={classes.category}>
-                <FormControlLabel
-                  control={
-                    <GreenCheckbox
-                      checked={state.checkedG}
-                      onChange={handleChange}
-                      name="checkedG"
+            <FilterListIcon className={classes.icons} />
+            <h2>Filter</h2>
+          </Skeleton>
+
+          <div className={classes.root}>
+            <Paper className={classes.paperSkeleton} elevation={3}>
+              <Grid container direction="column" spacing={1}>
+                <Grid item lg={12} md={12}>
+                  <Skeleton
+                    className={classes.filter}
+                    animation="wave"
+                    variant="square"
+                  >
+                    <div className={classes.categories}>
+                      <DriveEtaIcon className={classes.icons} />
+                      <h4>Category</h4>
+                    </div>
+                  </Skeleton>
+                </Grid>
+                <Grid item lg={12} md={12}>
+                  <Skeleton
+                    className={classes.filter}
+                    animation="wave"
+                    variant="square"
+                  >
+                    <div className={classes.category}>
+                      <FormControlLabel
+                        control={
+                          <GreenCheckbox
+                            checked={state.checkedG}
+                            onChange={handleChange}
+                            name="checkedG"
+                          />
+                        }
+                      />
+                      SUV
+                    </div>
+                  </Skeleton>
+                </Grid>
+                <Grid item lg={12} md={12}>
+                  <Skeleton
+                    className={classes.filter}
+                    animation="wave"
+                    variant="square"
+                    style={{ marginTop: '-20px' }}
+                  >
+                    <div className={classes.category}>
+                      <FormControlLabel
+                        control={
+                          <GreenCheckbox
+                            checked={state.checkedG}
+                            onChange={handleChange}
+                            name="checkedG"
+                          />
+                        }
+                      />
+                      Sedan
+                    </div>
+                  </Skeleton>
+                </Grid>
+                <Grid item lg={12} md={12}>
+                  <Skeleton
+                    className={classes.filter}
+                    animation="wave"
+                    variant="square"
+                    style={{ marginTop: '-20px' }}
+                  >
+                    <div className={classes.category}>
+                      <FormControlLabel
+                        control={
+                          <GreenCheckbox
+                            checked={state.checkedG}
+                            onChange={handleChange}
+                            name="checkedG"
+                          />
+                        }
+                      />
+                      Hatchba
+                    </div>
+                  </Skeleton>
+                </Grid>
+                {/* Fuel */}
+                <Grid item lg={12} md={12}>
+                  <Skeleton
+                    className={classes.filter}
+                    animation="wave"
+                    variant="square"
+                  >
+                    <div className={classes.categories}>
+                      <DriveEtaIcon className={classes.icons} />
+                      <h4>Category</h4>
+                    </div>
+                  </Skeleton>
+                </Grid>
+                <Grid item lg={12} md={12}>
+                  <Skeleton
+                    className={classes.filter}
+                    animation="wave"
+                    variant="square"
+                  >
+                    <div className={classes.category}>
+                      <FormControlLabel
+                        control={
+                          <GreenCheckbox
+                            checked={state.checkedG}
+                            onChange={handleChange}
+                            name="checkedG"
+                          />
+                        }
+                      />
+                      SUV
+                    </div>
+                  </Skeleton>
+                </Grid>
+                <Grid item lg={12} md={12}>
+                  <Skeleton
+                    className={classes.filter}
+                    animation="wave"
+                    variant="square"
+                    style={{ marginTop: '-20px' }}
+                  >
+                    <div className={classes.category}>
+                      <FormControlLabel
+                        control={
+                          <GreenCheckbox
+                            checked={state.checkedG}
+                            onChange={handleChange}
+                            name="checkedG"
+                          />
+                        }
+                      />
+                      Sedan
+                    </div>
+                  </Skeleton>
+                </Grid>
+                <Grid item lg={12} md={12}>
+                  <Skeleton
+                    className={classes.filter}
+                    animation="wave"
+                    variant="square"
+                    style={{ marginTop: '-20px' }}
+                  >
+                    <div className={classes.category}>
+                      <FormControlLabel
+                        control={
+                          <GreenCheckbox
+                            checked={state.checkedG}
+                            onChange={handleChange}
+                            name="checkedG"
+                          />
+                        }
+                      />
+                      Hatchba
+                    </div>
+                  </Skeleton>
+                </Grid>
+              </Grid>
+            </Paper>
+          </div>
+        </div>
+      ) : (
+        <div className={classes.filterPanel}>
+          <div className={classes.filter}>
+            <FilterListIcon className={classes.icons} />
+            <h2>Filter</h2>
+          </div>
+          <div className={classes.root}>
+            <Paper className={classes.paper} elevation={3}>
+              <Grid
+                container
+                direction="column"
+                spacing={1}
+                className={classes.grid}
+              >
+                <Grid item lg={12} md={12}>
+                  <div className={classes.categories}>
+                    <DriveEtaIcon className={classes.icons} />
+                    <h4>Category</h4>
+                  </div>
+                </Grid>
+                <Grid item lg={12} md={12}>
+                  <div className={classes.category}>
+                    <FormControlLabel
+                      control={
+                        <GreenCheckbox
+                          checked={state.checkedG}
+                          onChange={handleChange}
+                          name="checkedG"
+                        />
+                      }
                     />
-                  }
-                />
-                SUV
-              </div>
-            </Grid>
-            <Grid item lg={12} md={12}>
-              <div className={classes.category}>
-                <FormControlLabel
-                  control={
-                    <GreenCheckbox
-                      checked={state.checkedG}
-                      onChange={handleChange}
-                      name="checkedG"
+                    SUV
+                  </div>
+                </Grid>
+                <Grid item lg={12} md={12}>
+                  <div className={classes.category}>
+                    <FormControlLabel
+                      control={
+                        <GreenCheckbox
+                          checked={state.checkedG}
+                          onChange={handleChange}
+                          name="checkedG"
+                        />
+                      }
                     />
-                  }
-                />
-                Sedan
-              </div>
-            </Grid>
-            <Grid item lg={12} md={12}>
-              <div className={classes.category}>
-                <FormControlLabel
-                  control={
-                    <GreenCheckbox
-                      checked={state.checkedG}
-                      onChange={handleChange}
-                      name="checkedG"
+                    Sedan
+                  </div>
+                </Grid>
+                <Grid item lg={12} md={12}>
+                  <div className={classes.category}>
+                    <FormControlLabel
+                      control={
+                        <GreenCheckbox
+                          checked={state.checkedG}
+                          onChange={handleChange}
+                          name="checkedG"
+                        />
+                      }
                     />
-                  }
-                />
-                Hatchba
-              </div>
-            </Grid>
-            {/* Fuel */}
-            <Grid item lg={12} md={12}>
-              <div className={classes.fuels}>
-                <LocalGasStationIcon className={classes.icons} />
-                <h4>Fuel</h4>
-              </div>
-              <div className={classes.fuel}>
-                <FormControlLabel
-                  control={
-                    <GreenCheckbox
-                      checked={state.checkedG}
-                      onChange={handleChange}
-                      name="checkedG"
+                    Hatchba
+                  </div>
+                </Grid>
+                {/* Fuel */}
+                <Grid item lg={12} md={12}>
+                  <div className={classes.fuels}>
+                    <LocalGasStationIcon className={classes.icons} />
+                    <h4>Fuel</h4>
+                  </div>
+                  <div className={classes.fuel}>
+                    <FormControlLabel
+                      control={
+                        <GreenCheckbox
+                          checked={state.checkedG}
+                          onChange={handleChange}
+                          name="checkedG"
+                        />
+                      }
                     />
-                  }
-                />
-                Petrol
-              </div>
-            </Grid>
-            <Grid item lg={12} md={12}>
-              <div className={classes.fuel}>
-                <FormControlLabel
-                  control={
-                    <GreenCheckbox
-                      checked={state.checkedG}
-                      onChange={handleChange}
-                      name="checkedG"
+                    Petrol
+                  </div>
+                </Grid>
+                <Grid item lg={12} md={12}>
+                  <div className={classes.fuel}>
+                    <FormControlLabel
+                      control={
+                        <GreenCheckbox
+                          checked={state.checkedG}
+                          onChange={handleChange}
+                          name="checkedG"
+                        />
+                      }
                     />
-                  }
-                />
-                Diesel
-              </div>
-            </Grid>
-            {/* Price */}
-            <Grid item lg={12} md={12}>
-              <div className={classes.prices}>
-                <AttachMoneyIcon className={classes.icons} />
-                <h4>Price</h4>
-              </div>
-              <div className={classes.price}>
-                <TextField
-                  id="standard-helperText"
-                  defaultValue="1000 - 10,000"
-                  helperText="Select a price range"
-                />
-                <div className={classes.priceSlider}>
-                  <PriceSlider
-                    ThumbComponent={PriceSliderComponent}
-                    getAriaLabel={(index) =>
-                      index === 0 ? 'Minimum price' : 'Maximum price'
-                    }
-                    defaultValue={[20, 80]}
-                  />
-                </div>
-              </div>
-            </Grid>
-          </Grid>
-        </Paper>
-      </div>
-    </div>
+                    Diesel
+                  </div>
+                </Grid>
+                {/* Price */}
+                <Grid item lg={12} md={12}>
+                  <div className={classes.prices}>
+                    <AttachMoneyIcon className={classes.icons} />
+                    <h4>Price</h4>
+                  </div>
+                  <div className={classes.price}>
+                    <TextField
+                      id="standard-helperText"
+                      defaultValue="1000 - 10,000"
+                      helperText="Select a price range"
+                    />
+                    <div className={classes.priceSlider}>
+                      <PriceSlider
+                        ThumbComponent={PriceSliderComponent}
+                        getAriaLabel={(index) =>
+                          index === 0 ? 'Minimum price' : 'Maximum price'
+                        }
+                        defaultValue={[20, 80]}
+                      />
+                    </div>
+                  </div>
+                </Grid>
+              </Grid>
+            </Paper>
+          </div>
+        </div>
+      )}
+    </Fragment>
   );
 };
 

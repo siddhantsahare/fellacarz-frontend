@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useState, Fragment } from 'react';
 import Paper from '@material-ui/core/Paper';
+import Skeleton from '@material-ui/lab/Skeleton';
+
 import { makeStyles } from '@material-ui/core/styles';
 import { withStyles } from '@material-ui/core/styles';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -54,6 +56,14 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     backgroundColor: ' #F4FDF5',
   },
+  paperSkeleton: {
+    display: 'flex',
+    position: 'relative',
+    flexDirection: 'column',
+    padding: '30px 20px',
+    width: '100%',
+    backgroundColor: 'white',
+  },
   sortItem: {
     '& > h4': {
       display: 'inline-block',
@@ -93,92 +103,209 @@ const Sort = () => {
     checkedGreen: true,
   });
 
+  const [loading, setloading] = useState(true);
+
   const handleChange = (event) => {
     setState({ ...state, [event.target.name]: event.target.checked });
   };
 
   return (
-    <div className={classes.sortPanel}>
-      <div className={classes.sort}>
-        <SortIcon className={classes.icons} />
-        <h2>Sort</h2>
-      </div>
-      <div className={classes.root}>
-        <Paper className={classes.paper} elevation={3}>
-          <Grid
-            container
-            direction="column"
-            spacing={2}
-            className={classes.grid}
-          >
-            <Grid item lg={12} md={12}>
-              <div className={classes.item}>
-                <WhatshotIcon className={classes.icons} />
-                <span>Popularity</span>
-                <FormControlLabel
-                  control={
-                    <GreenCheckbox
-                      checked={state.checkedG}
-                      onChange={handleChange}
-                      name="checkedG"
-                      className={classes.itemElm}
+    <Fragment>
+      {loading ? (
+        <div className={classes.sortPanel}>
+          <Skeleton animation="wave" variant="square" className={classes.sort}>
+            <SortIcon className={classes.icons} />
+            <h2>Sort</h2>
+          </Skeleton>
+
+          <div className={classes.root}>
+            <Paper className={classes.paperSkeleton} elevation={3}>
+              <Grid
+                container
+                direction="column"
+                spacing={2}
+                className={classes.grid}
+              >
+                <Grid item lg={12} md={12}>
+                  <div className={classes.item}>
+                    <Skeleton
+                      animation="wave"
+                      variant="square"
+                      width="100%"
+                      style={{ marginLeft: '10px' }}
+                    >
+                      <WhatshotIcon className={classes.icons} />
+                      <span>Popularity</span>
+                      <FormControlLabel
+                        control={
+                          <GreenCheckbox
+                            checked={state.checkedG}
+                            onChange={handleChange}
+                            name="checkedG"
+                            className={classes.itemElm}
+                          />
+                        }
+                      />
+                    </Skeleton>
+                  </div>
+                </Grid>
+                <Grid item lg={12} md={12}>
+                  <div className={classes.item}>
+                    <Skeleton
+                      animation="wave"
+                      variant="square"
+                      width="100%"
+                      style={{ marginLeft: '10px' }}
+                    >
+                      <RoomIcon className={classes.icons} />
+                      <span>Distance</span>
+                      <FormControlLabel
+                        control={
+                          <GreenCheckbox
+                            checked={state.checkedG}
+                            onChange={handleChange}
+                            name="checkedG"
+                            className={classes.itemElm}
+                          />
+                        }
+                      />
+                    </Skeleton>
+                  </div>
+                </Grid>
+                <Grid item lg={12} md={12}>
+                  <div className={classes.item}>
+                    <Skeleton
+                      animation="wave"
+                      variant="square"
+                      width="100%"
+                      style={{ marginLeft: '10px' }}
+                    >
+                      <ArrowUpwardIcon className={classes.icons} />
+                      <span>Price High to Low</span>
+                      <FormControlLabel
+                        control={
+                          <GreenCheckbox
+                            checked={state.checkedG}
+                            onChange={handleChange}
+                            name="checkedG"
+                            className={classes.itemElm}
+                          />
+                        }
+                      />
+                    </Skeleton>
+                  </div>
+                </Grid>
+                <Grid item lg={12} md={12}>
+                  <div className={classes.item}>
+                    <Skeleton
+                      animation="wave"
+                      variant="square"
+                      width="100%"
+                      style={{ marginLeft: '10px' }}
+                    >
+                      <ArrowDownwardIcon className={classes.icons} />
+                      <span>Price Low to High</span>
+                      <FormControlLabel
+                        control={
+                          <GreenCheckbox
+                            checked={state.checkedG}
+                            onChange={handleChange}
+                            name="checkedG"
+                            className={classes.itemElm}
+                          />
+                        }
+                      />
+                    </Skeleton>
+                  </div>
+                </Grid>
+              </Grid>
+            </Paper>
+          </div>
+        </div>
+      ) : (
+        <div className={classes.sortPanel}>
+          <div className={classes.sort}>
+            <SortIcon className={classes.icons} />
+            <h2>Sort</h2>
+          </div>
+          <div className={classes.root}>
+            <Paper className={classes.paper} elevation={3}>
+              <Grid
+                container
+                direction="column"
+                spacing={2}
+                className={classes.grid}
+              >
+                <Grid item lg={12} md={12}>
+                  <div className={classes.item}>
+                    <WhatshotIcon className={classes.icons} />
+                    <span>Popularity</span>
+                    <FormControlLabel
+                      control={
+                        <GreenCheckbox
+                          checked={state.checkedG}
+                          onChange={handleChange}
+                          name="checkedG"
+                          className={classes.itemElm}
+                        />
+                      }
                     />
-                  }
-                />
-              </div>
-            </Grid>
-            <Grid item lg={12} md={12}>
-              <div className={classes.item}>
-                <RoomIcon className={classes.icons} />
-                <span>Distance</span>
-                <FormControlLabel
-                  control={
-                    <GreenCheckbox
-                      checked={state.checkedG}
-                      onChange={handleChange}
-                      name="checkedG"
-                      className={classes.itemElm}
+                  </div>
+                </Grid>
+                <Grid item lg={12} md={12}>
+                  <div className={classes.item}>
+                    <RoomIcon className={classes.icons} />
+                    <span>Distance</span>
+                    <FormControlLabel
+                      control={
+                        <GreenCheckbox
+                          checked={state.checkedG}
+                          onChange={handleChange}
+                          name="checkedG"
+                          className={classes.itemElm}
+                        />
+                      }
                     />
-                  }
-                />
-              </div>
-            </Grid>
-            <Grid item lg={12} md={12}>
-              <div className={classes.item}>
-                <ArrowUpwardIcon className={classes.icons} />
-                <span>Price High to Low</span>
-                <FormControlLabel
-                  control={
-                    <GreenCheckbox
-                      checked={state.checkedG}
-                      onChange={handleChange}
-                      name="checkedG"
-                      className={classes.itemElm}
+                  </div>
+                </Grid>
+                <Grid item lg={12} md={12}>
+                  <div className={classes.item}>
+                    <ArrowUpwardIcon className={classes.icons} />
+                    <span>Price High to Low</span>
+                    <FormControlLabel
+                      control={
+                        <GreenCheckbox
+                          checked={state.checkedG}
+                          onChange={handleChange}
+                          name="checkedG"
+                          className={classes.itemElm}
+                        />
+                      }
                     />
-                  }
-                />
-              </div>
-            </Grid>
-            <Grid item lg={12} md={12}>
-              <div className={classes.item}>
-                <ArrowDownwardIcon className={classes.icons} />
-                <span>Price Low to High</span>
-                <FormControlLabel
-                  control={
-                    <GreenCheckbox
-                      checked={state.checkedG}
-                      onChange={handleChange}
-                      name="checkedG"
-                      className={classes.itemElm}
+                  </div>
+                </Grid>
+                <Grid item lg={12} md={12}>
+                  <div className={classes.item}>
+                    <ArrowDownwardIcon className={classes.icons} />
+                    <span>Price Low to High</span>
+                    <FormControlLabel
+                      control={
+                        <GreenCheckbox
+                          checked={state.checkedG}
+                          onChange={handleChange}
+                          name="checkedG"
+                          className={classes.itemElm}
+                        />
+                      }
                     />
-                  }
-                />
-              </div>
-            </Grid>
-          </Grid>
-        </Paper>
-      </div>
-    </div>
+                  </div>
+                </Grid>
+              </Grid>
+            </Paper>
+          </div>
+        </div>
+      )}
+    </Fragment>
   );
 };
 
